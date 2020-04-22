@@ -1,1 +1,1 @@
-# ggpo-client
+# GGPO-client
