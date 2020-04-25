@@ -31,7 +31,8 @@ module.exports = {
         tsx: 'never'
       }
     ],
-    'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }]
+    'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
+    'react/prefer-stateless-function': 0
     // 'operator-linebreak': 1,
     // 'comma-dangle': 1,
     // 'no-use-before-define': 0
