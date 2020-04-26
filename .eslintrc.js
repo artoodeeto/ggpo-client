@@ -32,7 +32,8 @@ module.exports = {
       }
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
-    'react/prefer-stateless-function': 0
+    'react/prefer-stateless-function': 0,
+    'arrow-body-style': 0
     // 'operator-linebreak': 1,
     // 'comma-dangle': 1,
     // 'no-use-before-define': 0
