@@ -1,13 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+import React, { Component } from 'react';
 import AppStyles from './App.module.scss';
-import Login from '../Login/Login';
+import SignupLoginContainer from '../SignupLoginContainer/SignupLogin';
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <div className={AppStyles.App}>
-        <Login />
+        <SignupLoginContainer />
       </div>
     );
   }

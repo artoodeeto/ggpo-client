@@ -1,19 +1,18 @@
 import React from 'react';
-// import LoginStyles from './App.module.scss';
 
-function testSubmit(event: any) {
-  event.preventDefault();
-  console.log(event);
-}
-
-const Login = () => {
+const Signup = () => {
   return (
     <div>
       <div>
-        <form onSubmit={testSubmit}>
+        <form>
           <label htmlFor="email">
             Email:
             <input placeholder="youremail@address.com" type="text" name="email" id="" required />
+          </label>
+
+          <label htmlFor="username">
+            Username:
+            <input placeholder="user name" type="text" name="username" id="" required />
           </label>
 
           <label htmlFor="password">
@@ -28,4 +27,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
