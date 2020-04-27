@@ -4,7 +4,7 @@ module.exports = {
     es6: true,
     jest: true
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended', 'airbnb', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -33,9 +33,9 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/prefer-stateless-function': 0,
-    'arrow-body-style': 0
+    'arrow-body-style': 0,
+    'comma-dangle': 0
     // 'operator-linebreak': 1,
-    // 'comma-dangle': 1,
     // 'no-use-before-define': 0
   },
   settings: {
