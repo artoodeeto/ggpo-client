@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import axiosInstance from 'lib/axios.instance';
 
 const onSignup = async (event: any, email: string, username: string, password: string): Promise<void> => {
   event.preventDefault();
   try {
-    const res = await axios.post('/signup', {
+    // const res = await axios.post('/signup', {
+    //   username,
+    //   email,
+    //   password
+    // });
+
+    // sample instance
+    const res = await axiosInstance.post('/signup', {
       username,
       email,
       password

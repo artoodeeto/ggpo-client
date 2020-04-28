@@ -3,7 +3,7 @@ import axios from 'axios';
 export default function axiosInterceptors(): void {
   axios.interceptors.request.use(
     (config) => {
-      console.log({ req: config });
+      console.log('intercept', { req: config });
       // Do something before request is sent
       return config;
     },
@@ -18,7 +18,7 @@ export default function axiosInterceptors(): void {
     (response) => {
       // Any status code that lie within the range of 2xx cause this function to trigger
       // Do something with response data
-      console.log({ res: response });
+      console.log('intercept', { res: response });
       return response;
     },
     (error) => {
