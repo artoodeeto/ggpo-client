@@ -1,27 +1,19 @@
-import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import React, { useState, useEffect, FormEvent } from 'react';
 import axiosInstance from 'lib/axios.instance';
+import { LoginSignUp } from 'interfaces/signupLogin';
+import signUpService from 'services/signup';
 
-const onSignup = async (event: any, email: string, username: string, password: string): Promise<void> => {
+const onSignup = async (event: FormEvent, email: string, username: string, password: string): Promise<void> => {
   event.preventDefault();
-  try {
-    // const res = await axios.post('/signup', {
-    //   username,
-    //   email,
-    //   password
-    // });
 
-    // sample instance
-    const res = await axiosInstance.post('/signup', {
-      username,
-      email,
-      password
-    });
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-  console.log(email, username, password);
+  const formSignup: LoginSignUp = {
+    username,
+    email,
+    password
+  };
+
+  const res = await signUpService(formSignup);
+  console.log(res);
 };
 
 const Signup = () => {
@@ -70,7 +62,7 @@ const Signup = () => {
               value={password}
               placeholder="password"
               type="text"
-              name="email"
+              name="password"
               id=""
               required
             />
