@@ -25,7 +25,9 @@ class SignupLoginContainer extends Component {
         </header>
         <div>
           <Switch>
-            <Route path="/signup" exact component={Signup} />
+            <Route path="/signup" exact>
+              <Signup />
+            </Route>
             <Route path="/login" exact component={Login} />
             <Route path="/" exact render={() => <h1>HOME</h1>} />
           </Switch>
