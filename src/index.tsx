@@ -4,12 +4,16 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import axiosInterceptors from './lib/axios.interceptors';
+import { Provider } from 'react-redux';
+import store from './store/root_store';
 
 axiosInterceptors();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
