@@ -4,12 +4,18 @@ const initialState = {
   isAuthenticated: false
 };
 
-const loginUser = (state = initialState, action) => {
+const user = (state = initialState, action: any) => {
   switch (action.type) {
     case LoginTypes.LOGIN: {
       return {
         ...state,
-        isAuthenticated: true
+        isAuthenticated: action.payload.isAuthenticated
+      };
+    }
+    case LoginTypes.LOGOUT: {
+      return {
+        ...state,
+        isAuthenticated: action.payload.isAuthenticated
       };
     }
     default: {
@@ -18,4 +24,4 @@ const loginUser = (state = initialState, action) => {
   }
 };
 
-export default loginUser;
+export default user;

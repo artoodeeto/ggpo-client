@@ -1,3 +1,4 @@
 export enum LoginTypes {
-  LOGIN = 'LOGIN'
+  LOGIN = 'LOGIN',
+  LOGOUT = 'LOGOUT'
 }
