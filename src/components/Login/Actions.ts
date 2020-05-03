@@ -1,6 +1,15 @@
 import { LoginTypes } from './Types';
 
-export const logMein = (id: number) => ({
+export const logMeIn = () => ({
   type: LoginTypes.LOGIN,
-  payload: { id }
+  payload: {
+    isAuthenticated: true
+  }
+});
+
+export const logMeOut = () => ({
+  type: LoginTypes.LOGOUT,
+  payload: {
+    isAuthenticated: false
+  }
 });
