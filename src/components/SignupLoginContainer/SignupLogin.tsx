@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Login from '../Login/Login';
-import Signup from '../Signup/Signup';
+import Login from './Login/Login';
+import Signup from './Signup/Signup';
 import { Route, NavLink, Switch } from 'react-router-dom';
 
 // background here should show some video, maybe the TI championship games

@@ -2,12 +2,12 @@ import { Post } from './post';
 import { usersGameGroup } from './usersGameGroup';
 
 export interface User {
-  id: number;
+  id: number | null;
   username: string;
   email: string;
-  password: string;
-  createdAt: string;
-  updatedAt: string;
-  usersGameGroups: usersGameGroup[];
-  posts: Post[];
+  isAuthenticated: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  usersGameGroups?: usersGameGroup[];
+  posts?: Post[];
 }
