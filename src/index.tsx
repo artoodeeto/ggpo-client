@@ -6,14 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import axiosInterceptors from './lib/axios.interceptors';
 import { Provider } from 'react-redux';
 import store from './store/root_store';
+import { BrowserRouter } from 'react-router-dom';
 
 axiosInterceptors();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
