@@ -5,6 +5,7 @@ import * as userActions from '../Store/Actions';
 import * as userSelectors from '../../../models/User/selectors';
 // import LoginStyles from './App.module.scss';
 import { State } from '../../../interfaces/stateInterface';
+import { useHistory } from 'react-router-dom';
 
 const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogin: Function): void => {
   event.preventDefault();
@@ -20,9 +21,10 @@ const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogi
 const Login = (props: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
-    console.log(props.isAuthenticated);
+    if (props.isAuthenticated) history.push('/feed');
   });
 
   return (
