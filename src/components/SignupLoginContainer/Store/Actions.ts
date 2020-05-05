@@ -1,9 +1,8 @@
 import { SessionTypes } from './Types';
 import { LoginSignUp } from 'interfaces/signupLogin';
-import loginService from 'api/session/login';
 import { User } from 'interfaces/user';
 import { LoginSuccess } from 'interfaces/login';
-import signUpService from 'api/session/signup';
+import { loginAPI, signUpAPI } from 'api/sessions';
 
 export const onSuccessLogin = (user: User) => ({
   type: SessionTypes.LOGIN_SIGNUP_SUCCESS,
@@ -32,7 +31,7 @@ export const logMeOut = () => ({
 export const logMeIn = (loginInfo: LoginSignUp) => {
   return async (dispatch: Function) => {
     try {
-      const response: LoginSuccess = await loginService(loginInfo);
+      const response: LoginSuccess = await loginAPI(loginInfo);
       const { payload } = response;
       // const {expToken} = meta;
       const { user } = payload;
@@ -47,7 +46,7 @@ export const logMeIn = (loginInfo: LoginSignUp) => {
 export const signMeUp = (signupInfo: LoginSignUp) => {
   return async (dispatch: Function) => {
     try {
-      const response: LoginSuccess = await signUpService(signupInfo);
+      const response: LoginSuccess = await signUpAPI(signupInfo);
       const { payload } = response;
       // const {expToken} = meta;
       const { user } = payload;
