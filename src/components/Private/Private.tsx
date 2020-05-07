@@ -9,7 +9,6 @@ const Private = (props: any) => {
   return (
     <Route
       render={({ location }) => {
-        console.log(isAuthenticated);
         return isAuthenticated ? (
           <Component path={path} />
         ) : (
