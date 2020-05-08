@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import { connect } from 'react-redux';
 import { State } from 'interfaces/stateInterface';
 
-const Profile = (props: any) => {
+const Profile: FC = (props: any) => {
   useEffect(() => {
     console.log('PROFILE');
   });

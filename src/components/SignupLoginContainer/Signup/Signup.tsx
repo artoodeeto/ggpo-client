@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, FC } from 'react';
 import { LoginSignUp } from '../../../interfaces/signupLogin';
 import * as userSelectors from '../../../models/User/selectors';
 import * as sessionActions from '../Store/Actions';
@@ -23,7 +23,7 @@ const onSubmitSignup = (
   onSignup(formSignup);
 };
 
-const Signup = (props: any) => {
+const Signup: FC = (props: any) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

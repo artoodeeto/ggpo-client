@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useEffect } from 'react';
+import React, { FormEvent, useState, useEffect, FC } from 'react';
 import { LoginSignUp } from 'interfaces/signupLogin';
 import { connect } from 'react-redux';
 import * as userActions from '../Store/Actions';
@@ -18,7 +18,7 @@ const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogi
   onLogin(formSignup);
 };
 
-const Login = (props: any) => {
+const Login: FC = (props: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();

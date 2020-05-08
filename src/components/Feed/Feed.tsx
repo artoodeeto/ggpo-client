@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import { State } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import * as userSelectors from '../../models/User/selectors';
 import { useHistory } from 'react-router-dom';
 
-const Feed = (props: any) => {
+const Feed: FC = (props: any) => {
   const history = useHistory();
   const onTest = () => {
     history.push('/profile');
