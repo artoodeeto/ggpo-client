@@ -3,8 +3,9 @@ import { LoginSignUp } from 'interfaces/signupLogin';
 import { User } from 'interfaces/user';
 import { LoginSuccess } from 'interfaces/login';
 import { loginAPI, signUpAPI } from 'api/sessions';
+import Cookies from 'js-cookie';
 
-export const onSuccessLogin = (user: User) => ({
+export const onSuccessLoginORSignup = (user: User) => ({
   type: SessionTypes.LOGIN_SIGNUP_SUCCESS,
   payload: {
     ...user,
@@ -32,11 +33,14 @@ export const logMeIn = (loginInfo: LoginSignUp) => {
   return async (dispatch: Function) => {
     try {
       const response: LoginSuccess = await loginAPI(loginInfo);
-      const { payload } = response;
-      // const {expToken} = meta;
-      const { user } = payload;
-      dispatch(onSuccessLogin(user));
-      console.log(response);
+      const { payload, meta } = response;
+      const { expToken } = meta;
+      const { user, token } = payload;
+      console.log(process.env.REACT_APP_COOKIE_NAME, token, 'waas', new Date(expToken));
+      dispatch(onSuccessLoginORSignup(user));
+      Cookies.set(process.env.REACT_APP_COOKIE_NAME as string, token, { expires: new Date(expToken), secure: true });
+      console.log(Cookies.get(process.env.REACT_APP_COOKIE_NAME as string));
+      console.log(response, process.env.REACT_APP_COOKIE_NAME);
     } catch (error) {
       console.log({ login: error });
     }
@@ -47,10 +51,11 @@ export const signMeUp = (signupInfo: LoginSignUp) => {
   return async (dispatch: Function) => {
     try {
       const response: LoginSuccess = await signUpAPI(signupInfo);
-      const { payload } = response;
-      // const {expToken} = meta;
-      const { user } = payload;
-      dispatch(onSuccessLogin(user));
+      const { payload, meta } = response;
+      const { expToken } = meta;
+      const { user, token } = payload;
+      console.log(token, 'atukin', expToken);
+      dispatch(onSuccessLoginORSignup(user));
       console.log(response);
     } catch (error) {
       console.log({ signup: error });
