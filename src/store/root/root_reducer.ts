@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import session from '../components/SignupLoginContainer/Store/Reducers';
+import session from '../session/Reducers';
+import user from '../user/Reducers';
 
 /**
  * @description
@@ -7,5 +8,4 @@ import session from '../components/SignupLoginContainer/Store/Reducers';
  * make sure that the State interface is also updated,
  * {@link ../interfaces/stateInterfaces.ts}
  */
-
-export default combineReducers({ user: session });
+export default combineReducers({ session, user });
