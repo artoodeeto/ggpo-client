@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
     'import/extensions': [
       'error',
@@ -34,7 +34,9 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/prefer-stateless-function': 0,
     'arrow-body-style': 0,
-    'comma-dangle': 0
+    'comma-dangle': 0,
+    'react-hooks/rules-of-hooks': '2',
+    'react-hooks/exhaustive-deps': '1'
     // 'operator-linebreak': 1,
     // 'no-use-before-define': 0
   },
