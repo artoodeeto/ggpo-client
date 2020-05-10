@@ -14,25 +14,35 @@ const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogi
     email,
     password
   };
-
-  onLogin(formSignup);
+  setTimeout(() => onLogin(formSignup), 10000);
 };
 
 const Login: FC = (props: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
-    if (props.isAuthenticated) history.push('/feed');
+    console.log('pp');
+    if (props.isAuthenticated) {
+      setLoading(false);
+      history.push('/feed');
+    }
   });
 
   return (
     <div>
       <div>
         <h1>{props.isAuthenticated ? props.foo : 'nope'}</h1>
+        <div>{isLoading ? 'LOADING...' : ''}</div>
         <button onClick={props.onLogout}>LOGOUT</button>
-        <form onSubmit={(e) => onSubmitLogin(e, email, password, props.onLogin)}>
+        <form
+          onSubmit={(e) => {
+            setLoading(true);
+            onSubmitLogin(e, email, password, props.onLogin);
+          }}
+        >
           <label htmlFor="email">
             Email:
             <input
