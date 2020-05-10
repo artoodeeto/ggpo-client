@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import * as userSelectors from '../../models/User/selectors';
+import * as sessionSelectors from 'store/session/Selectors';
 import { connect } from 'react-redux';
 import { State } from '../../interfaces/stateInterface';
 
@@ -26,7 +26,7 @@ const Private = (props: any) => {
 
 const mapStateToProps = (state: State) => {
   return {
-    isAuthenticated: userSelectors.isUserAuthorized(state)
+    isAuthenticated: sessionSelectors.isUserAuthorized(state)
   };
 };
 

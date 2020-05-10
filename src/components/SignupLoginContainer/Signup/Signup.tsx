@@ -1,9 +1,10 @@
 import React, { useState, useEffect, FormEvent, FC } from 'react';
-import { LoginSignUp } from '../../../interfaces/signupLogin';
-import * as userSelectors from '../../../models/User/selectors';
-import * as sessionActions from '../Store/Actions';
+import * as userSelectors from '../../../store/user/Selectors';
+import * as sessionSelectors from 'store/session/Selectors';
+import * as sessionActions from '../../../store/session/Actions';
 import { connect } from 'react-redux';
 import { State } from '../../../interfaces/stateInterface';
+import { LoginSignUpFormParams } from 'interfaces/session';
 
 const onSubmitSignup = (
   event: FormEvent,
@@ -14,7 +15,7 @@ const onSubmitSignup = (
 ): void => {
   event.preventDefault();
 
-  const formSignup: LoginSignUp = {
+  const formSignup: LoginSignUpFormParams = {
     username,
     email,
     password
@@ -86,15 +87,15 @@ const Signup: FC = (props: any) => {
 const mapStateToProps = (state: State) => {
   return {
     sign: 'up',
-    isAuthenticated: userSelectors.isUserAuthorized(state),
+    isAuthenticated: sessionSelectors.isUserAuthorized(state),
     userInfo: userSelectors.userInfo(state)
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    onSignup: (userSignup: LoginSignUp) => dispatch(sessionActions.signMeUp(userSignup)),
-    onLogout: () => dispatch(sessionActions.logMeOut())
+    onSignup: (userSignup: LoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup)),
+    onLogout: () => dispatch(sessionActions.logoutSession())
   };
 };
 

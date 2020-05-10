@@ -5,7 +5,7 @@ import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import axiosInterceptors from './lib/axios.interceptors';
 import { Provider } from 'react-redux';
-import store from './store/root_store';
+import store from './store/root/root_store';
 import { BrowserRouter } from 'react-router-dom';
 
 axiosInterceptors();
