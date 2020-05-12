@@ -8,7 +8,7 @@ export interface Session {
   tokenExpirationTime: number | string;
 }
 
-export interface LoginSuccess {
+export interface LoginSignupResponse {
   meta: {
     expToken: string;
     issueDate: Date;
