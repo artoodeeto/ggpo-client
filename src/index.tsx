@@ -5,16 +5,18 @@ import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import axiosInterceptors from './lib/axios.interceptors';
 import { Provider } from 'react-redux';
-import store from './store/root/root_store';
+import { persistor, store } from './store/root/root_store';
 import { BrowserRouter } from 'react-router-dom';
-
+import { PersistGate } from 'redux-persist/integration/react';
 axiosInterceptors();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
