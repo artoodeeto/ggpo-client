@@ -1,9 +1,9 @@
 import React, { useState, useEffect, FormEvent, FC } from 'react';
-import * as userSelectors from '../../../store/user/Selectors';
+import * as userSelectors from 'store/user/Selectors';
 import * as sessionSelectors from 'store/session/Selectors';
-import * as sessionActions from '../../../store/session/Actions';
+import * as sessionActions from 'store/session/Actions';
 import { connect } from 'react-redux';
-import { State } from '../../../interfaces/stateInterface';
+import { State } from 'interfaces/stateInterface';
 import { LoginSignUpFormParams } from 'interfaces/session';
 
 const onSubmitSignup = (
@@ -30,13 +30,13 @@ const Signup: FC = (props: any) => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
+    console.log('signup');
     // console.log({ email, username, password });
   });
 
   return (
     <div>
       <div>
-        <h1>{props.isAuthenticated ? props.foo : 'nope'}</h1>
         <form onSubmit={(e) => onSubmitSignup(e, email, username, password, props.onSignup)}>
           <label htmlFor="email">
             Email:
