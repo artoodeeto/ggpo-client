@@ -1,0 +1,37 @@
+import React, { Component, Fragment } from 'react';
+import Login from './Login/Login';
+import Signup from './Signup/Signup';
+import { connect } from 'react-redux';
+import { State } from 'interfaces/stateInterface';
+import * as sessionSelectors from 'store/session/Selectors';
+import { Redirect } from 'react-router-dom';
+
+// background here should show some video, maybe the TI championship games
+class SignupLoginContainer extends Component<any> {
+  render() {
+    return (
+      <Fragment>
+        {this.props.isAuthenticated ? (
+          <Redirect to="/feed" />
+        ) : (
+          <Fragment>
+            <Signup />
+            <Login />
+          </Fragment>
+        )}
+      </Fragment>
+    );
+  }
+}
+
+const mapStateToProps = (state: State) => {
+  return {
+    isAuthenticated: sessionSelectors.isUserAuthorized(state)
+  };
+};
+
+const mapDispatchToProps = (dispatch: Function) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupLoginContainer);

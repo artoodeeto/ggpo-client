@@ -1,42 +1,41 @@
-import React, { FormEvent, useState, useEffect, FC } from 'react';
-import { connect } from 'react-redux';
-import * as sessionActions from 'store/session/Actions';
+import React, { useState, useEffect, FormEvent, FC } from 'react';
 import * as userSelectors from 'store/user/Selectors';
 import * as sessionSelectors from 'store/session/Selectors';
-// import LoginStyles from './App.module.scss';
+import * as sessionActions from 'store/session/Actions';
+import { connect } from 'react-redux';
 import { State } from 'interfaces/stateInterface';
-import { useHistory } from 'react-router-dom';
 import { LoginSignUpFormParams } from 'interfaces/session';
+import { Redirect } from 'react-router-dom';
 
-const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogin: Function): void => {
+const onSubmitSignup = (
+  event: FormEvent,
+  email: string,
+  username: string,
+  password: string,
+  onSignup: Function
+): void => {
   event.preventDefault();
 
   const formSignup: LoginSignUpFormParams = {
+    username,
     email,
     password
   };
-  onLogin(formSignup);
+
+  onSignup(formSignup);
 };
 
-const Login: FC = (props: any) => {
+const Signup: FC = (props: any) => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
 
-  useEffect(() => {
-    if (props.isAuthenticated) {
-      history.push('/feed');
-    }
-  }, [history, props]);
-
-  useEffect(() => {}, [email, password]);
+  useEffect(() => {}, [username, email, password]);
 
   return (
     <div>
       <div>
-        <div>{props.toShowLoading ? 'LOGGING EN' : ''}</div>
-        <button onClick={props.onLogout}>LOGOUT</button>
-        <form onSubmit={(e) => onSubmitLogin(e, email, password, props.onLogin)}>
+        <form onSubmit={(e) => onSubmitSignup(e, email, username, password, props.onSignup)}>
           <label htmlFor="email">
             Email:
             <input
@@ -45,6 +44,19 @@ const Login: FC = (props: any) => {
               placeholder="youremail@address.com"
               type="text"
               name="email"
+              id=""
+              required
+            />
+          </label>
+
+          <label htmlFor="username">
+            Username:
+            <input
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              placeholder="user name"
+              type="text"
+              name="username"
               id=""
               required
             />
@@ -63,7 +75,7 @@ const Login: FC = (props: any) => {
             />
           </label>
 
-          <input type="submit" value="Login" />
+          <input type="submit" value="Sigup" />
         </form>
       </div>
     </div>
@@ -72,18 +84,17 @@ const Login: FC = (props: any) => {
 
 const mapStateToProps = (state: State) => {
   return {
-    foo: 'yep',
+    sign: 'up',
     isAuthenticated: sessionSelectors.isUserAuthorized(state),
-    userInfo: userSelectors.userInfo(state),
-    toShowLoading: sessionSelectors.showLoading(state)
+    userInfo: userSelectors.userInfo(state)
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    onLogin: (userLogin: LoginSignUpFormParams) => dispatch(sessionActions.logMeIn(userLogin)),
+    onSignup: (userSignup: LoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup)),
     onLogout: () => dispatch(sessionActions.logoutSession())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

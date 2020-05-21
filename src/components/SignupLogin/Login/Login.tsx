@@ -1,43 +1,37 @@
-import React, { useState, useEffect, FormEvent, FC } from 'react';
+import React, { FormEvent, useState, useEffect, FC } from 'react';
+import { connect } from 'react-redux';
+import * as sessionActions from 'store/session/Actions';
 import * as userSelectors from 'store/user/Selectors';
 import * as sessionSelectors from 'store/session/Selectors';
-import * as sessionActions from 'store/session/Actions';
-import { connect } from 'react-redux';
+// import LoginStyles from './App.module.scss';
 import { State } from 'interfaces/stateInterface';
+import { useHistory, Redirect } from 'react-router-dom';
 import { LoginSignUpFormParams } from 'interfaces/session';
 
-const onSubmitSignup = (
-  event: FormEvent,
-  email: string,
-  username: string,
-  password: string,
-  onSignup: Function
-): void => {
+const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogin: Function): void => {
   event.preventDefault();
 
   const formSignup: LoginSignUpFormParams = {
-    username,
     email,
     password
   };
-
-  onSignup(formSignup);
+  onLogin(formSignup);
 };
 
-const Signup: FC = (props: any) => {
+const Login: FC = (props: any) => {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
-    console.log('signup');
-    // console.log({ email, username, password });
+    console.log('login');
   });
 
   return (
     <div>
       <div>
-        <form onSubmit={(e) => onSubmitSignup(e, email, username, password, props.onSignup)}>
+        <div>{props.toShowLoading ? 'LOGGING EN' : ''}</div>
+        <form onSubmit={(e) => onSubmitLogin(e, email, password, props.onLogin)}>
           <label htmlFor="email">
             Email:
             <input
@@ -46,19 +40,6 @@ const Signup: FC = (props: any) => {
               placeholder="youremail@address.com"
               type="text"
               name="email"
-              id=""
-              required
-            />
-          </label>
-
-          <label htmlFor="username">
-            Username:
-            <input
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              placeholder="user name"
-              type="text"
-              name="username"
               id=""
               required
             />
@@ -77,7 +58,7 @@ const Signup: FC = (props: any) => {
             />
           </label>
 
-          <input type="submit" value="Sigup" />
+          <input type="submit" value="Login" />
         </form>
       </div>
     </div>
@@ -86,17 +67,16 @@ const Signup: FC = (props: any) => {
 
 const mapStateToProps = (state: State) => {
   return {
-    sign: 'up',
     isAuthenticated: sessionSelectors.isUserAuthorized(state),
-    userInfo: userSelectors.userInfo(state)
+    userInfo: userSelectors.userInfo(state),
+    toShowLoading: sessionSelectors.showLoading(state)
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    onSignup: (userSignup: LoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup)),
-    onLogout: () => dispatch(sessionActions.logoutSession())
+    onLogin: (userLogin: LoginSignUpFormParams) => dispatch(sessionActions.logMeIn(userLogin))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
