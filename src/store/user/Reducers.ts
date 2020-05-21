@@ -13,6 +13,12 @@ const user = (state = initState, action: any) => {
         ...action.payload
       };
     }
+    case UserActionTypes.USER_LOGOUT: {
+      return {
+        ...state,
+        ...action.payload
+      };
+    }
     default: {
       return state;
     }

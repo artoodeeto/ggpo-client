@@ -1,4 +1,4 @@
-import SignupLoginContainer from 'components/SignupLoginContainer/SignupLogin';
+import SignupLoginContainer from 'components/SignupLogin/SignupLogin';
 import Feed from 'components/Feed/Feed';
 import Profile from 'components/Profile/Profile';
 import React from 'react';
