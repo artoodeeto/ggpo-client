@@ -5,7 +5,6 @@ import * as sessionActions from 'store/session/Actions';
 import { connect } from 'react-redux';
 import { State } from 'interfaces/stateInterface';
 import { LoginSignUpFormParams } from 'interfaces/session';
-import { Redirect } from 'react-router-dom';
 
 const onSubmitSignup = (
   event: FormEvent,

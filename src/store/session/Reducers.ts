@@ -25,6 +25,12 @@ const session = (state = initState, action: any) => {
         ...action.payload
       };
     }
+    case SessionActionTypes.SIGNUP_LOGIN_FAILED: {
+      return {
+        ...state,
+        ...action.payload
+      };
+    }
     default: {
       return state;
     }
