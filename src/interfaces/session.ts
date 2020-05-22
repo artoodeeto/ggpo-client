@@ -4,7 +4,7 @@ export interface Session {
   isAuthenticated: boolean;
   isUserLoggingInOrSigningUp: boolean;
   hasErrorOnSigningUpOrLoggingIn: boolean;
-  errorMessageOnSigupOrLogin: string | Array<string> | Object;
+  errorResponseOnSigupOrLogin: LoginSignupFailed;
   tokenExpirationTime: number | string;
 }
 
@@ -19,8 +19,9 @@ export interface LoginSignupResponse {
   };
 }
 
-export interface LoginFailed {
-  error: string;
+export interface LoginSignupFailed {
+  errorType: string;
+  errorMessage: object;
 }
 
 export interface LoginSignUpFormParams {

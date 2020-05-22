@@ -5,7 +5,6 @@ import * as userSelectors from 'store/user/Selectors';
 import * as sessionSelectors from 'store/session/Selectors';
 // import LoginStyles from './App.module.scss';
 import { State } from 'interfaces/stateInterface';
-import { useHistory, Redirect } from 'react-router-dom';
 import { LoginSignUpFormParams } from 'interfaces/session';
 
 const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogin: Function): void => {
@@ -21,7 +20,6 @@ const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogi
 const Login: FC = (props: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
 
   useEffect(() => {
     console.log('login');

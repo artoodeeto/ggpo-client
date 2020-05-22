@@ -1,5 +1,5 @@
 import { SessionActionTypes } from './Types';
-import { LoginSignupResponse, LoginSignUpFormParams } from 'interfaces/session';
+import { LoginSignupResponse, LoginSignUpFormParams, LoginSignupFailed } from 'interfaces/session';
 import { loginAPI, signUpAPI } from 'api/sessions';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
 import { setUpSessionOnLoginAndSignup } from 'helper/sessionSetup';
@@ -9,7 +9,9 @@ export const onSuccessLoginOrSignUp = (tokenExp: string | number) => ({
   payload: {
     isAuthenticated: true,
     tokenExpirationTime: tokenExp,
-    isUserLoggingInOrSigningUp: false
+    isUserLoggingInOrSigningUp: false,
+    errorResponseOnSigupOrLogin: {},
+    hasErrorOnSigningUpOrLoggingIn: false
   }
 });
 
@@ -27,6 +29,15 @@ export const logoutSession = () => ({
   }
 });
 
+export const userLoginOrSignupFailed = (error: LoginSignupFailed) => ({
+  type: SessionActionTypes.SIGNUP_LOGIN_FAILED,
+  payload: {
+    isUserLoggingInOrSigningUp: false,
+    hasErrorOnSigningUpOrLoggingIn: true,
+    errorResponseOnSigupOrLogin: { ...error }
+  }
+});
+
 /**
  * @description
  * All async/redux-thunk/side-effects should be under this comments
@@ -41,6 +52,7 @@ export const logMeIn = (loginInfo: LoginSignUpFormParams) => {
       setUpSessionOnLoginAndSignup(response, dispatch);
     } catch (error) {
       console.log({ login: error });
+      dispatch(userLoginOrSignupFailed(error));
     }
   };
 };
@@ -53,6 +65,7 @@ export const signMeUp = (signupInfo: LoginSignUpFormParams) => {
       setUpSessionOnLoginAndSignup(response, dispatch);
     } catch (error) {
       console.log({ signup: error });
+      dispatch(userLoginOrSignupFailed(error));
     }
   };
 };
