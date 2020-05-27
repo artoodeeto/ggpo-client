@@ -24,7 +24,7 @@ const onSubmitSignup = (
   onSignup(formSignup);
 };
 
-const Signup: FC = (props: any) => {
+export const Signup: FC = (props: any) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
