@@ -67,7 +67,7 @@
     "husky": "4.2.1",
     "jest": "24.9.0",
     "redux-devtools-extension": "2.13.8",
-    "ts-jest": "26.0.0"
+    "ts-jest": "24.3.0"
   },
   "proxy": "http://localhost:8000/api/v1"
 }
