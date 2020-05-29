@@ -1,7 +1,7 @@
 import axiosInstance from '../lib/axios.instance';
-import { LoginSignupResponse, LoginSignUpFormParams } from 'interfaces/session';
+import { ILoginSignupResponse, ILoginSignUpFormParams } from 'interfaces/session';
 
-export async function loginAPI(userSignupInfo: LoginSignUpFormParams): Promise<LoginSignupResponse> {
+export async function loginAPI(userSignupInfo: ILoginSignUpFormParams): Promise<ILoginSignupResponse> {
   const { email, password } = userSignupInfo;
   try {
     const res = await axiosInstance.post('/login', {
@@ -14,7 +14,7 @@ export async function loginAPI(userSignupInfo: LoginSignUpFormParams): Promise<L
   }
 }
 
-export async function signUpAPI(userSignupInfo: LoginSignUpFormParams): Promise<LoginSignupResponse> {
+export async function signUpAPI(userSignupInfo: ILoginSignUpFormParams): Promise<ILoginSignupResponse> {
   const { username, email, password } = userSignupInfo;
   try {
     const res = await axiosInstance.post('/signup', {

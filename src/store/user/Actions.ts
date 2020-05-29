@@ -1,9 +1,9 @@
 import { UserActionTypes } from './Types';
-import { User } from 'interfaces/user';
+import { IUser } from 'interfaces/user';
 import { userInitialState } from 'models/User/userInitialState';
 
-export const setupUserOnSuccessLoginORSignup = (user: User) => ({
-  type: UserActionTypes.USER_BASIC,
+export const setupUserOnSuccessLoginORSignup = (user: IUser) => ({
+  type: UserActionTypes.USER_INFO,
   payload: {
     ...user
   }

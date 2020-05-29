@@ -1,6 +1,6 @@
 import React, { useEffect, FC } from 'react';
 import { connect } from 'react-redux';
-import { State } from 'interfaces/stateInterface';
+import { IState } from 'interfaces/stateInterface';
 import * as sessionActions from 'store/session/Actions';
 import * as userActions from 'store/user/Actions';
 
@@ -22,7 +22,7 @@ const Profile: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {};
 };
 

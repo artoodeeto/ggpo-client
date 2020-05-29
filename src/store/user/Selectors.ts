@@ -1,3 +1,3 @@
-import { State } from 'interfaces/stateInterface';
+import { IState } from 'interfaces/stateInterface';
 
-export const userInfo = (store: State) => store.user;
+export const userInfo = (store: IState) => store.user;

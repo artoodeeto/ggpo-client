@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import * as sessionSelectors from 'store/session/Selectors';
 import { connect } from 'react-redux';
-import { State } from '../../interfaces/stateInterface';
+import { IState } from '../../interfaces/stateInterface';
 
 const Private = (props: any) => {
   const { isAuthenticated, component: Component, path } = props;
@@ -24,7 +24,7 @@ const Private = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {
     isAuthenticated: sessionSelectors.isUserAuthorized(state)
   };

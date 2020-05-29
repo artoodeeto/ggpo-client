@@ -1,5 +1,5 @@
 import React, { useEffect, FC } from 'react';
-import { State } from 'interfaces/stateInterface';
+import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import * as sessionSelectors from 'store/session/Selectors';
 import { useHistory } from 'react-router-dom';
@@ -22,7 +22,7 @@ const Feed: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {
     isAuthenticated: sessionSelectors.isUserAuthorized(state)
   };

@@ -4,13 +4,13 @@ import * as sessionActions from 'store/session/Actions';
 import * as userSelectors from 'store/user/Selectors';
 import * as sessionSelectors from 'store/session/Selectors';
 // import LoginStyles from './App.module.scss';
-import { State } from 'interfaces/stateInterface';
-import { LoginSignUpFormParams } from 'interfaces/session';
+import { IState } from 'interfaces/stateInterface';
+import { ILoginSignUpFormParams } from 'interfaces/session';
 
 const onSubmitLogin = (event: FormEvent, email: string, password: string, onLogin: Function): void => {
   event.preventDefault();
 
-  const formSignup: LoginSignUpFormParams = {
+  const formSignup: ILoginSignUpFormParams = {
     email,
     password
   };
@@ -63,7 +63,7 @@ const Login: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {
     isAuthenticated: sessionSelectors.isUserAuthorized(state),
     userInfo: userSelectors.userInfo(state),
@@ -73,7 +73,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    onLogin: (userLogin: LoginSignUpFormParams) => dispatch(sessionActions.logMeIn(userLogin))
+    onLogin: (userLogin: ILoginSignUpFormParams) => dispatch(sessionActions.logMeIn(userLogin))
   };
 };
 
