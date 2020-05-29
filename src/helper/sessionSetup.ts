@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
-import { LoginSignupResponse } from 'interfaces/session';
+import { ILoginSignupResponse } from 'interfaces/session';
 import { onSuccessLoginOrSignUp } from 'store/session/Actions';
 import { setupUserOnSuccessLoginORSignup } from 'store/user/Actions';
 
-export function setUpSessionOnLoginAndSignup(response: LoginSignupResponse, dispatch: Function): void {
+export function setUpSessionOnLoginAndSignup(response: ILoginSignupResponse, dispatch: Function): void {
   const { payload, meta } = response;
   const { expToken } = meta;
   const { user, token } = payload;

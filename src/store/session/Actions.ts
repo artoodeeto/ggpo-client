@@ -1,5 +1,5 @@
 import { SessionActionTypes } from './Types';
-import { LoginSignupResponse, LoginSignUpFormParams, LoginSignupFailed } from 'interfaces/session';
+import { ILoginSignupResponse, ILoginSignUpFormParams, ILoginSignupFailed } from 'interfaces/session';
 import { loginAPI, signUpAPI } from 'api/sessions';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
 import { setUpSessionOnLoginAndSignup } from 'helper/sessionSetup';
@@ -29,7 +29,7 @@ export const logoutSession = () => ({
   }
 });
 
-export const userLoginOrSignupFailed = (error: LoginSignupFailed) => ({
+export const userLoginOrSignupFailed = (error: ILoginSignupFailed) => ({
   type: SessionActionTypes.SIGNUP_LOGIN_FAILED,
   payload: {
     isUserLoggingInOrSigningUp: false,
@@ -44,11 +44,11 @@ export const userLoginOrSignupFailed = (error: LoginSignupFailed) => ({
  *
  */
 
-export const logMeIn = (loginInfo: LoginSignUpFormParams) => {
+export const logMeIn = (loginInfo: ILoginSignUpFormParams) => {
   return async (dispatch: Function) => {
     dispatch(userLoggingInOrSigningUp());
     try {
-      const response: LoginSignupResponse = await loginAPI(loginInfo);
+      const response: ILoginSignupResponse = await loginAPI(loginInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
     } catch (error) {
       console.log({ login: error });
@@ -57,11 +57,11 @@ export const logMeIn = (loginInfo: LoginSignUpFormParams) => {
   };
 };
 
-export const signMeUp = (signupInfo: LoginSignUpFormParams) => {
+export const signMeUp = (signupInfo: ILoginSignUpFormParams) => {
   return async (dispatch: Function) => {
     dispatch(userLoggingInOrSigningUp());
     try {
-      const response: LoginSignupResponse = await signUpAPI(signupInfo);
+      const response: ILoginSignupResponse = await signUpAPI(signupInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
     } catch (error) {
       console.log({ signup: error });

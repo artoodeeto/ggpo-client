@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import { connect } from 'react-redux';
-import { State } from 'interfaces/stateInterface';
+import { IState } from 'interfaces/stateInterface';
 import * as sessionSelectors from 'store/session/Selectors';
 import { Redirect } from 'react-router-dom';
 import ErrorMsg from 'components/shared/ErrorMsg';
@@ -33,7 +33,7 @@ class SignupLoginContainer extends Component<any> {
   }
 }
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {
     hasErrors: sessionSelectors.hasErrorOnSignupOrLogin(state),
     isAuthenticated: sessionSelectors.isUserAuthorized(state)

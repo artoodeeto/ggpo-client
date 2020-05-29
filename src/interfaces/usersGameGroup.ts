@@ -1,10 +1,10 @@
-import { GameGroup } from './gameGroup';
-import { User } from './user';
+import { IGameGroup } from './gameGroup';
+import { IUser } from './user';
 
-export interface usersGameGroup {
+export interface IUsersGameGroup {
   id: number;
   createdAt: string;
   updatedAt: string;
-  users: User[];
-  gameGroups: GameGroup[];
+  users: IUser[];
+  gameGroups: IGameGroup[];
 }

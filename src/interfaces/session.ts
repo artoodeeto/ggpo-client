@@ -1,30 +1,30 @@
-import { User } from './user';
+import { IUser } from './user';
 
-export interface Session {
+export interface ISession {
   isAuthenticated: boolean;
   isUserLoggingInOrSigningUp: boolean;
   hasErrorOnSigningUpOrLoggingIn: boolean;
-  errorResponseOnSigupOrLogin: LoginSignupFailed;
+  errorResponseOnSigupOrLogin: ILoginSignupFailed;
   tokenExpirationTime: number | string;
 }
 
-export interface LoginSignupResponse {
+export interface ILoginSignupResponse {
   meta: {
     expToken: string;
     issueDate: Date;
   };
   payload: {
     token: string;
-    user: User;
+    user: IUser;
   };
 }
 
-export interface LoginSignupFailed {
+export interface ILoginSignupFailed {
   errorType: string;
   errorMessage: object;
 }
 
-export interface LoginSignUpFormParams {
+export interface ILoginSignUpFormParams {
   username?: string;
   email: string;
   password: string;

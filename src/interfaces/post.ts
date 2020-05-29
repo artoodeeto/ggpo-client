@@ -1,10 +1,10 @@
-import { User } from './user';
+import { IUser } from './user';
 
-export interface Post {
+export interface IPost {
   id: number;
   title: string;
   body: string;
   createdAt: string;
   updatedAt: string;
-  user: User;
+  user: IUser;
 }

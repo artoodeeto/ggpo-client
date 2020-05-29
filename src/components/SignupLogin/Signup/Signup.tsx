@@ -3,8 +3,8 @@ import * as userSelectors from 'store/user/Selectors';
 import * as sessionSelectors from 'store/session/Selectors';
 import * as sessionActions from 'store/session/Actions';
 import { connect } from 'react-redux';
-import { State } from 'interfaces/stateInterface';
-import { LoginSignUpFormParams } from 'interfaces/session';
+import { IState } from 'interfaces/stateInterface';
+import { ILoginSignUpFormParams } from 'interfaces/session';
 
 const onSubmitSignup = (
   event: FormEvent,
@@ -15,7 +15,7 @@ const onSubmitSignup = (
 ): void => {
   event.preventDefault();
 
-  const formSignup: LoginSignUpFormParams = {
+  const formSignup: ILoginSignUpFormParams = {
     username,
     email,
     password
@@ -81,7 +81,7 @@ export const Signup: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {
     sign: 'up',
     isAuthenticated: sessionSelectors.isUserAuthorized(state),
@@ -91,7 +91,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    onSignup: (userSignup: LoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup)),
+    onSignup: (userSignup: ILoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup)),
     onLogout: () => dispatch(sessionActions.logoutSession())
   };
 };

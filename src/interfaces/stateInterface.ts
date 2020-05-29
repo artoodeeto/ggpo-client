@@ -1,7 +1,7 @@
-import { User } from './user';
-import { Session } from './session';
+import { IUser } from './user';
+import { ISession } from './session';
 
-export interface State {
-  session: Session;
-  user: User;
+export interface IState {
+  session: ISession;
+  user: IUser;
 }

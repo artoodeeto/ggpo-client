@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
-import { State } from 'interfaces/stateInterface';
+import { IState } from 'interfaces/stateInterface';
 import * as sessionSelectors from 'store/session/Selectors';
 
 const ErrorMsg: FC = (props: any) => {
@@ -18,7 +18,7 @@ const ErrorMsg: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: IState) => {
   return {
     errorMsg: sessionSelectors.authErrorsResponse(state)
   };

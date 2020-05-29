@@ -1,7 +1,7 @@
-import { State } from 'interfaces/stateInterface';
+import { IState } from 'interfaces/stateInterface';
 
-export const showLoading = (store: State) => store.session.isUserLoggingInOrSigningUp;
-export const tokenExp = (store: State) => store.session.tokenExpirationTime;
-export const isUserAuthorized = (store: State) => store.session.isAuthenticated;
-export const authErrorsResponse = (store: State) => store.session.errorResponseOnSigupOrLogin;
-export const hasErrorOnSignupOrLogin = (store: State) => store.session.hasErrorOnSigningUpOrLoggingIn;
+export const showLoading = (store: IState) => store.session.isUserLoggingInOrSigningUp;
+export const tokenExp = (store: IState) => store.session.tokenExpirationTime;
+export const isUserAuthorized = (store: IState) => store.session.isAuthenticated;
+export const authErrorsResponse = (store: IState) => store.session.errorResponseOnSigupOrLogin;
+export const hasErrorOnSignupOrLogin = (store: IState) => store.session.hasErrorOnSigningUpOrLoggingIn;
