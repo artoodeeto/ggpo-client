@@ -1,6 +1,6 @@
 import { SessionActionTypes } from './Types';
 import { ILoginSignupResponse, ILoginSignUpFormParams, ILoginSignupFailed } from 'interfaces/session';
-import { loginAPI, signUpAPI } from 'api/sessions';
+import { loginAPI, signUpAPI } from 'api/sessions/sessions';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
 import { setUpSessionOnLoginAndSignup } from 'helper/sessionSetup';
 
@@ -15,7 +15,7 @@ export const onSuccessLoginOrSignUp = (tokenExp: string | number) => ({
   }
 });
 
-const userLoggingInOrSigningUp = () => ({
+export const userLoggingInOrSigningUp = () => ({
   type: SessionActionTypes.IS_LOGGING_IN_OR_SIGNING_UP,
   payload: {
     isUserLoggingInOrSigningUp: true
@@ -51,7 +51,6 @@ export const logMeIn = (loginInfo: ILoginSignUpFormParams) => {
       const response: ILoginSignupResponse = await loginAPI(loginInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
     } catch (error) {
-      console.log({ login: error });
       dispatch(userLoginOrSignupFailed(error));
     }
   };
@@ -64,7 +63,6 @@ export const signMeUp = (signupInfo: ILoginSignUpFormParams) => {
       const response: ILoginSignupResponse = await signUpAPI(signupInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
     } catch (error) {
-      console.log({ signup: error });
       dispatch(userLoginOrSignupFailed(error));
     }
   };

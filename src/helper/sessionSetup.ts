@@ -10,7 +10,7 @@ export function setUpSessionOnLoginAndSignup(response: ILoginSignupResponse, dis
   dispatch(onSuccessLoginOrSignUp(expToken));
   dispatch(setupUserOnSuccessLoginORSignup(user));
   Cookies.set(process.env.REACT_APP_COOKIE_NAME as string, token, {
-    expires: new Date(new Date().getTime() + Number(10800000)),
+    expires: new Date(new Date().getTime() + Number(expToken)),
     secure: true
   });
 }

@@ -91,8 +91,7 @@ const mapStateToProps = (state: IState) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    onSignup: (userSignup: ILoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup)),
-    onLogout: () => dispatch(sessionActions.logoutSession())
+    onSignup: (userSignup: ILoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup))
   };
 };
 

@@ -7,7 +7,7 @@ const initState = {
 
 const user = (state = initState, action: any) => {
   switch (action.type) {
-    case UserActionTypes.USER_BASIC: {
+    case UserActionTypes.USER_INFO: {
       return {
         ...state,
         ...action.payload

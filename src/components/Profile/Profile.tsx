@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { IState } from 'interfaces/stateInterface';
 import * as sessionActions from 'store/session/Actions';
 import * as userActions from 'store/user/Actions';
+import Cookies from 'js-cookie';
 
 const Profile: FC = (props: any) => {
   useEffect(() => {
@@ -12,6 +13,7 @@ const Profile: FC = (props: any) => {
   const logoutUser = () => {
     props.clearSession();
     props.clearUser();
+    Cookies.remove(process.env.REACT_APP_COOKIE_NAME as string);
   };
 
   return (
