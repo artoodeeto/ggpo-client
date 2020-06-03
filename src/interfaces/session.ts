@@ -6,6 +6,8 @@ export interface ISession {
   hasErrorOnSigningUpOrLoggingIn: boolean;
   errorResponseOnSigupOrLogin: ILoginSignupFailed;
   tokenExpirationTime: number | string;
+  dateTimeStartedLoginOrSignupInMiliSec: number;
+  expectedTokenExpirationInMillisec: number;
 }
 
 export interface ILoginSignupResponse {

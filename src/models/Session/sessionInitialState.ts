@@ -3,5 +3,7 @@ export const sessionInitialState = {
   isUserLoggingInOrSigningUp: false,
   hasErrorOnSigningUpOrLoggingIn: false,
   errorResponseOnSigupOrLogin: {},
-  tokenExpirationTime: 0
+  tokenExpirationTime: 0,
+  dateTimeStartedLoginOrSignupInMillisec: 0,
+  expectedTokenExpirationInMillisec: 0
 };
