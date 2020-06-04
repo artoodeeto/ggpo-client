@@ -11,10 +11,10 @@ export const onSuccessLoginOrSignUp = (tokenExpMilliSec: number, issueDateInMill
     isAuthenticated: true,
     tokenExpirationTime: tokenExpMilliSec,
     isUserLoggingInOrSigningUp: false,
-    errorResponseOnSigupOrLogin: {},
+    errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
     hasErrorOnSigningUpOrLoggingIn: false,
     dateTimeStartedLoginOrSignupInMillisec: issueDateInMilliSec,
-    expectedTokenExpirationInMillisec: Date.now() + 60000
+    expectedTokenExpirationInMillisec: issueDateInMilliSec + tokenExpMilliSec
   }
 });
 
@@ -53,7 +53,7 @@ export const logMeIn = (loginInfo: ILoginSignUpFormParams) => {
     try {
       const response: ILoginSignupResponse = await loginAPI(loginInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
-      autoLogoutAfterTokenExpire(response, dispatch);
+      autoLogoutAfterTokenExpire(dispatch, Number(response.meta.expToken));
     } catch (error) {
       dispatch(userLoginOrSignupFailed(error));
     }
@@ -66,7 +66,7 @@ export const signMeUp = (signupInfo: ILoginSignUpFormParams) => {
     try {
       const response: ILoginSignupResponse = await signUpAPI(signupInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
-      autoLogoutAfterTokenExpire(response, dispatch);
+      autoLogoutAfterTokenExpire(dispatch, Number(response.meta.expToken));
     } catch (error) {
       dispatch(userLoginOrSignupFailed(error));
     }

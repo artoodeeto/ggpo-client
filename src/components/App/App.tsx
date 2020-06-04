@@ -6,19 +6,17 @@ import { connect } from 'react-redux';
 import { IState } from 'interfaces/stateInterface';
 import * as sessionActions from 'store/session/Actions';
 import * as userActions from 'store/user/Actions';
+import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
 
 class App extends Component<any> {
-  render() {
+  componentDidMount() {
+    console.log('app mounted', this.props.isAuth);
     if (this.props.isAuth) {
-      let q = 1;
-      setInterval(() => console.log(q++), 1000);
-      setTimeout(() => {
-        console.log('app out');
-        this.props.removeSession();
-        this.props.logOutUser();
-      }, this.props.expectedTokenExp - Date.now());
-      console.log(Date.now(), 'app', this.props.expectedTokenExp, this.props.expectedTokenExp - Date.now());
+      this.props.toAutoLogout(Number(this.props.expectedTokenExp - Date.now()));
     }
+  }
+
+  render() {
     return (
       <div className={AppStyles.App}>
         <MainRoute />
@@ -37,7 +35,8 @@ const mapStateToProps = (state: IState) => {
 const mapDispatchToProps = (dispatch: Function) => {
   return {
     removeSession: () => dispatch(sessionActions.logoutSession()),
-    logOutUser: () => dispatch(userActions.logoutUser())
+    logOutUser: () => dispatch(userActions.logoutUser()),
+    toAutoLogout: (timer: number) => autoLogoutAfterTokenExpire(dispatch, timer)
   };
 };
 
