@@ -1,11 +1,12 @@
 import { userInitialState } from 'models/User/userInitialState';
 import { UserActionTypes } from './Types';
+import { IUser } from '../../interfaces/user';
 
 const initState = {
   ...userInitialState
 };
 
-const user = (state = initState, action: any) => {
+const user = (state = initState, action: any): IUser => {
   switch (action.type) {
     case UserActionTypes.USER_INFO: {
       return {

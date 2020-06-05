@@ -21,14 +21,16 @@ describe('Session Action Test', () => {
 
   describe('onSuccessLoginOrSignUp ACTION', () => {
     it('should set isAuthenticated and tokenExpirationTime', () => {
-      expect(sessionActions.onSuccessLoginOrSignUp('wawawa')).toEqual({
+      expect(sessionActions.onSuccessLoginOrSignUp(111, 12)).toEqual({
         type: SessionActionTypes.LOGIN_SIGNUP_SUCCESS,
         payload: {
           isAuthenticated: true,
-          tokenExpirationTime: 'wawawa',
+          tokenExpirationTime: 111,
           isUserLoggingInOrSigningUp: false,
-          errorResponseOnSigupOrLogin: {},
-          hasErrorOnSigningUpOrLoggingIn: false
+          errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+          hasErrorOnSigningUpOrLoggingIn: false,
+          dateTimeStartedLoginOrSignupInMillisec: 12,
+          expectedTokenExpirationInMillisec: 111 + 12
         }
       });
     });
@@ -76,8 +78,8 @@ describe('Session Action Test', () => {
           Promise.resolve({
             data: {
               meta: {
-                issueDate: '1581049918568',
-                expToken: '10800000'
+                issueDate: '1',
+                expToken: '1'
               },
               payload: {
                 user: {
@@ -100,11 +102,13 @@ describe('Session Action Test', () => {
               { payload: { isUserLoggingInOrSigningUp: true }, type: 'IS_LOGGING_IN_OR_SIGNING_UP' },
               {
                 payload: {
-                  errorResponseOnSigupOrLogin: {},
+                  errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
                   hasErrorOnSigningUpOrLoggingIn: false,
                   isAuthenticated: true,
                   isUserLoggingInOrSigningUp: false,
-                  tokenExpirationTime: '10800000'
+                  tokenExpirationTime: 1,
+                  dateTimeStartedLoginOrSignupInMillisec: 1,
+                  expectedTokenExpirationInMillisec: 2
                 },
                 type: 'LOGIN_SIGNUP_SUCCESS'
               },
@@ -154,8 +158,8 @@ describe('Session Action Test', () => {
           Promise.resolve({
             data: {
               meta: {
-                issueDate: '1581049918568',
-                expToken: '10800000'
+                issueDate: '2',
+                expToken: '2'
               },
               payload: {
                 user: {
@@ -176,11 +180,13 @@ describe('Session Action Test', () => {
               { payload: { isUserLoggingInOrSigningUp: true }, type: 'IS_LOGGING_IN_OR_SIGNING_UP' },
               {
                 payload: {
-                  errorResponseOnSigupOrLogin: {},
+                  errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
                   hasErrorOnSigningUpOrLoggingIn: false,
                   isAuthenticated: true,
                   isUserLoggingInOrSigningUp: false,
-                  tokenExpirationTime: '10800000'
+                  tokenExpirationTime: 2,
+                  dateTimeStartedLoginOrSignupInMillisec: 2,
+                  expectedTokenExpirationInMillisec: 4
                 },
                 type: 'LOGIN_SIGNUP_SUCCESS'
               },

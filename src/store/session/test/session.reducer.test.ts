@@ -13,7 +13,7 @@ describe('Session Reducer Test', () => {
         {
           ...sessionInitialState,
           isUserLoggingInOrSigningUp: false,
-          errorResponseOnSigupOrLogin: { oh: 'lawd' }
+          errorResponseOnSigupOrLogin: { errorType: 'lawd', errorMessage: { oh: 'lawd' } }
         },
         {
           type: SessionActionTypes.IS_LOGGING_IN_OR_SIGNING_UP,
@@ -24,10 +24,12 @@ describe('Session Reducer Test', () => {
       )
     ).toEqual({
       isUserLoggingInOrSigningUp: true,
-      errorResponseOnSigupOrLogin: { oh: 'lawd' },
+      errorResponseOnSigupOrLogin: { errorType: 'lawd', errorMessage: { oh: 'lawd' } },
       hasErrorOnSigningUpOrLoggingIn: false,
       isAuthenticated: false,
-      tokenExpirationTime: 0
+      tokenExpirationTime: 0,
+      dateTimeStartedLoginOrSignupInMillisec: 0,
+      expectedTokenExpirationInMillisec: 0
     });
   });
 
@@ -38,8 +40,10 @@ describe('Session Reducer Test', () => {
           isAuthenticated: false,
           isUserLoggingInOrSigningUp: true,
           hasErrorOnSigningUpOrLoggingIn: false,
-          errorResponseOnSigupOrLogin: {},
-          tokenExpirationTime: 0
+          errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+          tokenExpirationTime: 0,
+          dateTimeStartedLoginOrSignupInMillisec: 0,
+          expectedTokenExpirationInMillisec: 0
         },
         {
           type: SessionActionTypes.LOGIN_SIGNUP_SUCCESS,
@@ -57,7 +61,9 @@ describe('Session Reducer Test', () => {
       tokenExpirationTime: 1000,
       isUserLoggingInOrSigningUp: false,
       errorResponseOnSigupOrLogin: {},
-      hasErrorOnSigningUpOrLoggingIn: false
+      hasErrorOnSigningUpOrLoggingIn: false,
+      dateTimeStartedLoginOrSignupInMillisec: 0,
+      expectedTokenExpirationInMillisec: 0
     });
   });
 
@@ -68,8 +74,10 @@ describe('Session Reducer Test', () => {
           isAuthenticated: true,
           isUserLoggingInOrSigningUp: false,
           hasErrorOnSigningUpOrLoggingIn: false,
-          errorResponseOnSigupOrLogin: {},
-          tokenExpirationTime: 1000
+          errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+          tokenExpirationTime: 1000,
+          dateTimeStartedLoginOrSignupInMillisec: 10,
+          expectedTokenExpirationInMillisec: 1010
         },
         {
           type: SessionActionTypes.LOGOUT,
@@ -79,19 +87,21 @@ describe('Session Reducer Test', () => {
         }
       )
     ).toEqual({
-      errorResponseOnSigupOrLogin: {},
+      errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
       hasErrorOnSigningUpOrLoggingIn: false,
       isAuthenticated: false,
       isUserLoggingInOrSigningUp: false,
-      tokenExpirationTime: 0
+      tokenExpirationTime: 0,
+      dateTimeStartedLoginOrSignupInMillisec: 0,
+      expectedTokenExpirationInMillisec: 0
     });
   });
 
   it('should set state to failed response', () => {
-    const err = { errorType: 'ERROR_TYPE', misMatch: 'Password Incorrect' };
+    const err = { errorType: 'ERROR_TYPE', errorMessage: { misMatch: 'Password Incorrect' } };
     expect(
       sessionReducer(
-        { ...sessionInitialState, errorResponseOnSigupOrLogin: err },
+        { ...sessionInitialState, errorResponseOnSigupOrLogin: { ...err } },
         {
           type: SessionActionTypes.SIGNUP_LOGIN_FAILED,
           payload: {
@@ -106,7 +116,9 @@ describe('Session Reducer Test', () => {
       hasErrorOnSigningUpOrLoggingIn: true,
       isAuthenticated: false,
       isUserLoggingInOrSigningUp: false,
-      tokenExpirationTime: 0
+      tokenExpirationTime: 0,
+      dateTimeStartedLoginOrSignupInMillisec: 0,
+      expectedTokenExpirationInMillisec: 0
     });
   });
 });
