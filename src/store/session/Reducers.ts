@@ -1,11 +1,12 @@
 import { SessionActionTypes } from './Types';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
+import { ISession } from '../../interfaces/session';
 
 const initState = {
   ...sessionInitialState
 };
 
-const session = (state = initState, action: any) => {
+const session = (state = initState, action: any): ISession => {
   switch (action.type) {
     case SessionActionTypes.IS_LOGGING_IN_OR_SIGNING_UP: {
       return {
