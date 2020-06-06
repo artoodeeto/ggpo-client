@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import * as sessionSelectors from 'store/session/Selectors';
 import { connect } from 'react-redux';
 import { IState } from '../../interfaces/stateInterface';
 
-const Private = (props: any) => {
+const Private: FC<any> = (props: any): ReactElement => {
   const { isAuthenticated, component: Component, path } = props;
   return (
     <Route

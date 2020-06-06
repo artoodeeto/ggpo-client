@@ -1,11 +1,11 @@
 import SignupLoginContainer from 'components/SignupLogin/SignupLogin';
 import Feed from 'components/Feed/Feed';
 import Profile from 'components/Profile/Profile';
-import React from 'react';
+import { FC } from 'react';
 
 export interface RouteConfigInterface {
   path: string;
-  component: React.FC | any;
+  component: FC;
   isPrivate: boolean;
   exact: boolean;
 }
