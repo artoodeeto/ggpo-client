@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, Suspense } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import * as sessionSelectors from 'store/session/Selectors';
 import { connect } from 'react-redux';
@@ -10,7 +10,9 @@ const Private: FC<any> = (props: any): ReactElement => {
     <Route
       render={({ location }) => {
         return isAuthenticated ? (
-          <Component path={path} />
+          <Suspense fallback={<div>create loading here</div>}>
+            <Component path={path} />
+          </Suspense>
         ) : (
           <Redirect
             to={{

@@ -1,6 +1,5 @@
+import { lazy } from 'react';
 import SignupLoginContainer from 'components/SignupLogin/SignupLogin';
-import Feed from 'components/Feed/Feed';
-import Profile from 'components/Profile/Profile';
 import { FC } from 'react';
 
 export interface RouteConfigInterface {
@@ -24,13 +23,13 @@ const routes: RouteConfigInterface[] = [
   },
   {
     path: '/feed',
-    component: Feed,
+    component: lazy(() => import('components/Feed/Feed')),
     isPrivate: true,
     exact: false
   },
   {
     path: '/profile',
-    component: Profile,
+    component: lazy(() => import('components/Profile/Profile')),
     isPrivate: true,
     exact: false
   }
