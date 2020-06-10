@@ -1,5 +1,5 @@
 import { lazy, FC } from 'react';
-import SignupLoginContainer from 'components/SignupLogin/SignupLogin';
+import SignupLoginContainer from 'components/SignupLogin/SignupLoginContainer';
 
 export interface RouteConfigInterface {
   path: string;

@@ -1,10 +1,12 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default function axiosInterceptors(): void {
+  // Add a request interceptor
   axios.interceptors.request.use(
     (config) => {
-      console.log('intercept', { req: config });
       // Do something before request is sent
+      config.headers.authorization = `Bearer ${Cookies.get(process.env.REACT_APP_COOKIE_NAME as string)}`;
       return config;
     },
     (error) => {
@@ -18,7 +20,6 @@ export default function axiosInterceptors(): void {
     (response) => {
       // Any status code that lie within the range of 2xx cause this function to trigger
       // Do something with response data
-      console.log('intercept', { res: response });
       return response;
     },
     (error) => {
