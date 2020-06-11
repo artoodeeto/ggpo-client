@@ -10,7 +10,6 @@ import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
 
 class App extends Component<any> {
   componentDidMount() {
-    console.log('app mounted', this.props.isAuth);
     if (this.props.isAuth) {
       this.props.toAutoLogout(Number(this.props.expectedTokenExp - Date.now()));
     }

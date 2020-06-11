@@ -3,6 +3,7 @@ import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import * as sessionSelectors from 'store/session/Selectors';
 import { useHistory } from 'react-router-dom';
+import PostContainer from 'components/Post/PostContainer';
 
 const Feed: FC = (props: any) => {
   const history = useHistory();
@@ -18,6 +19,7 @@ const Feed: FC = (props: any) => {
     <div>
       <button onClick={onTest}>Profile</button>
       <h1>I am FEED TEST!</h1>
+      <PostContainer />
     </div>
   );
 };
