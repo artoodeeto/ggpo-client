@@ -3,7 +3,6 @@ import { sessionInitialState } from 'models/Session/sessionInitialState';
 import { SessionActionTypes } from '../Types';
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { signUpAPI } from 'api/sessions/sessions';
 import axiosInstance from 'lib/axios.instance';
 import { userInitialState } from 'models/User/userInitialState';
 
@@ -71,7 +70,7 @@ describe('Session Action Test', () => {
     });
   });
 
-  describe('async ACTION Test', () => {
+  describe('SESSION async ACTION Test', () => {
     describe('On Signup', () => {
       it('should set session and user on signup success', async () => {
         mockedAxios.post.mockImplementationOnce(() =>
