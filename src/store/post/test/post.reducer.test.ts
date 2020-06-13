@@ -14,13 +14,53 @@ describe('Post Reducer Test', () => {
         payload: {
           isFetchingPosts: false,
           fetchingPostsFailed: false,
-          posts: [{ id: 1, title: 'wa', body: 'wo', createdAt: 'as', updatedAt: 'a' }]
+          posts: [
+            {
+              id: 1,
+              title: 'wa',
+              body: 'wo',
+              createdAt: 'as',
+              updatedAt: 'a',
+              user: {
+                id: 1,
+                title: 'title',
+                body: 'body',
+                createdAt: '123',
+                updatedAt: '123',
+                user: {
+                  id: 1,
+                  username: 'new1',
+                  email: 'new1@gmail.com'
+                }
+              }
+            }
+          ]
         }
       })
     ).toEqual({
       isFetchingPosts: false,
       fetchingPostsFailed: false,
-      posts: [{ id: 1, title: 'wa', body: 'wo', createdAt: 'as', updatedAt: 'a' }]
+      posts: [
+        {
+          id: 1,
+          title: 'wa',
+          body: 'wo',
+          createdAt: 'as',
+          updatedAt: 'a',
+          user: {
+            id: 1,
+            title: 'title',
+            body: 'body',
+            createdAt: '123',
+            updatedAt: '123',
+            user: {
+              id: 1,
+              username: 'new1',
+              email: 'new1@gmail.com'
+            }
+          }
+        }
+      ]
     });
   });
 

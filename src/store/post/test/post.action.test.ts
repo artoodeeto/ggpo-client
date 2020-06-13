@@ -27,7 +27,11 @@ describe('Post Action Test', () => {
           body: 'body',
           createdAt: '123',
           updatedAt: '123',
-          user: null
+          user: {
+            id: 1,
+            username: 'new1',
+            email: 'new1@gmail.com'
+          }
         }
       ];
       expect(postActions.getSomePostsForFeed(p)).toEqual({
@@ -35,7 +39,20 @@ describe('Post Action Test', () => {
         payload: {
           isFetchingPosts: false,
           fetchingPostsFailed: false,
-          posts: [...p]
+          posts: [
+            {
+              id: 1,
+              title: 'title',
+              body: 'body',
+              createdAt: '123',
+              updatedAt: '123',
+              user: {
+                id: 1,
+                username: 'new1',
+                email: 'new1@gmail.com'
+              }
+            }
+          ]
         }
       });
     });
@@ -72,7 +89,11 @@ describe('Post Action Test', () => {
           body: 'body',
           createdAt: '123',
           updatedAt: '123',
-          user: null
+          user: {
+            id: 1,
+            username: 'new1',
+            email: 'new1@gmail.com'
+          }
         }
       ];
 
@@ -95,7 +116,20 @@ describe('Post Action Test', () => {
             payload: {
               isFetchingPosts: false,
               fetchingPostsFailed: false,
-              posts: [...p]
+              posts: [
+                {
+                  id: 1,
+                  title: 'title',
+                  body: 'body',
+                  createdAt: '123',
+                  updatedAt: '123',
+                  user: {
+                    id: 1,
+                    username: 'new1',
+                    email: 'new1@gmail.com'
+                  }
+                }
+              ]
             }
           }
         ]);
