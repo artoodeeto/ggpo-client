@@ -7,7 +7,13 @@ export const PostItem: FC<any> = (props: any) => {
   return (
     <div className={PostItemStyle.box}>
       <h3>title: {props.post.title}</h3>
-      <p>body: {props.post.body}</p>
+      <p>
+        body: {props.post.body}
+        <br />
+        by: {props.post.user.username}
+        <br />
+        email: {props.post.user.email}
+      </p>
     </div>
   );
 };
