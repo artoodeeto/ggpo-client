@@ -11,6 +11,7 @@ export function setUpSessionOnLoginAndSignup(response: ILoginSignupResponse, dis
   dispatch(setupUserOnSuccessLoginORSignup(user));
   Cookies.set(process.env.REACT_APP_COOKIE_NAME as string, token, {
     expires: new Date(new Date().getTime() + Number(expToken)),
-    secure: true
+    secure: true,
+    sameSite: 'None'
   });
 }
