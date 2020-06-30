@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import session from '../session/Reducers';
 import user from '../user/Reducers';
-import post from '../post/Reducers';
+import feedPost from '../feedPost/Reducers';
 
 /**
  * @description
@@ -9,4 +9,4 @@ import post from '../post/Reducers';
  * make sure that the State interface is also updated,
  * {@link ../interfaces/stateInterfaces.ts}
  */
-export default combineReducers({ session, user, post });
+export default combineReducers({ session, user, feedPost });

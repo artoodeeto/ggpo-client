@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { IState } from 'interfaces/stateInterface';
 import * as sessionSelectors from 'store/session/Selectors';
 import { Redirect } from 'react-router-dom';
-import ErrorMsg from 'components/shared/ErrorMsg';
+import ErrorMsg from 'components/shared/ErrorMessage/ErrorMsg';
 
 // background here should show some video, maybe the TI championship games
 class SignupLoginContainer extends Component<any> {

@@ -1,12 +1,12 @@
 import { IStatePost } from '../../interfaces/post';
 import { PostActionTypes } from './Types';
-import { postInitialState } from 'models/Post/postInitialState';
+import { postFeedInitialState } from 'models/Post/postFeedInitialState';
 
 const initState = {
-  ...postInitialState
+  ...postFeedInitialState
 };
 
-const post = (state = initState, action: any): IStatePost => {
+const feedPost = (state = initState, action: any): IStatePost => {
   switch (action.type) {
     case PostActionTypes.GET_SOME_POSTS: {
       return {
@@ -32,4 +32,4 @@ const post = (state = initState, action: any): IStatePost => {
   }
 };
 
-export default post;
+export default feedPost;
