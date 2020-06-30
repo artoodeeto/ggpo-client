@@ -4,6 +4,7 @@ import { IState } from 'interfaces/stateInterface';
 import * as sessionActions from 'store/session/Actions';
 import * as userActions from 'store/user/Actions';
 import Cookies from 'js-cookie';
+import PostForm from 'components/shared/PostForm/PostForm';
 
 const Profile: FC = (props: any) => {
   useEffect(() => {
@@ -20,6 +21,7 @@ const Profile: FC = (props: any) => {
     <div>
       <button onClick={logoutUser}>Log out</button>
       <h1>PROFILE</h1>
+      <PostForm />
     </div>
   );
 };
