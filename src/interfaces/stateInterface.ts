@@ -5,5 +5,5 @@ import { IStatePost } from './post';
 export interface IState {
   session: ISession;
   user: IUser;
-  post: IStatePost;
+  feedPost: IStatePost;
 }

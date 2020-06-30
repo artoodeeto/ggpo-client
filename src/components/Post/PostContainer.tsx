@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { IState } from 'interfaces/stateInterface';
-import * as postsActions from 'store/post/Actions';
-import * as postSelectors from 'store/post/Selectors';
+import * as postsActions from 'store/feedPost/Actions';
+import * as postSelectors from 'store/feedPost/Selectors';
 import { IPost } from '../../interfaces/post';
 import PostItem from './PostItem/PostItem';
 

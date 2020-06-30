@@ -5,7 +5,7 @@ import { IStatePost } from '../../interfaces/post';
  * be updated.
  * {@link src/interfaces/post.ts}
  */
-export const postInitialState: IStatePost = {
+export const postFeedInitialState: IStatePost = {
   isFetchingPosts: false,
   fetchingPostsFailed: false,
   posts: []
