@@ -1,5 +1,5 @@
 import * as postActions from '../Actions';
-import { PostActionTypes } from '../Types';
+import { PostFeedActionTypes } from '../Types';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
@@ -35,7 +35,7 @@ describe('Post Action Test', () => {
         }
       ];
       expect(postActions.getSomePostsForFeed(p)).toEqual({
-        type: PostActionTypes.GET_SOME_POSTS,
+        type: PostFeedActionTypes.GET_SOME_FEED_POSTS,
         payload: {
           isFetchingPosts: false,
           fetchingPostsFailed: false,
@@ -61,7 +61,7 @@ describe('Post Action Test', () => {
   describe('isFetchingPosts ACTION', () => {
     it('should set isFetching to true', () => {
       expect(postActions.isFetchingPosts()).toEqual({
-        type: PostActionTypes.IS_FETCHING_POSTS,
+        type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS,
         payload: {
           isFetchingPosts: true
         }
@@ -72,7 +72,7 @@ describe('Post Action Test', () => {
   describe('isFetchingPostsFailed ACTION', () => {
     it('should set fetchingPostsFailed to true if post query failed', () => {
       expect(postActions.isFetchingPostsFailed()).toEqual({
-        type: PostActionTypes.IS_FETCHING_POSTS_FAILED,
+        type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS_FAILED,
         payload: {
           fetchingPostsFailed: true
         }
@@ -110,9 +110,9 @@ describe('Post Action Test', () => {
 
       return store.dispatch<any>(postActions.querySomePost(1, 1)).then(() => {
         expect(store.getActions()).toEqual([
-          { type: 'IS_FETCHING_POSTS', payload: { isFetchingPosts: true } },
+          { type: 'IS_FETCHING_FEED_POSTS', payload: { isFetchingPosts: true } },
           {
-            type: 'GET_SOME_POSTS',
+            type: 'GET_SOME_FEED_POSTS',
             payload: {
               isFetchingPosts: false,
               fetchingPostsFailed: false,
@@ -145,8 +145,8 @@ describe('Post Action Test', () => {
 
       return store.dispatch<any>(postActions.querySomePost(1, 1)).then(() => {
         expect(store.getActions()).toEqual([
-          { type: 'IS_FETCHING_POSTS', payload: { isFetchingPosts: true } },
-          { type: 'IS_FETCHING_POSTS_FAILED', payload: { fetchingPostsFailed: true } }
+          { type: 'IS_FETCHING_FEED_POSTS', payload: { isFetchingPosts: true } },
+          { type: 'IS_FETCHING_FEED_POSTS_FAILED', payload: { fetchingPostsFailed: true } }
         ]);
       });
     });

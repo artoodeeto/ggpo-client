@@ -1,5 +1,5 @@
-import { IStatePost } from '../../interfaces/post';
-import { PostActionTypes } from './Types';
+import { IStatePost } from 'interfaces/post';
+import { PostFeedActionTypes } from './Types';
 import { postFeedInitialState } from 'models/Post/postFeedInitialState';
 
 const initState = {
@@ -8,19 +8,19 @@ const initState = {
 
 const feedPost = (state = initState, action: any): IStatePost => {
   switch (action.type) {
-    case PostActionTypes.GET_SOME_POSTS: {
+    case PostFeedActionTypes.GET_SOME_FEED_POSTS: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case PostActionTypes.IS_FETCHING_POSTS: {
+    case PostFeedActionTypes.IS_FETCHING_FEED_POSTS: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case PostActionTypes.IS_FETCHING_POSTS_FAILED: {
+    case PostFeedActionTypes.IS_FETCHING_FEED_POSTS_FAILED: {
       return {
         ...state,
         ...action.payload
