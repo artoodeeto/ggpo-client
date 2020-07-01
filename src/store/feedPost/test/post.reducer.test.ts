@@ -1,5 +1,5 @@
 import postReducer from '../Reducers';
-import { PostActionTypes } from '../Types';
+import { PostFeedActionTypes } from '../Types';
 import { postFeedInitialState } from 'models/Post/postFeedInitialState';
 
 describe('Post Reducer Test', () => {
@@ -10,7 +10,7 @@ describe('Post Reducer Test', () => {
   it('should set some posts', () => {
     expect(
       postReducer(postFeedInitialState, {
-        type: PostActionTypes.GET_SOME_POSTS,
+        type: PostFeedActionTypes.GET_SOME_FEED_POSTS,
         payload: {
           isFetchingPosts: false,
           fetchingPostsFailed: false,
@@ -67,7 +67,7 @@ describe('Post Reducer Test', () => {
   it('should set is fetching to true', () => {
     expect(
       postReducer(postFeedInitialState, {
-        type: PostActionTypes.IS_FETCHING_POSTS,
+        type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS,
         payload: {
           isFetchingPosts: true
         }
@@ -88,7 +88,7 @@ describe('Post Reducer Test', () => {
           posts: []
         },
         {
-          type: PostActionTypes.IS_FETCHING_POSTS_FAILED,
+          type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS_FAILED,
           payload: {
             fetchingPostsFailed: true
           }
