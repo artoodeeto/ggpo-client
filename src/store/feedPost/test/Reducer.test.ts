@@ -2,7 +2,7 @@ import postReducer from '../Reducers';
 import { PostFeedActionTypes } from '../Types';
 import { postFeedInitialState } from 'models/Post/postFeedInitialState';
 
-describe('Post Reducer Test', () => {
+describe('Feed Post Reducer Test', () => {
   it('should be equal to initial state', () => {
     expect(postReducer(undefined, {})).toEqual(postFeedInitialState);
   });
