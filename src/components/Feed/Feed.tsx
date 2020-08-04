@@ -2,36 +2,41 @@ import React, { useEffect, FC } from 'react';
 import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import * as sessionSelectors from 'store/session/Selectors';
+import * as postSelectors from 'store/feedPost/Selectors';
+import * as postsActions from 'store/feedPost/Actions';
 import { useHistory } from 'react-router-dom';
 import PostContainer from 'components/Post/PostContainer';
 
-const Feed: FC = (props: any) => {
+const Feed: FC = ({ queryPostsForFeed, posts }: any) => {
   const history = useHistory();
-  const onTest = () => {
+  const onGotoProfile = () => {
     history.push('/profile');
   };
 
   useEffect(() => {
-    console.log(props.isAuthenticated);
-  });
-
+    queryPostsForFeed(0, 5);
+  }, [queryPostsForFeed]);
+  // TODO: load new posts when scrolling
   return (
     <div>
-      <button onClick={onTest}>Profile</button>
+      <button onClick={onGotoProfile}>Profile</button>
       <h1>I am FEED TEST!</h1>
-      <PostContainer />
+      <PostContainer posts={posts} showDeletePostBtn={false} />
     </div>
   );
 };
 
 const mapStateToProps = (state: IState) => {
   return {
-    isAuthenticated: sessionSelectors.isUserAuthorized(state)
+    isAuthenticated: sessionSelectors.isUserAuthorized(state),
+    posts: postSelectors.posts(state)
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
-  return {};
+  return {
+    queryPostsForFeed: (offset: number, limit: number) => dispatch(postsActions.querySomePost(offset, limit))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);

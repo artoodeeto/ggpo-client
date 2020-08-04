@@ -1,4 +1,4 @@
-import { IStatePost } from 'interfaces/post';
+import { IStateFeedPost } from 'interfaces/post';
 import { PostFeedActionTypes } from './Types';
 import { postFeedInitialState } from 'models/Post/postFeedInitialState';
 
@@ -6,7 +6,7 @@ const initState = {
   ...postFeedInitialState
 };
 
-const feedPost = (state = initState, action: any): IStatePost => {
+const feedPost = (state = initState, action: any): IStateFeedPost => {
   switch (action.type) {
     case PostFeedActionTypes.GET_SOME_FEED_POSTS: {
       return {
