@@ -4,22 +4,20 @@ import { connect } from 'react-redux';
 import * as sessionSelectors from 'store/session/Selectors';
 import * as postSelectors from 'store/feedPost/Selectors';
 import * as postsActions from 'store/feedPost/Actions';
-import { useHistory } from 'react-router-dom';
-import PostContainer from 'components/Post/PostContainer';
+import { Link } from 'react-router-dom';
+import PostContainer from 'components/shared/Post/PostContainer';
 
 const Feed: FC = ({ queryPostsForFeed, posts }: any) => {
-  const history = useHistory();
-  const onGotoProfile = () => {
-    history.push('/profile');
-  };
-
   useEffect(() => {
     queryPostsForFeed(0, 5);
   }, [queryPostsForFeed]);
   // TODO: load new posts when scrolling
   return (
     <div>
-      <button onClick={onGotoProfile}>Profile</button>
+      <Link to="/profile">Profile</Link>
+      <br />
+      <Link to="/game_groups">GG</Link>
+
       <h1>I am FEED TEST!</h1>
       <PostContainer posts={posts} showDeletePostBtn={false} />
     </div>

@@ -5,7 +5,7 @@ import * as sessionActions from 'store/session/Actions';
 import * as userActions from 'store/user/Actions';
 import Cookies from 'js-cookie';
 import PostForm from 'components/shared/PostForm/PostForm';
-import PostContainer from 'components/Post/PostContainer';
+import PostContainer from 'components/shared/Post/PostContainer';
 import { getUserPosts } from 'store/userProfilePost/Actions';
 import { userSelectorUserId } from 'store/user/Selectors';
 import { userProfileSelectorPosts } from 'store/userProfilePost/Selectors';

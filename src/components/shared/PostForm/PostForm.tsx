@@ -8,7 +8,6 @@ const PostForm: FC<any> = (props: any) => {
   const [body, setBody] = useState('');
 
   const editHandler = () => {
-    console.log(props.postId);
     props.handleToEdit(false);
     props.onUpdatePost(props.postId, title, body);
   };

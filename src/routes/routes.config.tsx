@@ -6,6 +6,7 @@ export interface RouteConfigInterface {
   component: FC;
   isPrivate: boolean;
   exact: boolean;
+  childRoutes?: RouteConfigInterface[];
 }
 
 /**
@@ -13,7 +14,7 @@ export interface RouteConfigInterface {
  * add routes here.
  * when you add isPrivate, you can use the Private component to guard that route
  */
-const routes: RouteConfigInterface[] = [
+const routeConfig: RouteConfigInterface[] = [
   {
     path: '/',
     component: SignupLoginContainer,
@@ -31,7 +32,26 @@ const routes: RouteConfigInterface[] = [
     component: lazy(() => import('components/Profile/Profile')),
     isPrivate: true,
     exact: false
+  },
+  {
+    path: '/game_groups',
+    component: lazy(() => import('components/GameGroup/GameGroupContainer')),
+    isPrivate: true,
+    exact: true,
+    childRoutes: []
+  },
+  {
+    path: '/game_groups/:id',
+    component: lazy(() => import('components/GameItem/GameItemContainer')),
+    isPrivate: true,
+    exact: false
+  },
+  {
+    path: '*',
+    component: lazy(() => import('components/shared/NoRouteMatch/NoRouteMatch')),
+    isPrivate: false,
+    exact: false
   }
 ];
 
-export default routes;
+export default routeConfig;

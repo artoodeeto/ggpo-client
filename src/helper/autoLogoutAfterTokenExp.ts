@@ -4,7 +4,6 @@ import { logoutUser } from 'store/user/Actions';
 
 export function autoLogoutAfterTokenExpire(dispatch: Function, timer: number): void {
   setTimeout(() => {
-    console.log('kwagmire');
     dispatch(logoutUser());
     dispatch(logoutSession());
     Cookies.remove(process.env.REACT_APP_COOKIE_NAME as string);
