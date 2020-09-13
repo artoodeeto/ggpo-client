@@ -15,9 +15,16 @@ describe('Users API Test', () => {
         meta: {},
         payload: {}
       };
-      mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: { ...expectedResponse } }));
+      mockedAxios.get.mockResolvedValueOnce({ data: { ...expectedResponse } });
       const response = await getUserPostsAPI(1, 2, 3);
       expect(response).toEqual({ ...expectedResponse });
+      expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+      expect(mockedAxios.get).toHaveBeenCalledWith('/users/posts/1?offset=2&limit=3');
+    });
+
+    it('should throw', async () => {
+      mockedAxios.get.mockRejectedValueOnce({ response: { data: {} } });
+      await expect(getUserPostsAPI(1, 2, 3)).toReject();
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
       expect(mockedAxios.get).toHaveBeenCalledWith('/users/posts/1?offset=2&limit=3');
     });

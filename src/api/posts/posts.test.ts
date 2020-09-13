@@ -24,15 +24,9 @@ describe('Posts API Test', () => {
       expect(mockedAxios.get).toHaveBeenCalledWith('/posts/query/some/posts?offset=1&limit=2');
     });
 
-    it.skip('should failed get some of the posts ', async () => {
-      // ! this test is failing with undefined data. skip for now
-      const expectedResponse = {
-        meta: {},
-        payload: {}
-      };
-      mockedAxios.get.mockImplementationOnce(() => Promise.reject({ data: {} }));
-      const response = await getSomePostAPI(1, 2);
-      expect(response).toEqual({ ...expectedResponse });
+    it('should failed get some of the posts ', async () => {
+      mockedAxios.get.mockRejectedValueOnce({ response: { data: {} } });
+      await expect(getSomePostAPI(1, 2)).toReject();
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
       expect(mockedAxios.get).toHaveBeenCalledWith('/posts/query/some/posts?offset=1&limit=2');
     });
@@ -46,6 +40,13 @@ describe('Posts API Test', () => {
       expect(mockedAxios.post).toHaveBeenCalledTimes(1);
       expect(mockedAxios.post).toHaveBeenCalledWith('/posts', { body: 'bb', title: 'tt' });
     });
+
+    it('should failed', async () => {
+      mockedAxios.post.mockRejectedValueOnce({ response: { data: {} } });
+      await expect(createPostAPI('tt', 'bb')).toReject();
+      expect(mockedAxios.post).toHaveBeenCalledTimes(1);
+      expect(mockedAxios.post).toHaveBeenCalledWith('/posts', { body: 'bb', title: 'tt' });
+    });
   });
 
   describe('updatePostAPI', () => {
@@ -56,6 +57,13 @@ describe('Posts API Test', () => {
       expect(mockedAxios.put).toHaveBeenCalledTimes(1);
       expect(mockedAxios.put).toHaveBeenCalledWith('/posts/1', { body: 'bb', title: 'tt' });
     });
+
+    it('should failed', async () => {
+      mockedAxios.put.mockRejectedValueOnce({ response: { data: {} } });
+      await expect(updatePostAPI('1', 'tt', 'bb')).toReject();
+      expect(mockedAxios.put).toHaveBeenCalledTimes(1);
+      expect(mockedAxios.put).toHaveBeenCalledWith('/posts/1', { body: 'bb', title: 'tt' });
+    });
   });
 
   describe('deletePostAPI', () => {
@@ -63,6 +71,13 @@ describe('Posts API Test', () => {
       mockedAxios.delete.mockImplementationOnce(() => Promise.resolve({ data: { ...expectedResponse } }));
       const response = await deletePostAPI('12');
       expect(response).toEqual({ ...expectedResponse });
+      expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
+      expect(mockedAxios.delete).toHaveBeenCalledWith('/posts/12');
+    });
+
+    it('should failed', async () => {
+      mockedAxios.delete.mockRejectedValueOnce({ response: { data: {} } });
+      await expect(deletePostAPI('12')).toReject();
       expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
       expect(mockedAxios.delete).toHaveBeenCalledWith('/posts/12');
     });
