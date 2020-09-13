@@ -80,8 +80,8 @@ describe('Post Action Test', () => {
     });
   });
 
-  describe('POST async ACTION Test', () => {
-    it('should set get some posts successfully', () => {
+  describe('GET async ACTION Test', () => {
+    it('should get some posts successfully', () => {
       const p = [
         {
           id: 1,

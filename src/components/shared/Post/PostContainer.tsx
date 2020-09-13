@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { IState } from 'interfaces/stateInterface';
-import { IPost } from '../../interfaces/post';
+import { IPost } from '../../../interfaces/post';
 import PostItem from './PostItem/PostItem';
 class PostContainer extends Component<any> {
   render() {
