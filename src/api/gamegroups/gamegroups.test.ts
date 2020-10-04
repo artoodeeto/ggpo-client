@@ -30,14 +30,14 @@ describe('Game Group API Test', () => {
       const response = await crateGameGroupAPI('foo', 'bar');
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.post).toHaveBeenCalledWith('/game_groups', { description: 'bar', title: 'foo' });
+      expect(mockedAxios.post).toHaveBeenCalledWith('/game-groups', { description: 'bar', title: 'foo' });
     });
 
     it('should failed get some of the posts ', async () => {
       mockedAxios.post.mockRejectedValueOnce({ response: { data: {} } });
       await expect(crateGameGroupAPI('foo', 'bar')).toReject();
       expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.post).toHaveBeenCalledWith('/game_groups', { description: 'bar', title: 'foo' });
+      expect(mockedAxios.post).toHaveBeenCalledWith('/game-groups', { description: 'bar', title: 'foo' });
     });
   });
 
@@ -47,14 +47,14 @@ describe('Game Group API Test', () => {
       const response = await getAGameGroupAPI(1);
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith('/game_groups/1');
+      expect(mockedAxios.get).toHaveBeenCalledWith('/game-groups/1');
     });
 
     it('should failed', async () => {
       mockedAxios.get.mockRejectedValueOnce({ response: { data: {} } });
       await expect(getAGameGroupAPI(1)).toReject();
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith('/game_groups/1');
+      expect(mockedAxios.get).toHaveBeenCalledWith('/game-groups/1');
     });
   });
 
@@ -64,14 +64,14 @@ describe('Game Group API Test', () => {
       const response = await updateGameGroupAPI(1, 'foo', 'bar');
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.put).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.put).toHaveBeenCalledWith('/game_groups/1', { description: 'bar', title: 'foo' });
+      expect(mockedAxios.put).toHaveBeenCalledWith('/game-groups/1', { description: 'bar', title: 'foo' });
     });
 
     it('should failed', async () => {
       mockedAxios.put.mockRejectedValueOnce({ response: { data: {} } });
       await expect(updateGameGroupAPI(1, 'foo', 'bar')).toReject();
       expect(mockedAxios.put).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.put).toHaveBeenCalledWith('/game_groups/1', { description: 'bar', title: 'foo' });
+      expect(mockedAxios.put).toHaveBeenCalledWith('/game-groups/1', { description: 'bar', title: 'foo' });
     });
   });
 
@@ -81,14 +81,14 @@ describe('Game Group API Test', () => {
       const response = await deleteGameGroupAPI(1);
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.delete).toHaveBeenCalledWith('/game_groups/1');
+      expect(mockedAxios.delete).toHaveBeenCalledWith('/game-groups/1');
     });
 
     it('should failed', async () => {
       mockedAxios.delete.mockRejectedValueOnce({ response: { data: {} } });
       await expect(deleteGameGroupAPI(1)).toReject();
       expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.delete).toHaveBeenCalledWith('/game_groups/1');
+      expect(mockedAxios.delete).toHaveBeenCalledWith('/game-groups/1');
     });
   });
 
@@ -98,14 +98,14 @@ describe('Game Group API Test', () => {
       const response = await querySomeGameGroupsAPI(1, 1);
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith('/game_groups/query/some/game_groups?offset=1&limit=1');
+      expect(mockedAxios.get).toHaveBeenCalledWith('/game-groups?offset=1&limit=1');
     });
 
     it('should failed', async () => {
       mockedAxios.get.mockRejectedValueOnce({ response: { data: {} } });
       await expect(querySomeGameGroupsAPI(1, 1)).toReject();
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith('/game_groups/query/some/game_groups?offset=1&limit=1');
+      expect(mockedAxios.get).toHaveBeenCalledWith('/game-groups?offset=1&limit=1');
     });
   });
 
@@ -115,14 +115,14 @@ describe('Game Group API Test', () => {
       const response = await followGameGroupAPI(1);
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.put).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.put).toHaveBeenCalledWith('/game_groups/follow/1');
+      expect(mockedAxios.put).toHaveBeenCalledWith('/game-groups/1/follow');
     });
 
     it('should failed', async () => {
       mockedAxios.put.mockRejectedValueOnce({ response: { data: {} } });
       await expect(followGameGroupAPI(1)).toReject();
       expect(mockedAxios.put).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.put).toHaveBeenCalledWith('/game_groups/follow/1');
+      expect(mockedAxios.put).toHaveBeenCalledWith('/game-groups/1/follow');
     });
   });
 
@@ -132,14 +132,14 @@ describe('Game Group API Test', () => {
       const response = await unfollowGameGroupAPI(1);
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.delete).toHaveBeenCalledWith('/game_groups/unfollow/1');
+      expect(mockedAxios.delete).toHaveBeenCalledWith('/game-groups/1/unfollow');
     });
 
     it('should failed', async () => {
       mockedAxios.delete.mockRejectedValueOnce({ response: { data: {} } });
       await expect(unfollowGameGroupAPI(1)).toReject();
       expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.delete).toHaveBeenCalledWith('/game_groups/unfollow/1');
+      expect(mockedAxios.delete).toHaveBeenCalledWith('/game-groups/1/unfollow');
     });
   });
 });

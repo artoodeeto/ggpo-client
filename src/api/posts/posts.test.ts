@@ -21,14 +21,14 @@ describe('Posts API Test', () => {
       const response = await getSomePostAPI(1, 2);
       expect(response).toEqual({ ...expectedResponse });
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith('/posts/query/some/posts?offset=1&limit=2');
+      expect(mockedAxios.get).toHaveBeenCalledWith('/posts?offset=1&limit=2');
     });
 
     it('should failed get some of the posts ', async () => {
       mockedAxios.get.mockRejectedValueOnce({ response: { data: {} } });
       await expect(getSomePostAPI(1, 2)).toReject();
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith('/posts/query/some/posts?offset=1&limit=2');
+      expect(mockedAxios.get).toHaveBeenCalledWith('/posts?offset=1&limit=2');
     });
   });
 

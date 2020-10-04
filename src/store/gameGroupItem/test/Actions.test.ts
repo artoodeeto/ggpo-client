@@ -94,7 +94,7 @@ describe('Game Group Item Action Test', () => {
 
         return store.dispatch<any>(followGameGroupItem(1)).then(() => {
           expect(mockedAxios.put).toHaveBeenCalledTimes(1);
-          expect(mockedAxios.put).toHaveBeenCalledWith('/game_groups/follow/1');
+          expect(mockedAxios.put).toHaveBeenCalledWith('/game-groups/1/follow');
           expect(store.getActions()).toEqual([
             { type: 'CURRENTLY_FOLLOWING_GAME_GROUP', payload: { isCurrentlyFollowing: true } },
             {
@@ -117,7 +117,7 @@ describe('Game Group Item Action Test', () => {
 
         return store.dispatch<any>(followGameGroupItem(1)).then(() => {
           expect(mockedAxios.put).toHaveBeenCalledTimes(1);
-          expect(mockedAxios.put).toHaveBeenCalledWith('/game_groups/follow/1');
+          expect(mockedAxios.put).toHaveBeenCalledWith('/game-groups/1/follow');
           expect(store.getActions()).toEqual([
             { type: 'CURRENTLY_FOLLOWING_GAME_GROUP', payload: { isCurrentlyFollowing: true } },
             {
@@ -178,7 +178,7 @@ describe('Game Group Item Action Test', () => {
 
         return store.dispatch<any>(unFollowGameGroupItem(1)).then(() => {
           expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
-          expect(mockedAxios.delete).toHaveBeenCalledWith('/game_groups/unfollow/1');
+          expect(mockedAxios.delete).toHaveBeenCalledWith('/game-groups/1/unfollow');
           expect(store.getActions()).toEqual([
             { type: 'CURRENTLY_UNFOLLOWING_GAME_GROUP', payload: { isCurrentlyUnfollowing: true } },
             {
@@ -202,7 +202,7 @@ describe('Game Group Item Action Test', () => {
 
         return store.dispatch<any>(unFollowGameGroupItem(1)).then(() => {
           expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
-          expect(mockedAxios.delete).toHaveBeenCalledWith('/game_groups/unfollow/1');
+          expect(mockedAxios.delete).toHaveBeenCalledWith('/game-groups/1/unfollow');
           expect(store.getActions()).toEqual([
             { type: 'CURRENTLY_UNFOLLOWING_GAME_GROUP', payload: { isCurrentlyUnfollowing: true } },
             {
