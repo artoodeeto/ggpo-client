@@ -1,10 +1,17 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
-import { IState } from 'interfaces/stateInterface';
-import * as sessionSelectors from 'store/session/Selectors';
+import { RootState } from 'store/root/root_reducer';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { authErrorsResponse } from 'store/session/Selectors';
+import { ILoginSignupFailed } from 'interfaces/session';
 
-const ErrorMsg: FC = (props: any) => {
-  const errMsg = props.errorMsg.errorMessage;
+type ErrorMsgProps = {
+  errorMsg: ILoginSignupFailed;
+};
+
+const ErrorMsg: FC<ErrorMsgProps> = ({ errorMsg }) => {
+  const errMsg = errorMsg.errorMessage;
   const errKeys = Object.keys(errMsg);
 
   return (
@@ -18,13 +25,13 @@ const ErrorMsg: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {
-    errorMsg: sessionSelectors.authErrorsResponse(state)
+    errorMsg: authErrorsResponse(state)
   };
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {};
 };
 

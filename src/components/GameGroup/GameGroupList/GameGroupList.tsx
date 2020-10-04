@@ -1,12 +1,19 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { FC, Fragment, useEffect } from 'react';
 import GameGroupItem from '../GameGroupItem/GameGroupItem';
 import { getSomeGameGroups } from 'store/gameGroup/Actions';
-import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import { gameGroupsStore } from 'store/gameGroup/Selectors';
 import { IGameGroup } from 'interfaces/gameGroup';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
 
-const GameGroupList = ({ queryGameGroups, gameGroups }: any) => {
+type GameGroupListProps = {
+  gameGroups: IGameGroup[];
+  queryGameGroups: (offset: number, limit: number) => void;
+};
+
+const GameGroupList: FC<GameGroupListProps> = ({ queryGameGroups, gameGroups }) => {
   useEffect(() => {
     queryGameGroups(0, 5);
   }, [queryGameGroups]);
@@ -17,7 +24,7 @@ const GameGroupList = ({ queryGameGroups, gameGroups }: any) => {
       <div>
         <ul>
           {gameGroups.map((gg: IGameGroup) => (
-            <GameGroupItem key={gg.id} id={gg.id} title={gg.title} desc={gg.description} />
+            <GameGroupItem key={gg.id} gameGroup={gg} />
           ))}
         </ul>
       </div>
@@ -25,13 +32,13 @@ const GameGroupList = ({ queryGameGroups, gameGroups }: any) => {
   );
 };
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {
     gameGroups: gameGroupsStore(state)
   };
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
     queryGameGroups: (offset: number, limit: number) => dispatch(getSomeGameGroups(offset, limit))
   };

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const NoMatch = () => {
+type NoMatchBtnProps = {
+  btnName: string;
+  onClickTriggerFn: () => void;
+};
+
+const NoMatch: FC<NoMatchBtnProps> = () => {
   let location = useLocation();
 
   return (

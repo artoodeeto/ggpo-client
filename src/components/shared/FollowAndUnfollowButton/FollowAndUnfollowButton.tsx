@@ -10,10 +10,10 @@ type FollowAndUnFollowBtnProps = {
  * @param btnName name for the button
  * @param onClickTriggerFn method to pass to be triggered onClick.
  */
-const FollowAndUnFollowBtn: FC<FollowAndUnFollowBtnProps> = (props) => {
+const FollowAndUnFollowBtn: FC<FollowAndUnFollowBtnProps> = ({ onClickTriggerFn, btnName }) => {
   return (
-    <button type="submit" onClick={() => props.onClickTriggerFn()}>
-      {props.btnName}
+    <button type="submit" onClick={() => onClickTriggerFn()}>
+      {btnName}
     </button>
   );
 };

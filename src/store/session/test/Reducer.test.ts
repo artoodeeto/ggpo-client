@@ -1,5 +1,5 @@
 import sessionReducer from '../Reducers';
-import { SessionActionTypes } from '../Types';
+import { SessionEnumTypes } from '../Types';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
 
 describe('Session Reducer Test', () => {
@@ -16,7 +16,7 @@ describe('Session Reducer Test', () => {
           errorResponseOnSigupOrLogin: { errorType: 'lawd', errorMessage: { oh: 'lawd' } }
         },
         {
-          type: SessionActionTypes.IS_LOGGING_IN_OR_SIGNING_UP,
+          type: SessionEnumTypes.IS_LOGGING_IN_OR_SIGNING_UP,
           payload: {
             isUserLoggingInOrSigningUp: true
           }
@@ -46,7 +46,7 @@ describe('Session Reducer Test', () => {
           expectedTokenExpirationInMillisec: 0
         },
         {
-          type: SessionActionTypes.LOGIN_SIGNUP_SUCCESS,
+          type: SessionEnumTypes.LOGIN_SIGNUP_SUCCESS,
           payload: {
             isAuthenticated: true,
             tokenExpirationTime: 1000,
@@ -80,7 +80,7 @@ describe('Session Reducer Test', () => {
           expectedTokenExpirationInMillisec: 1010
         },
         {
-          type: SessionActionTypes.LOGOUT,
+          type: SessionEnumTypes.LOGOUT,
           payload: {
             ...sessionInitialState
           }
@@ -103,7 +103,7 @@ describe('Session Reducer Test', () => {
       sessionReducer(
         { ...sessionInitialState, errorResponseOnSigupOrLogin: { ...err } },
         {
-          type: SessionActionTypes.SIGNUP_LOGIN_FAILED,
+          type: SessionEnumTypes.SIGNUP_LOGIN_FAILED,
           payload: {
             isUserLoggingInOrSigningUp: false,
             hasErrorOnSigningUpOrLoggingIn: true,

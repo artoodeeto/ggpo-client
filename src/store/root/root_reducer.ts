@@ -5,6 +5,7 @@ import feedPost from '../feedPost/Reducers';
 import userProfilePost from '../userProfilePost/Reducers';
 import gameGroups from '../gameGroup/Reducers';
 import gameGroupItem from '../gameGroupItem/Reducers';
+import { IState } from 'interfaces/stateInterface';
 
 /**
  * @description
@@ -12,4 +13,13 @@ import gameGroupItem from '../gameGroupItem/Reducers';
  * make sure that the State interface is also updated,
  * {@link ../interfaces/stateInterfaces.ts}
  */
-export default combineReducers({ session, user, feedPost, userProfilePost, gameGroups, gameGroupItem });
+export const rootReducer = combineReducers<IState>({
+  session,
+  user,
+  feedPost,
+  userProfilePost,
+  gameGroups,
+  gameGroupItem
+});
+
+export type RootState = ReturnType<typeof rootReducer>;

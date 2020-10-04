@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import GGIStyle from './GameGroupItem.module.scss';
 import { Link } from 'react-router-dom';
+import { IGameGroup } from 'interfaces/gameGroup';
 
-const GameGroupItem = (props: any) => {
+type GameGroupItemProps = {
+  gameGroup: IGameGroup;
+};
+
+const GameGroupItem: FC<GameGroupItemProps> = ({ gameGroup }) => {
   return (
-    <Link to={(location) => `/game_groups/${props.id}`}>
+    <Link to={(location) => `/game_groups/${gameGroup.id}`}>
       <li className={GGIStyle.list}>
-        <p>{props.title}</p>
-        <p>{props.desc}</p>
+        <p>{gameGroup.title}</p>
+        <p>{gameGroup.description}</p>
       </li>
     </Link>
   );

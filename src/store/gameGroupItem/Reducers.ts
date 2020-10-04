@@ -1,60 +1,60 @@
-import { GameGroupItemActionTypes } from './Types';
+import { GameGroupItemActionTypes, GameGroupItemEnumTypes } from './Types';
 import { IStateGameGroupItem } from 'interfaces/gameGroupItem';
 import { gameGroupItemInitSate } from 'models/GameGroupItem/gameGroupItemInitState';
 
-const gameGroupItem = (state = { ...gameGroupItemInitSate }, action: any): IStateGameGroupItem => {
+const gameGroupItem = (state = gameGroupItemInitSate, action: GameGroupItemActionTypes): IStateGameGroupItem => {
   switch (action.type) {
-    case GameGroupItemActionTypes.SET_IS_FOLLOWING: {
+    case GameGroupItemEnumTypes.SET_IS_FOLLOWING: {
       return {
         ...state,
         gameGroupItem: { isFollower: action.payload.isFollower }
       };
     }
-    case GameGroupItemActionTypes.FETCHING_GAME_GROUP_ITEM: {
+    case GameGroupItemEnumTypes.FETCHING_GAME_GROUP_ITEM: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case GameGroupItemActionTypes.GAME_GROUP_ITEM_FETCH_SUCCESS: {
+    case GameGroupItemEnumTypes.GAME_GROUP_ITEM_FETCH_SUCCESS: {
       return {
         ...state,
         ...action.payload,
-        gameGroupItem: { isFollower: action.payload.isFollower, gameGroup: action.payload.gg }
+        gameGroupItem: { isFollower: action.payload.isFollowing, gameGroup: action.payload.gameGroup }
       };
     }
-    case GameGroupItemActionTypes.GAME_GROUP_ITEM_FETCH_FAILED: {
+    case GameGroupItemEnumTypes.GAME_GROUP_ITEM_FETCH_FAILED: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case GameGroupItemActionTypes.CURRENTLY_FOLLOWING_GAME_GROUP: {
+    case GameGroupItemEnumTypes.CURRENTLY_FOLLOWING_GAME_GROUP: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS: {
+    case GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS: {
       return {
         ...state,
         isCurrentlyFollowing: action.payload.isCurrentlyFollowing,
         gameGroupItem: { isFollower: action.payload.isFollower }
       };
     }
-    case GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED: {
+    case GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case GameGroupItemActionTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP: {
+    case GameGroupItemEnumTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS: {
+    case GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS: {
       return {
         ...state,
         isCurrentlyUnfollowing: action.payload.isCurrentlyUnfollowing,
@@ -62,7 +62,7 @@ const gameGroupItem = (state = { ...gameGroupItemInitSate }, action: any): IStat
         gameGroupItem: { isFollower: action.payload.isFollower }
       };
     }
-    case GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED: {
+    case GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED: {
       return {
         ...state,
         ...action.payload

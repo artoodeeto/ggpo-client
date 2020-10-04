@@ -16,7 +16,7 @@ import {
   isEditingPostSuccess,
   updateUserPost
 } from '../Actions';
-import { ProfilePostActionTypes } from '../Types';
+import { ProfilePostEnumTypes } from '../Types';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
@@ -44,7 +44,7 @@ describe('Post Action Test', () => {
 
   it('fetchingUserPosts ACTION', () => {
     expect(fetchingUserPosts()).toEqual({
-      type: 'IS_FETCHING_USER_POSTS',
+      type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS,
       payload: {
         isFetchingUserPosts: true
       }
@@ -53,7 +53,7 @@ describe('Post Action Test', () => {
 
   it('fetchingUserPostsFailed ACTION', () => {
     expect(fetchingUserPostsFailed()).toEqual({
-      type: 'IS_FETCHING_USER_POSTS_FAILED',
+      type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS_FAILED,
       payload: {
         isFetchingUserPosts: false,
         isFetchingUserPostsFailed: true
@@ -72,7 +72,7 @@ describe('Post Action Test', () => {
       }
     ];
     expect(userProfilePost(p)).toEqual({
-      type: 'PROFILE_POSTS',
+      type: ProfilePostEnumTypes.PROFILE_POSTS,
       payload: {
         isFetchingUserPosts: false,
         isFetchingUserPostsSuccess: true,
@@ -83,7 +83,7 @@ describe('Post Action Test', () => {
 
   it('isCreatingNewPost ACTION', () => {
     expect(isCreatingNewPost()).toEqual({
-      type: 'IS_CREATING_NEW_PROFILE_POSTS',
+      type: ProfilePostEnumTypes.IS_CREATING_NEW_PROFILE_POSTS,
       payload: {
         isCreatingPost: true
       }
@@ -99,7 +99,7 @@ describe('Post Action Test', () => {
       updatedAt: '123'
     };
     expect(newUserProfilePost(p)).toEqual({
-      type: 'NEW_PROFILE_POSTS',
+      type: ProfilePostEnumTypes.NEW_PROFILE_POSTS,
       payload: {
         isCreatingPost: false,
         creatingNewPostFailed: false,
@@ -111,7 +111,7 @@ describe('Post Action Test', () => {
 
   it('creatingNewPostFailed ACTION', () => {
     expect(creatingNewPostFailed()).toEqual({
-      type: 'NEW_POST_FAILED',
+      type: ProfilePostEnumTypes.NEW_POST_FAILED,
       payload: {
         isCreatingPost: false,
         creatingNewPostFailed: true,
@@ -146,9 +146,9 @@ describe('Post Action Test', () => {
         expect(mockedAxios.get).toHaveBeenCalledTimes(1);
         expect(mockedAxios.get).toHaveBeenCalledWith('/users/posts/1?offset=2&limit=3');
         expect(store.getActions()).toEqual([
-          { type: 'IS_FETCHING_USER_POSTS', payload: { isFetchingUserPosts: true } },
+          { type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS, payload: { isFetchingUserPosts: true } },
           {
-            type: 'PROFILE_POSTS',
+            type: ProfilePostEnumTypes.PROFILE_POSTS,
             payload: {
               isFetchingUserPosts: false,
               isFetchingUserPostsSuccess: true,
@@ -178,9 +178,9 @@ describe('Post Action Test', () => {
         expect(mockedAxios.get).toHaveBeenCalledTimes(1);
         expect(mockedAxios.get).toHaveBeenCalledWith('/users/posts/1?offset=2&limit=3');
         expect(store.getActions()).toEqual([
-          { type: 'IS_FETCHING_USER_POSTS', payload: { isFetchingUserPosts: true } },
+          { type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS, payload: { isFetchingUserPosts: true } },
           {
-            type: 'IS_FETCHING_USER_POSTS_FAILED',
+            type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS_FAILED,
             payload: {
               isFetchingUserPosts: false,
               isFetchingUserPostsFailed: true
@@ -232,11 +232,11 @@ describe('Post Action Test', () => {
         expect(mockedAxios.post).toHaveBeenCalledWith('/posts', { body: 'woo', title: 'waa' });
         expect(store.getActions()).toEqual([
           {
-            type: 'IS_CREATING_NEW_PROFILE_POSTS',
+            type: ProfilePostEnumTypes.IS_CREATING_NEW_PROFILE_POSTS,
             payload: { isCreatingPost: true }
           },
           {
-            type: 'NEW_PROFILE_POSTS',
+            type: ProfilePostEnumTypes.NEW_PROFILE_POSTS,
             payload: {
               isCreatingPost: false,
               creatingNewPostFailed: false,
@@ -266,11 +266,11 @@ describe('Post Action Test', () => {
         expect(mockedAxios.post).toHaveBeenCalledWith('/posts', { body: 'boo', title: 'foo' });
         expect(store.getActions()).toEqual([
           {
-            type: 'IS_CREATING_NEW_PROFILE_POSTS',
+            type: ProfilePostEnumTypes.IS_CREATING_NEW_PROFILE_POSTS,
             payload: { isCreatingPost: true }
           },
           {
-            type: 'NEW_POST_FAILED',
+            type: ProfilePostEnumTypes.NEW_POST_FAILED,
             payload: {
               isCreatingPost: false,
               creatingNewPostFailed: true,
@@ -285,7 +285,7 @@ describe('Post Action Test', () => {
   describe('DELETING A POSTS ACTIONS', () => {
     it('deletingUserProfilePost ACTION', () => {
       expect(deletingUserProfilePost()).toEqual({
-        type: 'DELETING_PROFILE_POSTS',
+        type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS,
         payload: {
           isDeletingProfilePost: true
         }
@@ -294,7 +294,7 @@ describe('Post Action Test', () => {
 
     it('deletingUserProfilePostFailed ACTION', () => {
       expect(deletingUserProfilePostFailed()).toEqual({
-        type: 'DELETING_PROFILE_POSTS_FAILED',
+        type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_FAILED,
         payload: {
           isDeletingProfilePost: false,
           deletingProfilePostFailed: true
@@ -303,12 +303,12 @@ describe('Post Action Test', () => {
     });
 
     it('deletingUserProfilePostSuccess ACTION', () => {
-      expect(deletingUserProfilePostSuccess('1')).toEqual({
-        type: 'DELETING_PROFILE_POSTS_SUCCESS',
+      expect(deletingUserProfilePostSuccess(1)).toEqual({
+        type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_SUCCESS,
         payload: {
           isDeletingProfilePost: false,
           deletingProfilePostSuccess: true,
-          postId: '1'
+          postId: 1
         }
       });
     });
@@ -321,20 +321,20 @@ describe('Post Action Test', () => {
           })
         );
 
-        return store.dispatch<any>(deleteUserProfilePost('1')).then(() => {
+        return store.dispatch<any>(deleteUserProfilePost(1)).then(() => {
           expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
           expect(mockedAxios.delete).toHaveBeenCalledWith('/posts/1');
           expect(store.getActions()).toEqual([
             {
-              type: 'DELETING_PROFILE_POSTS',
+              type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS,
               payload: { isDeletingProfilePost: true }
             },
             {
-              type: 'DELETING_PROFILE_POSTS_SUCCESS',
+              type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_SUCCESS,
               payload: {
                 isDeletingProfilePost: false,
                 deletingProfilePostSuccess: true,
-                postId: '1'
+                postId: 1
               }
             }
           ]);
@@ -348,16 +348,16 @@ describe('Post Action Test', () => {
           })
         );
 
-        return store.dispatch<any>(deleteUserProfilePost('1')).then(() => {
+        return store.dispatch<any>(deleteUserProfilePost(1)).then(() => {
           expect(mockedAxios.delete).toHaveBeenCalledTimes(1);
           expect(mockedAxios.delete).toHaveBeenCalledWith('/posts/1');
           expect(store.getActions()).toEqual([
             {
-              type: 'DELETING_PROFILE_POSTS',
+              type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS,
               payload: { isDeletingProfilePost: true }
             },
             {
-              type: 'DELETING_PROFILE_POSTS_FAILED',
+              type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_FAILED,
               payload: {
                 isDeletingProfilePost: false,
                 deletingProfilePostFailed: true
@@ -372,7 +372,7 @@ describe('Post Action Test', () => {
   describe('UPDATING A POSTS ACTIONS', () => {
     it('should set isEditingPost to TRUE', () => {
       expect(isEditingPost()).toEqual({
-        type: 'IS_EDITING_POST',
+        type: ProfilePostEnumTypes.IS_EDITING_POST,
         payload: {
           isEditingPost: true
         }
@@ -381,7 +381,7 @@ describe('Post Action Test', () => {
 
     it('should call isEditingPostFailed to set payload', () => {
       expect(isEditingPostFailed()).toEqual({
-        type: 'EDITING_POST_FAILED',
+        type: ProfilePostEnumTypes.EDITING_POST_FAILED,
         payload: {
           isEditingPost: false,
           editingFailed: true
@@ -399,7 +399,7 @@ describe('Post Action Test', () => {
           updatedAt: '21'
         })
       ).toEqual({
-        type: 'EDITING_POST_SUCCESS',
+        type: ProfilePostEnumTypes.EDITING_POST_SUCCESS,
         payload: {
           isEditingPost: false,
           editingSuccess: true,
@@ -426,11 +426,11 @@ describe('Post Action Test', () => {
         expect(mockedAxios.put).toHaveBeenCalledWith('/posts/1', { body: 'b', title: 't' });
         expect(store.getActions()).toEqual([
           {
-            type: 'IS_EDITING_POST',
+            type: ProfilePostEnumTypes.IS_EDITING_POST,
             payload: { isEditingPost: true }
           },
           {
-            type: 'EDITING_POST_FAILED',
+            type: ProfilePostEnumTypes.EDITING_POST_FAILED,
             payload: {
               isEditingPost: false,
               editingFailed: true
@@ -463,11 +463,11 @@ describe('Post Action Test', () => {
         expect(mockedAxios.put).toHaveBeenCalledWith('/posts/1', { title: 't', body: 'b' });
         expect(store.getActions()).toEqual([
           {
-            type: 'IS_EDITING_POST',
+            type: ProfilePostEnumTypes.IS_EDITING_POST,
             payload: { isEditingPost: true }
           },
           {
-            type: 'EDITING_POST_SUCCESS',
+            type: ProfilePostEnumTypes.EDITING_POST_SUCCESS,
             payload: {
               isEditingPost: false,
               editingSuccess: true,

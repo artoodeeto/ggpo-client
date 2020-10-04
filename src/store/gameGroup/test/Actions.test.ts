@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
 import { userInitialState } from 'models/User/userInitialState';
-import { GameGroupActionTypes } from '../Types';
+import { GameGroupEnumTypes } from '../Types';
 import {
   isFetchingGameGroup,
   isFetchingGameGroupFailed,
@@ -35,7 +35,7 @@ describe('GameGroup Action Test', () => {
   describe('isFetchingGameGroup ACTION', () => {
     it('should set isFetchingSomeGameGroup to true', () => {
       expect(isFetchingGameGroup()).toEqual({
-        type: GameGroupActionTypes.IS_FETCHING_SOME_GAME_GROUPS,
+        type: GameGroupEnumTypes.IS_FETCHING_SOME_GAME_GROUPS,
         payload: {
           isFetchingSomeGameGroup: true
         }
@@ -46,7 +46,7 @@ describe('GameGroup Action Test', () => {
   describe('isFetchingGameGroup ACTION', () => {
     it('should set fetchingSomeGameGroupFailed to true', () => {
       expect(isFetchingGameGroupFailed()).toEqual({
-        type: GameGroupActionTypes.IS_FETCHING_GAME_GROUPS_FAILED,
+        type: GameGroupEnumTypes.IS_FETCHING_GAME_GROUPS_FAILED,
         payload: {
           fetchingSomeGameGroupFailed: true
         }
@@ -80,7 +80,7 @@ describe('GameGroup Action Test', () => {
         }
       ];
       expect(isFetchingGameGroupSuccess(gg)).toEqual({
-        type: GameGroupActionTypes.IS_FETCHING_GAME_GROUPS_SUCCESS,
+        type: GameGroupEnumTypes.IS_FETCHING_GAME_GROUPS_SUCCESS,
         payload: {
           isFetchingSomeGameGroup: false,
           isFetchingSomeGameGroupSuccess: true,

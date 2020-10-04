@@ -7,7 +7,7 @@ import { IUser } from 'interfaces/user';
  * {@link src/interfaces/user.ts}
  */
 export const userInitialState: IUser = {
-  id: null,
+  id: 0,
   username: '',
   email: ''
 };

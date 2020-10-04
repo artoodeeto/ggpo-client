@@ -3,6 +3,9 @@ import { IGameGroup } from 'interfaces/gameGroup';
 import FollowAndUnFollowBtn from 'components/shared/FollowAndUnfollowButton/FollowAndUnfollowButton';
 import { connect } from 'react-redux';
 import { followGameGroupItem, unFollowGameGroupItem } from 'store/gameGroupItem/Actions';
+import { RootState } from 'store/root/root_reducer';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 
 type GameItemProps = {
   isFollower: boolean;
@@ -29,7 +32,7 @@ const GameItem: FC<GameItemProps> = ({ isFollower, gameItem, handleToFollow, han
   );
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
     handleToFollow: (id: number) => dispatch(followGameGroupItem(id)),
     handleToUnfollow: (id: number) => dispatch(unFollowGameGroupItem(id))

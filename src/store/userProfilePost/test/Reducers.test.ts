@@ -1,6 +1,6 @@
 import userProfilePost from '../Reducers';
 import { userProfilePostInitialState } from 'models/Post/userProfilePostInitialState';
-import { ProfilePostActionTypes } from '../Types';
+import { ProfilePostEnumTypes } from '../Types';
 
 describe('User Profile Post Reducer Test', () => {
   it('should be equal to initial state', () => {
@@ -26,7 +26,7 @@ describe('User Profile Post Reducer Test', () => {
 
     expect(
       userProfilePost(state, {
-        type: ProfilePostActionTypes.IS_FETCHING_USER_POSTS,
+        type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS,
         payload: {
           isFetchingUserPosts: true
         }
@@ -67,7 +67,7 @@ describe('User Profile Post Reducer Test', () => {
 
     expect(
       userProfilePost(state, {
-        type: ProfilePostActionTypes.IS_FETCHING_USER_POSTS_FAILED,
+        type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS_FAILED,
         payload: {
           isFetchingUserPosts: false,
           isFetchingUserPostsFailed: true
@@ -119,7 +119,7 @@ describe('User Profile Post Reducer Test', () => {
 
     expect(
       userProfilePost(state, {
-        type: ProfilePostActionTypes.PROFILE_POSTS,
+        type: ProfilePostEnumTypes.PROFILE_POSTS,
         payload: {
           isFetchingUserPosts: false,
           isFetchingUserPostsSuccess: true,
@@ -162,7 +162,7 @@ describe('User Profile Post Reducer Test', () => {
 
     expect(
       userProfilePost(state, {
-        type: ProfilePostActionTypes.IS_CREATING_NEW_PROFILE_POSTS,
+        type: ProfilePostEnumTypes.IS_CREATING_NEW_PROFILE_POSTS,
         payload: {
           isCreatingPost: true
         }
@@ -218,7 +218,7 @@ describe('User Profile Post Reducer Test', () => {
     };
 
     const returnVal = userProfilePost(state, {
-      type: ProfilePostActionTypes.NEW_PROFILE_POSTS,
+      type: ProfilePostEnumTypes.NEW_PROFILE_POSTS,
       payload: {
         isCreatingPost: false,
         creatingNewPostFailed: false,
@@ -280,7 +280,7 @@ describe('User Profile Post Reducer Test', () => {
     };
 
     const returnVal = userProfilePost(state, {
-      type: ProfilePostActionTypes.NEW_POST_FAILED,
+      type: ProfilePostEnumTypes.NEW_POST_FAILED,
       payload: {
         isCreatingPost: false,
         creatingNewPostFailed: true,
@@ -323,7 +323,7 @@ describe('User Profile Post Reducer Test', () => {
     };
 
     const returnVal = userProfilePost(state, {
-      type: ProfilePostActionTypes.DELETING_PROFILE_POSTS,
+      type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS,
       payload: {
         isDeletingProfilePost: true
       }
@@ -364,7 +364,7 @@ describe('User Profile Post Reducer Test', () => {
     };
 
     const returnVal = userProfilePost(state, {
-      type: ProfilePostActionTypes.DELETING_PROFILE_POSTS_FAILED,
+      type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_FAILED,
       payload: {
         isDeletingProfilePost: false,
         deletingProfilePostFailed: true
@@ -421,7 +421,7 @@ describe('User Profile Post Reducer Test', () => {
     };
 
     const returnVal = userProfilePost(state, {
-      type: ProfilePostActionTypes.DELETING_PROFILE_POSTS_SUCCESS,
+      type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_SUCCESS,
       payload: {
         isDeletingProfilePost: false,
         deletingProfilePostSuccess: true,
@@ -475,7 +475,7 @@ describe('User Profile Post Reducer Test', () => {
       };
 
       const returnVal = userProfilePost(state, {
-        type: ProfilePostActionTypes.IS_EDITING_POST,
+        type: ProfilePostEnumTypes.IS_EDITING_POST,
         payload: {
           isEditingPost: true
         }
@@ -524,7 +524,7 @@ describe('User Profile Post Reducer Test', () => {
       };
 
       const returnVal = userProfilePost(state, {
-        type: ProfilePostActionTypes.EDITING_POST_SUCCESS,
+        type: ProfilePostEnumTypes.EDITING_POST_SUCCESS,
         payload: {
           isEditingPost: false,
           editingSuccess: true,
@@ -583,7 +583,7 @@ describe('User Profile Post Reducer Test', () => {
       };
 
       const returnVal = userProfilePost(state, {
-        type: ProfilePostActionTypes.EDITING_POST_FAILED,
+        type: ProfilePostEnumTypes.EDITING_POST_FAILED,
         payload: {
           isEditingPost: false,
           editingFailed: true

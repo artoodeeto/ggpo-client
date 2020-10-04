@@ -3,7 +3,7 @@ import SignupLoginContainer from 'components/SignupLogin/SignupLoginContainer';
 
 export interface RouteConfigInterface {
   path: string;
-  component: FC;
+  component: FC<any>;
   isPrivate: boolean;
   exact: boolean;
   childRoutes?: RouteConfigInterface[];
@@ -29,7 +29,7 @@ const routeConfig: RouteConfigInterface[] = [
   },
   {
     path: '/profile',
-    component: lazy(() => import('components/Profile/Profile')),
+    component: lazy(() => import('components/Profile/ProfileContainer')),
     isPrivate: true,
     exact: false
   },

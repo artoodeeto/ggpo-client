@@ -1,5 +1,3 @@
-import { IUser } from './user';
-
 export interface ISession {
   isAuthenticated: boolean;
   isUserLoggingInOrSigningUp: boolean;
@@ -10,20 +8,9 @@ export interface ISession {
   expectedTokenExpirationInMillisec: number;
 }
 
-export interface ILoginSignupResponse {
-  meta: {
-    expToken: string;
-    issueDate: Date;
-  };
-  payload: {
-    token: string;
-    user: IUser;
-  };
-}
-
 export interface ILoginSignupFailed {
   errorType: string;
-  errorMessage: object;
+  errorMessage: any;
 }
 
 export interface ILoginSignUpFormParams {

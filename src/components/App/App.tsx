@@ -3,13 +3,21 @@ import React, { Component, Suspense } from 'react';
 import AppStyles from './App.module.scss';
 import MainRoute from 'routes/main.router';
 import { connect } from 'react-redux';
-import { IState } from 'interfaces/stateInterface';
-import * as sessionActions from 'store/session/Actions';
-import * as userActions from 'store/user/Actions';
 import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
 import routeConfig from 'routes/routes.config';
+import { AnyAction } from 'redux';
+import { RootState } from 'store/root/root_reducer';
+import { ThunkDispatch } from 'redux-thunk';
 
-class App extends Component<any> {
+interface AppProps {
+  isAuth: boolean;
+  expectedTokenExp: number;
+  toAutoLogout: (timer: number) => void;
+}
+
+interface AppState {}
+
+class App extends Component<AppProps, AppState> {
   componentDidMount() {
     if (this.props.isAuth) {
       this.props.toAutoLogout(Number(this.props.expectedTokenExp - Date.now()));
@@ -27,17 +35,15 @@ class App extends Component<any> {
   }
 }
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {
     expectedTokenExp: state.session.expectedTokenExpirationInMillisec,
     isAuth: state.session.isAuthenticated
   };
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
-    removeSession: () => dispatch(sessionActions.logoutSession()),
-    logOutUser: () => dispatch(userActions.logoutUser()),
     toAutoLogout: (timer: number) => autoLogoutAfterTokenExpire(dispatch, timer)
   };
 };

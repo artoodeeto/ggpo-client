@@ -1,22 +1,21 @@
 import { IStateProfilePost } from 'interfaces/post';
-import { ProfilePostActionTypes } from './Types';
+import { ProfilePostEnumTypes, UserProfilePostActionTypes } from './Types';
 import { userProfilePostInitialState } from 'models/Post/userProfilePostInitialState';
 import { deleteAUserPost } from 'helper/onDeleteUserPost';
 import { updateAUserPost } from 'helper/onUpdateUserPost';
 
-const initState = {
-  ...userProfilePostInitialState
-};
-
-const userProfilePost = (state = initState, action: any): IStateProfilePost => {
+const userProfilePost = (
+  state = userProfilePostInitialState,
+  action: UserProfilePostActionTypes
+): IStateProfilePost => {
   switch (action.type) {
-    case ProfilePostActionTypes.IS_FETCHING_USER_POSTS: {
+    case ProfilePostEnumTypes.IS_FETCHING_USER_POSTS: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.PROFILE_POSTS: {
+    case ProfilePostEnumTypes.PROFILE_POSTS: {
       return {
         ...state,
         isFetchingUserPosts: action.payload.isFetchingUserPosts,
@@ -24,19 +23,19 @@ const userProfilePost = (state = initState, action: any): IStateProfilePost => {
         posts: [...action.payload.posts]
       };
     }
-    case ProfilePostActionTypes.IS_FETCHING_USER_POSTS_FAILED: {
+    case ProfilePostEnumTypes.IS_FETCHING_USER_POSTS_FAILED: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.IS_CREATING_NEW_PROFILE_POSTS: {
+    case ProfilePostEnumTypes.IS_CREATING_NEW_PROFILE_POSTS: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.NEW_PROFILE_POSTS: {
+    case ProfilePostEnumTypes.NEW_PROFILE_POSTS: {
       return {
         ...state,
         isCreatingPost: action.payload.isCreatingPost,
@@ -45,19 +44,19 @@ const userProfilePost = (state = initState, action: any): IStateProfilePost => {
         posts: [action.payload.post, ...state.posts]
       };
     }
-    case ProfilePostActionTypes.NEW_POST_FAILED: {
+    case ProfilePostEnumTypes.NEW_POST_FAILED: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.DELETING_PROFILE_POSTS: {
+    case ProfilePostEnumTypes.DELETING_PROFILE_POSTS: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.DELETING_PROFILE_POSTS_SUCCESS: {
+    case ProfilePostEnumTypes.DELETING_PROFILE_POSTS_SUCCESS: {
       return {
         ...state,
         isDeletingProfilePost: action.payload.isDeletingProfilePost,
@@ -65,25 +64,25 @@ const userProfilePost = (state = initState, action: any): IStateProfilePost => {
         posts: deleteAUserPost(state.posts, action.payload.postId)
       };
     }
-    case ProfilePostActionTypes.DELETING_PROFILE_POSTS_FAILED: {
+    case ProfilePostEnumTypes.DELETING_PROFILE_POSTS_FAILED: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.IS_EDITING_POST: {
+    case ProfilePostEnumTypes.IS_EDITING_POST: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.EDITING_POST_FAILED: {
+    case ProfilePostEnumTypes.EDITING_POST_FAILED: {
       return {
         ...state,
         ...action.payload
       };
     }
-    case ProfilePostActionTypes.EDITING_POST_SUCCESS: {
+    case ProfilePostEnumTypes.EDITING_POST_SUCCESS: {
       return {
         ...state,
         isEditingPost: action.payload.isEditingPost,

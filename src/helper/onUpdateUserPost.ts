@@ -1,6 +1,6 @@
 import { IPost } from 'interfaces/post';
 
-export function updateAUserPost(statePost: IPost[], payloadPost: IPost) {
+export function updateAUserPost(statePost: IPost[], payloadPost: IPost): IPost[] {
   return statePost.reduce((acc: IPost[], post: IPost) => {
     if (Number(post.id) === Number(payloadPost.id)) {
       acc.push({

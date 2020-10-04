@@ -1,17 +1,21 @@
-import React, { useState, useEffect, FormEvent, FC } from 'react';
-import * as userSelectors from 'store/user/Selectors';
-import * as sessionSelectors from 'store/session/Selectors';
-import * as sessionActions from 'store/session/Actions';
+import React, { useState, FormEvent, FC } from 'react';
 import { connect } from 'react-redux';
-import { IState } from 'interfaces/stateInterface';
 import { ILoginSignUpFormParams } from 'interfaces/session';
+import { RootState } from 'store/root/root_reducer';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { signMeUp } from 'store/session/Actions';
+
+type SignupProps = {
+  onSignup: (userSignup: ILoginSignUpFormParams) => void;
+};
 
 const onSubmitSignup = (
   event: FormEvent,
   email: string,
   username: string,
   password: string,
-  onSignup: Function
+  onSignup: (userSignup: ILoginSignUpFormParams) => void
 ): void => {
   event.preventDefault();
 
@@ -24,17 +28,18 @@ const onSubmitSignup = (
   onSignup(formSignup);
 };
 
-export const Signup: FC = (props: any) => {
+// TODO: Refactor this to have a shared element. this sucks bro
+
+export const Signup: FC<SignupProps> = ({ onSignup }) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {}, [username, email, password]);
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <div>
       <div>
-        <form onSubmit={(e) => onSubmitSignup(e, email, username, password, props.onSignup)}>
+        <form onSubmit={(e) => onSubmitSignup(e, email, username, password, onSignup)}>
           <label htmlFor="email">
             Email:
             <input
@@ -73,6 +78,21 @@ export const Signup: FC = (props: any) => {
               required
             />
           </label>
+          {
+            // currently not working. refactoring this to check if password is the same as conf password
+          }
+          <label htmlFor="conf_password">
+            Confirm Password:
+            <input
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
+              placeholder="confirm password"
+              type="text"
+              name="conf_password"
+              id=""
+              required
+            />
+          </label>
 
           <input type="submit" value="Sigup" />
         </form>
@@ -81,17 +101,13 @@ export const Signup: FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  return {
-    sign: 'up',
-    isAuthenticated: sessionSelectors.isUserAuthorized(state),
-    userInfo: userSelectors.userInfo(state)
-  };
+const mapStateToProps = (state: RootState) => {
+  return {};
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
-    onSignup: (userSignup: ILoginSignUpFormParams) => dispatch(sessionActions.signMeUp(userSignup))
+    onSignup: (userSignup: ILoginSignUpFormParams) => dispatch(signMeUp(userSignup))
   };
 };
 
