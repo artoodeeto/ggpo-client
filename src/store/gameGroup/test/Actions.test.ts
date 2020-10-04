@@ -129,7 +129,7 @@ describe('GameGroup Action Test', () => {
 
       return store.dispatch<any>(getSomeGameGroups(1, 1)).then(() => {
         expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-        expect(mockedAxios.get).toHaveBeenCalledWith('/game_groups/query/some/game_groups?offset=1&limit=1');
+        expect(mockedAxios.get).toHaveBeenCalledWith('/game-groups?offset=1&limit=1');
         expect(store.getActions()).toEqual([
           { type: 'IS_FETCHING_SOME_GAME_GROUPS', payload: { isFetchingSomeGameGroup: true } },
           {
@@ -153,7 +153,7 @@ describe('GameGroup Action Test', () => {
 
       return store.dispatch<any>(getSomeGameGroups(1, 1)).then(() => {
         expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-        expect(mockedAxios.get).toHaveBeenCalledWith('/game_groups/query/some/game_groups?offset=1&limit=1');
+        expect(mockedAxios.get).toHaveBeenCalledWith('/game-groups?offset=1&limit=1');
         expect(store.getActions()).toEqual([
           { type: 'IS_FETCHING_SOME_GAME_GROUPS', payload: { isFetchingSomeGameGroup: true } },
           { type: 'IS_FETCHING_GAME_GROUPS_FAILED', payload: { fetchingSomeGameGroupFailed: true } }

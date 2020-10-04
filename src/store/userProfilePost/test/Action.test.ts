@@ -144,7 +144,7 @@ describe('Post Action Test', () => {
 
       return store.dispatch<any>(getUserPosts(1, 2, 3)).then(() => {
         expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-        expect(mockedAxios.get).toHaveBeenCalledWith('/users/posts/1?offset=2&limit=3');
+        expect(mockedAxios.get).toHaveBeenCalledWith('/users/1/posts?offset=2&limit=3');
         expect(store.getActions()).toEqual([
           { type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS, payload: { isFetchingUserPosts: true } },
           {
@@ -176,7 +176,7 @@ describe('Post Action Test', () => {
 
       return store.dispatch<any>(getUserPosts(1, 2, 3)).then(() => {
         expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-        expect(mockedAxios.get).toHaveBeenCalledWith('/users/posts/1?offset=2&limit=3');
+        expect(mockedAxios.get).toHaveBeenCalledWith('/users/1/posts?offset=2&limit=3');
         expect(store.getActions()).toEqual([
           { type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS, payload: { isFetchingUserPosts: true } },
           {
