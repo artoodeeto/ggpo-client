@@ -37,7 +37,7 @@ export async function deletePostAPI(postId: number): Promise<void> {
 
 export async function getSomePostAPI(offset: number, limit: number): Promise<IGetSomePostResponse> {
   try {
-    const res = await axios.get(`/posts/query/some/posts?offset=${offset}&limit=${limit}`);
+    const res = await axios.get(`/posts?offset=${offset}&limit=${limit}`);
     return res.data;
   } catch (error) {
     throw error.response.data;
