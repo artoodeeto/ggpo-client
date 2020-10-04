@@ -7,7 +7,7 @@ import { IUsersGameGroup } from './usersGameGroup';
  * user initial state should also be
  */
 export interface IUser {
-  id: number | null;
+  id: number;
   username: string;
   email: string;
   createdAt?: string;

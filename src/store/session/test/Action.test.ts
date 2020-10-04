@@ -1,6 +1,6 @@
 import * as sessionActions from '../Actions';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
-import { SessionActionTypes } from '../Types';
+import { SessionEnumTypes } from '../Types';
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import axiosInstance from 'lib/axios.instance';
@@ -21,7 +21,7 @@ describe('Session Action Test', () => {
   describe('onSuccessLoginOrSignUp ACTION', () => {
     it('should set isAuthenticated and tokenExpirationTime', () => {
       expect(sessionActions.onSuccessLoginOrSignUp(111, 12)).toEqual({
-        type: SessionActionTypes.LOGIN_SIGNUP_SUCCESS,
+        type: SessionEnumTypes.LOGIN_SIGNUP_SUCCESS,
         payload: {
           isAuthenticated: true,
           tokenExpirationTime: 111,
@@ -38,7 +38,7 @@ describe('Session Action Test', () => {
   describe('userLoggingInOrSigningUp ACTION', () => {
     it('should set isUserLoggingInOrSigningUp to true', () => {
       expect(sessionActions.userLoggingInOrSigningUp()).toEqual({
-        type: SessionActionTypes.IS_LOGGING_IN_OR_SIGNING_UP,
+        type: SessionEnumTypes.IS_LOGGING_IN_OR_SIGNING_UP,
         payload: {
           isUserLoggingInOrSigningUp: true
         }
@@ -49,7 +49,7 @@ describe('Session Action Test', () => {
   describe('logoutSession ACTION', () => {
     it('should be equal to initial state on logout', () => {
       expect(sessionActions.logoutSession()).toEqual({
-        type: SessionActionTypes.LOGOUT,
+        type: SessionEnumTypes.LOGOUT,
         payload: {
           ...sessionInitialState
         }
@@ -60,7 +60,7 @@ describe('Session Action Test', () => {
   describe('userLoginOrSignupFailed ACTION', () => {
     it('should set state to failed properties on failed signup or login', () => {
       expect(sessionActions.userLoginOrSignupFailed({ errorType: 'Query Failed', errorMessage: {} })).toEqual({
-        type: SessionActionTypes.SIGNUP_LOGIN_FAILED,
+        type: SessionEnumTypes.SIGNUP_LOGIN_FAILED,
         payload: {
           isUserLoggingInOrSigningUp: false,
           hasErrorOnSigningUpOrLoggingIn: true,

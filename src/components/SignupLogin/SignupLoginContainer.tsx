@@ -2,13 +2,22 @@ import React, { Component, Fragment } from 'react';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import { connect } from 'react-redux';
-import { IState } from 'interfaces/stateInterface';
-import * as sessionSelectors from 'store/session/Selectors';
 import { Redirect } from 'react-router-dom';
 import ErrorMsg from 'components/shared/ErrorMessage/ErrorMsg';
+import { RootState } from 'store/root/root_reducer';
+import { hasErrorOnSignupOrLogin, isUserAuthorized } from 'store/session/Selectors';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+interface SignupLoginContainerProps {
+  hasErrors: boolean;
+  isAuthenticated: boolean;
+}
+
+interface SignupLoginContainerState {}
 
 // background here should show some video, maybe the TI championship games
-class SignupLoginContainer extends Component<any> {
+class SignupLoginContainer extends Component<SignupLoginContainerProps, SignupLoginContainerState> {
   render() {
     return (
       <Fragment>
@@ -33,14 +42,14 @@ class SignupLoginContainer extends Component<any> {
   }
 }
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {
-    hasErrors: sessionSelectors.hasErrorOnSignupOrLogin(state),
-    isAuthenticated: sessionSelectors.isUserAuthorized(state)
+    hasErrors: hasErrorOnSignupOrLogin(state),
+    isAuthenticated: isUserAuthorized(state)
   };
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {};
 };
 

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { getAGameGroupAPI } from 'api/gamegroups/gamegroups';
-import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import { setIsFollower } from 'store/gameGroupItem/Actions';
 import { IGameGroup } from 'interfaces/gameGroup';
 import GameItem from './GameItem/GameItem';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
 
 interface RouteCustomParams {
   id: string;
@@ -44,6 +46,7 @@ class GameItemContainer extends Component<GameItemContainerProps, GameItemContai
       this.setState({ isFollower, theGameGroup: gameGroup });
       this.props.setIsFollower(isFollower);
     } catch (error) {
+      // TODO: add error handling here
       console.log(error);
     }
   }
@@ -58,13 +61,13 @@ class GameItemContainer extends Component<GameItemContainerProps, GameItemContai
   }
 }
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {
     isFollowing: state.gameGroupItem.gameGroupItem.isFollower
   };
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
     setIsFollower: (isFollowing: boolean) => dispatch(setIsFollower(isFollowing))
   };

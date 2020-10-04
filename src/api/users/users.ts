@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { IUserPostsResponse } from 'interfaces/api/users';
 
-export async function getUserPostsAPI(userID: number, offset: number, limit: number) {
+export async function getUserPostsAPI(userID: number, offset: number, limit: number): Promise<IUserPostsResponse> {
   try {
     const res = await axios.get(`/users/posts/${userID}?offset=${offset}&limit=${limit}`);
     return res.data;

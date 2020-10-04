@@ -12,7 +12,7 @@ import {
   setIsFollower,
   unFollowGameGroupItem
 } from '../Actions';
-import { GameGroupItemActionTypes } from '../Types';
+import { GameGroupItemEnumTypes } from '../Types';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -39,7 +39,7 @@ describe('Game Group Item Action Test', () => {
   describe('setIsFollower ACTION', () => {
     it('should set isFollower to the given boolean', () => {
       expect(setIsFollower(false)).toEqual({
-        type: GameGroupItemActionTypes.SET_IS_FOLLOWING,
+        type: GameGroupItemEnumTypes.SET_IS_FOLLOWING,
         payload: {
           isFollower: false
         }
@@ -50,7 +50,7 @@ describe('Game Group Item Action Test', () => {
   describe('FOLLOW GAME GROUP ACTION', () => {
     it('set isCurrentlyFollowing to true', () => {
       expect(isCurrentlyFollowing()).toEqual({
-        type: GameGroupItemActionTypes.CURRENTLY_FOLLOWING_GAME_GROUP,
+        type: GameGroupItemEnumTypes.CURRENTLY_FOLLOWING_GAME_GROUP,
         payload: {
           isCurrentlyFollowing: true
         }
@@ -59,7 +59,7 @@ describe('Game Group Item Action Test', () => {
 
     it('should set isFollowingGameGroupItemSuccess properties', () => {
       expect(isFollowingGameGroupItemSuccess()).toEqual({
-        type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS,
+        type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS,
         payload: {
           isCurrentlyFollowing: false,
           isFollower: true
@@ -69,7 +69,7 @@ describe('Game Group Item Action Test', () => {
 
     it('should set isFollowingGameGroupItemFailed properties', () => {
       expect(isFollowingGameGroupItemFailed()).toEqual({
-        type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED,
+        type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED,
         payload: {
           isCurrentlyFollowing: false,
           isGameGroupItemFollowFailed: true
@@ -133,7 +133,7 @@ describe('Game Group Item Action Test', () => {
   describe('UNFOLLOW GAME GROUP ACTION', () => {
     it('set isCurrentlyFollowing to true', () => {
       expect(isCurrentlyUnfollowing()).toEqual({
-        type: GameGroupItemActionTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP,
+        type: GameGroupItemEnumTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP,
         payload: {
           isCurrentlyUnfollowing: true
         }
@@ -142,7 +142,7 @@ describe('Game Group Item Action Test', () => {
 
     it('should set isUnfollowingGameGroupItemSuccess properties', () => {
       expect(isUnfollowingGameGroupItemSuccess()).toEqual({
-        type: GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS,
+        type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS,
         payload: {
           isCurrentlyUnfollowing: false,
           isGameGroupItemUnfollowSuccess: true,
@@ -153,7 +153,7 @@ describe('Game Group Item Action Test', () => {
 
     it('should set isUnfollowingGameGroupItemFailed properties', () => {
       expect(isUnfollowingGameGroupItemFailed()).toEqual({
-        type: GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED,
+        type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED,
         payload: {
           isCurrentlyUnfollowing: false,
           isGameGroupItemUnfollowFailed: true

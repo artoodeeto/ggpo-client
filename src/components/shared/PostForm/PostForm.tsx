@@ -1,36 +1,47 @@
 import React, { FC, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { IState } from 'interfaces/stateInterface';
 import { submitNewUserPost, updateUserPost } from 'store/userProfilePost/Actions';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
+import { IPost } from 'interfaces/post';
 
-const PostForm: FC<any> = (props: any) => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+type PostFormProps = {
+  post?: IPost;
+  toEdit?: boolean;
+  handleToEdit?: (val: boolean) => void;
+  onCreateNewPost: (title: string, body: string) => void;
+  onUpdatePost: (id: number, title: string, body: string) => void;
+};
+
+const PostForm: FC<PostFormProps> = ({ post, toEdit, handleToEdit, onCreateNewPost, onUpdatePost }) => {
+  const [titleState, setTitle] = useState('');
+  const [bodyState, setBody] = useState('');
 
   const editHandler = () => {
-    props.handleToEdit(false);
-    props.onUpdatePost(props.postId, title, body);
+    if (handleToEdit) handleToEdit(false);
+    if (post) onUpdatePost(post.id, titleState, bodyState);
   };
 
   useEffect(() => {
-    if (props.toEdit) {
-      setTitle(props.title);
-      setBody(props.body);
+    if (toEdit && post) {
+      setTitle(post.title);
+      setBody(post.body);
     }
-  }, [props.toEdit, props.title, props.body]);
+  }, [toEdit, post]);
 
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          props.toEdit ? editHandler() : props.onCreateNewPost(title, body);
+          toEdit ? editHandler() : onCreateNewPost(titleState, bodyState);
         }}
       >
         <label htmlFor="title">
           <input
             onChange={(e) => setTitle(e.target.value)}
-            value={title}
+            value={titleState}
             placeholder="your title"
             type="text"
             name="title"
@@ -42,7 +53,7 @@ const PostForm: FC<any> = (props: any) => {
         <label htmlFor="body">
           <textarea
             onChange={(e) => setBody(e.target.value)}
-            value={body}
+            value={bodyState}
             placeholder="the body"
             name="body"
             id=""
@@ -50,20 +61,27 @@ const PostForm: FC<any> = (props: any) => {
           ></textarea>
         </label>
 
-        <input type="submit" value={props.toEdit ? 'Update' : 'Post'} />
+        <input type="submit" value={toEdit ? 'Update' : 'Post'} />
+        <button
+          onClick={() => {
+            if (handleToEdit) handleToEdit(false);
+          }}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
 };
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
     onCreateNewPost: (title: string, body: string) => dispatch(submitNewUserPost(title, body)),
-    onUpdatePost: (id: string, title: string, body: string) => dispatch(updateUserPost(id, title, body))
+    onUpdatePost: (id: number, title: string, body: string) => dispatch(updateUserPost(id, title, body))
   };
 };
 

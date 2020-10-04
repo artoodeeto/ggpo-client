@@ -2,7 +2,9 @@ import React, { FC, ReactElement } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import * as sessionSelectors from 'store/session/Selectors';
 import { connect } from 'react-redux';
-import { IState } from '../../interfaces/stateInterface';
+import { RootState } from 'store/root/root_reducer';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 
 const Private: FC<any> = (props: any): ReactElement => {
   const { isAuthenticated, component: Component, path } = props;
@@ -26,13 +28,13 @@ const Private: FC<any> = (props: any): ReactElement => {
   );
 };
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {
     isAuthenticated: sessionSelectors.isUserAuthorized(state)
   };
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {};
 };
 

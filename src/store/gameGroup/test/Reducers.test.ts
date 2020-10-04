@@ -1,6 +1,6 @@
 import gameGroups from '../Reducers';
 import { gameGroupInitSate } from 'models/GameGroup/gameGroupInitState';
-import { GameGroupActionTypes } from '../Types';
+import { GameGroupEnumTypes } from '../Types';
 
 describe('Game Group Reducer Test', () => {
   it('should be equal to initial state', () => {
@@ -17,7 +17,7 @@ describe('Game Group Reducer Test', () => {
 
     expect(
       gameGroups(state, {
-        type: GameGroupActionTypes.IS_FETCHING_SOME_GAME_GROUPS,
+        type: GameGroupEnumTypes.IS_FETCHING_SOME_GAME_GROUPS,
         payload: {
           isFetchingSomeGameGroup: true
         }
@@ -40,7 +40,7 @@ describe('Game Group Reducer Test', () => {
 
     expect(
       gameGroups(state, {
-        type: GameGroupActionTypes.IS_FETCHING_GAME_GROUPS_FAILED,
+        type: GameGroupEnumTypes.IS_FETCHING_GAME_GROUPS_FAILED,
         payload: {
           fetchingSomeGameGroupFailed: true
         }
@@ -63,7 +63,7 @@ describe('Game Group Reducer Test', () => {
 
     expect(
       gameGroups(state, {
-        type: GameGroupActionTypes.IS_FETCHING_GAME_GROUPS_SUCCESS,
+        type: GameGroupEnumTypes.IS_FETCHING_GAME_GROUPS_SUCCESS,
         payload: {
           isFetchingSomeGameGroup: false,
           isFetchingSomeGameGroupSuccess: true,

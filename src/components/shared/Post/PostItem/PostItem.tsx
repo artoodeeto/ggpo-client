@@ -1,49 +1,52 @@
 import React, { FC, Fragment, useState } from 'react';
-import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import PostItemStyle from './PostItem.module.scss';
 import { deleteUserProfilePost } from 'store/userProfilePost/Actions';
 import PostForm from 'components/shared/PostForm/PostForm';
+import { RootState } from 'store/root/root_reducer';
+import { IPost } from 'interfaces/post';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+type PostItemProps = {
+  post: IPost;
+  showOptionsBtn: boolean;
+  deletePost: (postId: number) => void;
+};
 
 // ? to allow delete post in feed or not?
 // ! if we allow it then we have to query the owner of the post or include it in the API
 // ! and check if the current user owns the posts in feed
-export const PostItem: FC<any> = (props: any) => {
+export const PostItem: FC<PostItemProps> = ({ post, showOptionsBtn, deletePost }) => {
   let [toEditValue, setToEdit] = useState(false);
 
   const toDisplay = toEditValue ? (
-    <PostForm
-      postId={props.post.id}
-      title={props.post.title}
-      body={props.post.body}
-      toEdit={true}
-      handleToEdit={setToEdit}
-    />
+    <PostForm post={post} toEdit={true} handleToEdit={setToEdit} />
   ) : (
     <div className={PostItemStyle.box}>
-      <h3>title: {props.post.title}</h3>
+      <h3>title: {post.title}</h3>
       <p>
-        body: {props.post.body}
+        body: {post.body}
         <br />
-        {props.post.user ? `by: ${props.post.user.username}` : ''}
+        {post.user ? `by: ${post.user.username}` : ''}
         <br />
-        {props.post.user ? `email: ${props.post.user.email}` : ''}
+        {post.user ? `email: ${post.user.email}` : ''}
       </p>
-      {props.showOptionsBtn ? <button onClick={() => props.deletePost(props.post.id)}>Delete</button> : ''}
-      {props.showOptionsBtn ? <button onClick={() => setToEdit(!toEditValue)}>Edit</button> : ''}
+      {showOptionsBtn ? <button onClick={() => deletePost(Number(post.id))}>Delete</button> : null}
+      {showOptionsBtn ? <button onClick={() => setToEdit(!toEditValue)}>Edit</button> : null}
     </div>
   );
 
   return <Fragment>{toDisplay}</Fragment>;
 };
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {
-    deletePost: (postId: string) => dispatch(deleteUserProfilePost(postId))
+    deletePost: (postId: number) => dispatch(deleteUserProfilePost(postId))
   };
 };
 

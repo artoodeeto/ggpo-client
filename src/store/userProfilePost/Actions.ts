@@ -1,17 +1,37 @@
-import { ProfilePostActionTypes } from './Types';
+import {
+  ICreatingNewPostFailed,
+  IDeletingUserProfilePost,
+  IDeletingUserProfilePostFailed,
+  IDeletingUserProfilePostSuccess,
+  IFetchingUserPosts,
+  IFetchingUserPostsFailed,
+  IIsCreatingNewPost,
+  IIsEditingPost,
+  IIsEditingPostFailed,
+  IIsEditingPostSuccess,
+  INewUserProfilePost,
+  IUserProfilePost,
+  ProfilePostEnumTypes
+} from './Types';
 import { createPostAPI, deletePostAPI, updatePostAPI } from 'api/posts/posts';
 import { IPost } from 'interfaces/post';
 import { getUserPostsAPI } from 'api/users/users';
+import { AppThunk } from 'interfaces/thunkType';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
 
-export const isCreatingNewPost = () => ({
-  type: ProfilePostActionTypes.IS_CREATING_NEW_PROFILE_POSTS,
+// ** SUBMIT NEW POST =======================
+
+export const isCreatingNewPost = (): IIsCreatingNewPost => ({
+  type: ProfilePostEnumTypes.IS_CREATING_NEW_PROFILE_POSTS,
   payload: {
     isCreatingPost: true
   }
 });
 
-export const newUserProfilePost = (post: IPost) => ({
-  type: ProfilePostActionTypes.NEW_PROFILE_POSTS,
+export const newUserProfilePost = (post: IPost): INewUserProfilePost => ({
+  type: ProfilePostEnumTypes.NEW_PROFILE_POSTS,
   payload: {
     isCreatingPost: false,
     creatingNewPostFailed: false,
@@ -20,8 +40,8 @@ export const newUserProfilePost = (post: IPost) => ({
   }
 });
 
-export const creatingNewPostFailed = () => ({
-  type: ProfilePostActionTypes.NEW_POST_FAILED,
+export const creatingNewPostFailed = (): ICreatingNewPostFailed => ({
+  type: ProfilePostEnumTypes.NEW_POST_FAILED,
   payload: {
     isCreatingPost: false,
     creatingNewPostFailed: true,
@@ -29,8 +49,8 @@ export const creatingNewPostFailed = () => ({
   }
 });
 
-export const submitNewUserPost = (title: string, body: string) => {
-  return async (dispatch: Function) => {
+export const submitNewUserPost = (title: string, body: string): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(isCreatingNewPost());
     try {
       const { payload } = await createPostAPI(title, body);
@@ -41,19 +61,19 @@ export const submitNewUserPost = (title: string, body: string) => {
   };
 };
 
-// ! ASYNC ACTIONS --------------------------------------------------
+// ** SUBMIT NEW POST =======================
 
 // * READ SOME POSTS ACTIONS --------------------------------------------------
 
-export const fetchingUserPosts = () => ({
-  type: ProfilePostActionTypes.IS_FETCHING_USER_POSTS,
+export const fetchingUserPosts = (): IFetchingUserPosts => ({
+  type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS,
   payload: {
     isFetchingUserPosts: true
   }
 });
 
-export const userProfilePost = (posts: IPost[]) => ({
-  type: ProfilePostActionTypes.PROFILE_POSTS,
+export const userProfilePost = (posts: IPost[]): IUserProfilePost => ({
+  type: ProfilePostEnumTypes.PROFILE_POSTS,
   payload: {
     isFetchingUserPosts: false,
     isFetchingUserPostsSuccess: true,
@@ -61,16 +81,16 @@ export const userProfilePost = (posts: IPost[]) => ({
   }
 });
 
-export const fetchingUserPostsFailed = () => ({
-  type: ProfilePostActionTypes.IS_FETCHING_USER_POSTS_FAILED,
+export const fetchingUserPostsFailed = (): IFetchingUserPostsFailed => ({
+  type: ProfilePostEnumTypes.IS_FETCHING_USER_POSTS_FAILED,
   payload: {
     isFetchingUserPosts: false,
     isFetchingUserPostsFailed: true
   }
 });
 
-export const getUserPosts = (userID: number, offset: number, limit: number) => {
-  return async (dispatch: Function) => {
+export const getUserPosts = (userID: number, offset: number, limit: number): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(fetchingUserPosts());
     try {
       const { payload } = await getUserPostsAPI(userID, offset, limit);
@@ -83,17 +103,17 @@ export const getUserPosts = (userID: number, offset: number, limit: number) => {
 
 // * READ SOME POSTS ACTIONS --------------------------------------------------
 
-// * UPDATE ACTIONS --------------------------------------------------
+// ! UPDATE USER POST --------------------------------------------------
 
-export const isEditingPost = () => ({
-  type: ProfilePostActionTypes.IS_EDITING_POST,
+export const isEditingPost = (): IIsEditingPost => ({
+  type: ProfilePostEnumTypes.IS_EDITING_POST,
   payload: {
     isEditingPost: true
   }
 });
 
-export const isEditingPostSuccess = (post: IPost) => ({
-  type: ProfilePostActionTypes.EDITING_POST_SUCCESS,
+export const isEditingPostSuccess = (post: IPost): IIsEditingPostSuccess => ({
+  type: ProfilePostEnumTypes.EDITING_POST_SUCCESS,
   payload: {
     isEditingPost: false,
     editingSuccess: true,
@@ -101,16 +121,16 @@ export const isEditingPostSuccess = (post: IPost) => ({
   }
 });
 
-export const isEditingPostFailed = () => ({
-  type: ProfilePostActionTypes.EDITING_POST_FAILED,
+export const isEditingPostFailed = (): IIsEditingPostFailed => ({
+  type: ProfilePostEnumTypes.EDITING_POST_FAILED,
   payload: {
     isEditingPost: false,
     editingFailed: true
   }
 });
 
-export const updateUserPost = (postId: string, title: string, body: string) => {
-  return async (dispatch: Function) => {
+export const updateUserPost = (postId: number, title: string, body: string): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(isEditingPost());
     try {
       const { payload } = await updatePostAPI(postId, title, body);
@@ -121,19 +141,19 @@ export const updateUserPost = (postId: string, title: string, body: string) => {
   };
 };
 
-// * UPDATE ACTIONS --------------------------------------------------
+// ! UPDATE USER POST  --------------------------------------------------
 
-// * DELETE ACTIONS --------------------------------------------------
+// * DELETE USER PROFILE POST --------------------------------------------------
 
-export const deletingUserProfilePost = () => ({
-  type: ProfilePostActionTypes.DELETING_PROFILE_POSTS,
+export const deletingUserProfilePost = (): IDeletingUserProfilePost => ({
+  type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS,
   payload: {
     isDeletingProfilePost: true
   }
 });
 
-export const deletingUserProfilePostSuccess = (postId: string) => ({
-  type: ProfilePostActionTypes.DELETING_PROFILE_POSTS_SUCCESS,
+export const deletingUserProfilePostSuccess = (postId: number): IDeletingUserProfilePostSuccess => ({
+  type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_SUCCESS,
   payload: {
     isDeletingProfilePost: false,
     deletingProfilePostSuccess: true,
@@ -141,16 +161,16 @@ export const deletingUserProfilePostSuccess = (postId: string) => ({
   }
 });
 
-export const deletingUserProfilePostFailed = () => ({
-  type: ProfilePostActionTypes.DELETING_PROFILE_POSTS_FAILED,
+export const deletingUserProfilePostFailed = (): IDeletingUserProfilePostFailed => ({
+  type: ProfilePostEnumTypes.DELETING_PROFILE_POSTS_FAILED,
   payload: {
     isDeletingProfilePost: false,
     deletingProfilePostFailed: true
   }
 });
 
-export const deleteUserProfilePost = (postId: string) => {
-  return async (dispatch: Function) => {
+export const deleteUserProfilePost = (postId: number): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(deletingUserProfilePost());
     try {
       await deletePostAPI(postId);
@@ -161,6 +181,4 @@ export const deleteUserProfilePost = (postId: string) => {
   };
 };
 
-// * DELETE ACTIONS --------------------------------------------------
-
-// ! ASYNC ACTIONS --------------------------------------------------
+// * DELETE USER PROFILE POST --------------------------------------------------

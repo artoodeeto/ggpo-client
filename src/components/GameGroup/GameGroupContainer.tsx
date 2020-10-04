@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import { IState } from 'interfaces/stateInterface';
 import { connect } from 'react-redux';
 import GameGroupList from './GameGroupList/GameGroupList';
+import { AnyAction } from 'redux';
+import { RootState } from 'store/root/root_reducer';
+import { ThunkDispatch } from 'redux-thunk';
 
-class GameGroupContainer extends Component<any> {
+interface GameGroupContainerProps {}
+
+interface GameGroupContainerState {}
+class GameGroupContainer extends Component<GameGroupContainerProps, GameGroupContainerState> {
   render() {
     return (
       <Fragment>
@@ -14,11 +19,11 @@ class GameGroupContainer extends Component<any> {
   }
 }
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {};
 };
 

@@ -1,16 +1,24 @@
 import React, { useEffect, FC } from 'react';
-import { IState } from 'interfaces/stateInterface';
-import { connect } from 'react-redux';
-import * as sessionSelectors from 'store/session/Selectors';
-import * as postSelectors from 'store/feedPost/Selectors';
-import * as postsActions from 'store/feedPost/Actions';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PostContainer from 'components/shared/Post/PostContainer';
+import { IPost } from 'interfaces/post';
+import { querySomePost } from 'store/feedPost/Actions';
+import { posts } from 'store/feedPost/Selectors';
+// import { isUserAuthorized } from 'store/session/Selectors';
 
-const Feed: FC = ({ queryPostsForFeed, posts }: any) => {
+type FeedProps = {
+  // queryPostsForFeed: (offset: number, limit: number) => void;
+  // posts: IPost[];
+};
+
+const Feed: FC<FeedProps> = () => {
+  const dispatch = useDispatch();
+  const postsFeed: IPost[] = useSelector(posts);
   useEffect(() => {
-    queryPostsForFeed(0, 5);
-  }, [queryPostsForFeed]);
+    // queryPostsForFeed(0, 5);
+    dispatch(querySomePost(0, 5));
+  }, [dispatch]);
   // TODO: load new posts when scrolling
   return (
     <div>
@@ -19,22 +27,24 @@ const Feed: FC = ({ queryPostsForFeed, posts }: any) => {
       <Link to="/game_groups">GG</Link>
 
       <h1>I am FEED TEST!</h1>
-      <PostContainer posts={posts} showDeletePostBtn={false} />
+      <PostContainer posts={postsFeed} showOptionsBtn={false} />
     </div>
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  return {
-    isAuthenticated: sessionSelectors.isUserAuthorized(state),
-    posts: postSelectors.posts(state)
-  };
-};
+// const mapStateToProps = (state: IState) => {
+//   return {
+//     isAuthenticated: isUserAuthorized(state),
+//     posts: posts(state)
+//   };
+// };
 
-const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    queryPostsForFeed: (offset: number, limit: number) => dispatch(postsActions.querySomePost(offset, limit))
-  };
-};
+// const mapDispatchToProps = (dispatch: Function) => {
+//   return {
+//     queryPostsForFeed: (offset: number, limit: number) => dispatch(querySomePost(offset, limit))
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+// export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+
+export default Feed;

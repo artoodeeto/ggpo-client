@@ -1,9 +1,22 @@
-import { GameGroupItemActionTypes } from './Types';
+import {
+  GameGroupItemEnumTypes,
+  IIsCurrentlyFollowing,
+  IIsCurrentlyUnfollowing,
+  IIsFollowingGameGroupItemFailed,
+  IIsFollowingGameGroupItemSuccess,
+  IIsUnfollowingGameGroupItemFailed,
+  IIsUnfollowingGameGroupItemSuccess,
+  ISetIsFollower
+} from './Types';
 import { followGameGroupAPI, unfollowGameGroupAPI } from 'api/gamegroups/gamegroups';
+import { AppThunk } from 'interfaces/thunkType';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
 
 // ! QUERY GAME GROUP ITEM ===================================
-export const setIsFollower = (isFollower: boolean) => ({
-  type: GameGroupItemActionTypes.SET_IS_FOLLOWING,
+export const setIsFollower = (isFollower: boolean): ISetIsFollower => ({
+  type: GameGroupItemEnumTypes.SET_IS_FOLLOWING,
   payload: {
     isFollower
   }
@@ -14,15 +27,15 @@ export const setIsFollower = (isFollower: boolean) => ({
  * because I dont really need the gameGroup in the store, but its here just incase.
  */
 
-// export const fetchingGameGroupItem = () => ({
-//   type: GameGroupItemActionTypes.FETCHING_GAME_GROUP_ITEM,
+// export const fetchingGameGroupItem = (): FetchingGameGroupItem => ({
+//   type: GameGroupItemEnumTypes.FETCHING_GAME_GROUP_ITEM,
 //   payload: {
 //     fetchingGameGroupItem: true
 //   }
 // });
 
-// export const isFetchingGameGroupItemSuccess = (gg: IGameGroup, isFollowing: boolean) => ({
-//   type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FETCH_SUCCESS,
+// export const isFetchingGameGroupItemSuccess = (gg: IGameGroup, isFollowing: boolean): IsFetchingGameGroupItemSuccess => ({
+//   type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FETCH_SUCCESS,
 //   payload: {
 //     isFetchingGameGroupItemSuccess: true,
 //     fetchingGameGroupItem: false,
@@ -31,8 +44,8 @@ export const setIsFollower = (isFollower: boolean) => ({
 //   }
 // });
 
-// export const isFetchingGameGroupItemFailed = () => ({
-//   type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FETCH_FAILED,
+// export const isFetchingGameGroupItemFailed = (): IsFetchingGameGroupItemFailed => ({
+//   type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FETCH_FAILED,
 //   payload: {
 //     fetchingSomeGameGroupFailed: true,
 //     fetchingGameGroupItem: false
@@ -55,31 +68,31 @@ export const setIsFollower = (isFollower: boolean) => ({
 
 // ! FOLLOW GAME GROUP ITEM  ===================================
 
-export const isCurrentlyFollowing = () => ({
-  type: GameGroupItemActionTypes.CURRENTLY_FOLLOWING_GAME_GROUP,
+export const isCurrentlyFollowing = (): IIsCurrentlyFollowing => ({
+  type: GameGroupItemEnumTypes.CURRENTLY_FOLLOWING_GAME_GROUP,
   payload: {
     isCurrentlyFollowing: true
   }
 });
 
-export const isFollowingGameGroupItemSuccess = () => ({
-  type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS,
+export const isFollowingGameGroupItemSuccess = (): IIsFollowingGameGroupItemSuccess => ({
+  type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS,
   payload: {
     isCurrentlyFollowing: false,
     isFollower: true
   }
 });
 
-export const isFollowingGameGroupItemFailed = () => ({
-  type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED,
+export const isFollowingGameGroupItemFailed = (): IIsFollowingGameGroupItemFailed => ({
+  type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED,
   payload: {
     isCurrentlyFollowing: false,
     isGameGroupItemFollowFailed: true
   }
 });
 
-export const followGameGroupItem = (id: number) => {
-  return async (dispatch: Function) => {
+export const followGameGroupItem = (id: number): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(isCurrentlyFollowing());
     try {
       await followGameGroupAPI(id);
@@ -92,15 +105,15 @@ export const followGameGroupItem = (id: number) => {
 // ! FOLLOW GAME GROUP ITEM  ===================================
 
 // ! UNFOLLOW GAME GROUP ITEM  ===================================
-export const isCurrentlyUnfollowing = () => ({
-  type: GameGroupItemActionTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP,
+export const isCurrentlyUnfollowing = (): IIsCurrentlyUnfollowing => ({
+  type: GameGroupItemEnumTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP,
   payload: {
     isCurrentlyUnfollowing: true
   }
 });
 
-export const isUnfollowingGameGroupItemSuccess = () => ({
-  type: GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS,
+export const isUnfollowingGameGroupItemSuccess = (): IIsUnfollowingGameGroupItemSuccess => ({
+  type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS,
   payload: {
     isCurrentlyUnfollowing: false,
     isGameGroupItemUnfollowSuccess: true,
@@ -108,16 +121,16 @@ export const isUnfollowingGameGroupItemSuccess = () => ({
   }
 });
 
-export const isUnfollowingGameGroupItemFailed = () => ({
-  type: GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED,
+export const isUnfollowingGameGroupItemFailed = (): IIsUnfollowingGameGroupItemFailed => ({
+  type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED,
   payload: {
     isCurrentlyUnfollowing: false,
     isGameGroupItemUnfollowFailed: true
   }
 });
 
-export const unFollowGameGroupItem = (id: number) => {
-  return async (dispatch: Function) => {
+export const unFollowGameGroupItem = (id: number): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(isCurrentlyUnfollowing());
     try {
       await unfollowGameGroupAPI(id);

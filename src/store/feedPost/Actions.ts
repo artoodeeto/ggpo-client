@@ -1,9 +1,15 @@
-import { PostFeedActionTypes } from './Types';
+import { PostFeedEnumTypes, IGetSomePostsFeed, IIsFetchingPosts, IIsFetchingPostsFailed } from './Types';
 import { getSomePostAPI } from 'api/posts/posts';
 import { IPost } from 'interfaces/post';
+import { AppThunk } from 'interfaces/thunkType';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
 
-export const getSomePostsForFeed = (posts: IPost[]) => ({
-  type: PostFeedActionTypes.GET_SOME_FEED_POSTS,
+// ! QUERY SOME POSTS =================================
+
+export const getSomePostsForFeed = (posts: IPost[]): IGetSomePostsFeed => ({
+  type: PostFeedEnumTypes.GET_SOME_FEED_POSTS,
   payload: {
     isFetchingPosts: false,
     fetchingPostsFailed: false,
@@ -11,28 +17,22 @@ export const getSomePostsForFeed = (posts: IPost[]) => ({
   }
 });
 
-export const isFetchingPosts = () => ({
-  type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS,
+export const isFetchingPosts = (): IIsFetchingPosts => ({
+  type: PostFeedEnumTypes.IS_FETCHING_FEED_POSTS,
   payload: {
     isFetchingPosts: true
   }
 });
 
-export const isFetchingPostsFailed = () => ({
-  type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS_FAILED,
+export const isFetchingPostsFailed = (): IIsFetchingPostsFailed => ({
+  type: PostFeedEnumTypes.IS_FETCHING_FEED_POSTS_FAILED,
   payload: {
     fetchingPostsFailed: true
   }
 });
 
-/**
- * @description
- * All async/redux-thunk/side-effects should be under this comments
- *
- */
-
-export const querySomePost = (offset: number, limit: number) => {
-  return async (dispatch: Function) => {
+export const querySomePost = (offset: number, limit: number): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(isFetchingPosts());
     try {
       const { payload } = await getSomePostAPI(offset, limit);
@@ -42,3 +42,5 @@ export const querySomePost = (offset: number, limit: number) => {
     }
   };
 };
+
+// ! QUERY SOME POSTS =================================

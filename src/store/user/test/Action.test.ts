@@ -1,5 +1,5 @@
 import * as userActions from '../Actions';
-import { UserActionTypes } from '../Types';
+import { UserEnumTypes } from '../Types';
 import { userInitialState } from 'models/User/userInitialState';
 
 describe('Session Action Test', () => {
@@ -11,7 +11,7 @@ describe('Session Action Test', () => {
         username: 'yousirnem'
       };
       expect(userActions.setupUserOnSuccessLoginORSignup(u)).toEqual({
-        type: UserActionTypes.USER_INFO,
+        type: UserEnumTypes.USER_INFO,
         payload: {
           ...u
         }
@@ -22,7 +22,7 @@ describe('Session Action Test', () => {
   describe('logoutUser ACTION', () => {
     it('should return to initial state after user logsout', () => {
       expect(userActions.logoutUser()).toEqual({
-        type: UserActionTypes.USER_LOGOUT,
+        type: UserEnumTypes.USER_LOGOUT,
         payload: {
           ...userInitialState
         }

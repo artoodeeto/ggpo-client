@@ -1,5 +1,5 @@
 import * as postActions from '../Actions';
-import { PostFeedActionTypes } from '../Types';
+import { PostFeedEnumTypes } from '../Types';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
@@ -35,7 +35,7 @@ describe('Post Action Test', () => {
         }
       ];
       expect(postActions.getSomePostsForFeed(p)).toEqual({
-        type: PostFeedActionTypes.GET_SOME_FEED_POSTS,
+        type: PostFeedEnumTypes.GET_SOME_FEED_POSTS,
         payload: {
           isFetchingPosts: false,
           fetchingPostsFailed: false,
@@ -61,7 +61,7 @@ describe('Post Action Test', () => {
   describe('isFetchingPosts ACTION', () => {
     it('should set isFetching to true', () => {
       expect(postActions.isFetchingPosts()).toEqual({
-        type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS,
+        type: PostFeedEnumTypes.IS_FETCHING_FEED_POSTS,
         payload: {
           isFetchingPosts: true
         }
@@ -72,7 +72,7 @@ describe('Post Action Test', () => {
   describe('isFetchingPostsFailed ACTION', () => {
     it('should set fetchingPostsFailed to true if post query failed', () => {
       expect(postActions.isFetchingPostsFailed()).toEqual({
-        type: PostFeedActionTypes.IS_FETCHING_FEED_POSTS_FAILED,
+        type: PostFeedEnumTypes.IS_FETCHING_FEED_POSTS_FAILED,
         payload: {
           fetchingPostsFailed: true
         }

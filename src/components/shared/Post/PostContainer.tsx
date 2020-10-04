@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IState } from 'interfaces/stateInterface';
 import { IPost } from '../../../interfaces/post';
 import PostItem from './PostItem/PostItem';
-class PostContainer extends Component<any> {
+import { RootState } from 'store/root/root_reducer';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+interface PostContainerProps {
+  posts: IPost[];
+  showOptionsBtn: boolean;
+}
+
+interface PostContainerState {}
+
+class PostContainer extends Component<PostContainerProps, PostContainerState> {
   render() {
     return (
       <div>
@@ -18,11 +28,11 @@ class PostContainer extends Component<any> {
   }
 }
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: RootState) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {};
 };
 

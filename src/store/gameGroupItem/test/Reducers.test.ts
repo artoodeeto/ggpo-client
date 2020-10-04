@@ -1,6 +1,6 @@
 import gameGroupItem from '../Reducers';
 import { gameGroupItemInitSate } from 'models/GameGroupItem/gameGroupItemInitState';
-import { GameGroupItemActionTypes } from '../Types';
+import { GameGroupItemEnumTypes } from '../Types';
 
 const state = {
   fetchingGameGroupItem: false,
@@ -25,7 +25,7 @@ describe('Game Group Item Reducer Test', () => {
   it('should set gameGroupItem isFollower to TRUE', () => {
     expect(
       gameGroupItem(state, {
-        type: GameGroupItemActionTypes.SET_IS_FOLLOWING,
+        type: GameGroupItemEnumTypes.SET_IS_FOLLOWING,
         payload: {
           isFollower: true
         }
@@ -50,7 +50,7 @@ describe('Game Group Item Reducer Test', () => {
     it('should set isCurrentlyFollowing to TRUE', () => {
       expect(
         gameGroupItem(state, {
-          type: GameGroupItemActionTypes.CURRENTLY_FOLLOWING_GAME_GROUP,
+          type: GameGroupItemEnumTypes.CURRENTLY_FOLLOWING_GAME_GROUP,
           payload: {
             isCurrentlyFollowing: true
           }
@@ -88,7 +88,7 @@ describe('Game Group Item Reducer Test', () => {
       };
       expect(
         gameGroupItem(stateLocal, {
-          type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS,
+          type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_SUCCESS,
           payload: {
             isCurrentlyFollowing: false,
             isFollower: true
@@ -127,7 +127,7 @@ describe('Game Group Item Reducer Test', () => {
       };
       expect(
         gameGroupItem(stateLocal, {
-          type: GameGroupItemActionTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED,
+          type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_FOLLOWED_FAILED,
           payload: {
             isCurrentlyFollowing: false,
             isGameGroupItemFollowFailed: true
@@ -154,7 +154,7 @@ describe('Game Group Item Reducer Test', () => {
     it('set isCurrentlyUnfollowing to TRUE', () => {
       expect(
         gameGroupItem(state, {
-          type: GameGroupItemActionTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP,
+          type: GameGroupItemEnumTypes.CURRENTLY_UNFOLLOWING_GAME_GROUP,
           payload: {
             isCurrentlyUnfollowing: true
           }
@@ -192,7 +192,7 @@ describe('Game Group Item Reducer Test', () => {
       };
       expect(
         gameGroupItem(stateLocal, {
-          type: GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS,
+          type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_SUCCESS,
           payload: {
             isCurrentlyUnfollowing: false,
             isGameGroupItemUnfollowSuccess: true,
@@ -232,7 +232,7 @@ describe('Game Group Item Reducer Test', () => {
       };
       expect(
         gameGroupItem(stateLocal, {
-          type: GameGroupItemActionTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED,
+          type: GameGroupItemEnumTypes.GAME_GROUP_ITEM_UNFOLLOWED_FAILED,
           payload: {
             isCurrentlyUnfollowing: false,
             isGameGroupItemUnfollowFailed: true

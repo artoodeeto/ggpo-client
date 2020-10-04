@@ -1,3 +1,3 @@
-import { IState } from 'interfaces/stateInterface';
+import { RootState } from 'store/root/root_reducer';
 
-export const gameGroupsStore = (store: IState) => store.gameGroups.gameGroups;
+export const gameGroupsStore = (store: RootState) => store.gameGroups.gameGroups;

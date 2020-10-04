@@ -1,12 +1,26 @@
-import { SessionActionTypes } from './Types';
-import { ILoginSignupResponse, ILoginSignUpFormParams, ILoginSignupFailed } from 'interfaces/session';
+import {
+  ILogoutSession,
+  IOnSuccessLoginOrSignUp,
+  IUserLoggingInOrSigningUp,
+  IUserLoginOrSignupFailed,
+  SessionEnumTypes
+} from './Types';
+import { ILoginSignUpFormParams, ILoginSignupFailed } from 'interfaces/session';
 import { loginAPI, signUpAPI } from 'api/sessions/sessions';
 import { sessionInitialState } from 'models/Session/sessionInitialState';
 import { setUpSessionOnLoginAndSignup } from 'helper/sessionSetup';
 import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
+import { ISessionAPIResponse } from 'interfaces/api/sessions';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from 'store/root/root_reducer';
+import { AppThunk } from 'interfaces/thunkType';
 
-export const onSuccessLoginOrSignUp = (tokenExpMilliSec: number, issueDateInMilliSec: number) => ({
-  type: SessionActionTypes.LOGIN_SIGNUP_SUCCESS,
+export const onSuccessLoginOrSignUp = (
+  tokenExpMilliSec: number,
+  issueDateInMilliSec: number
+): IOnSuccessLoginOrSignUp => ({
+  type: SessionEnumTypes.LOGIN_SIGNUP_SUCCESS,
   payload: {
     isAuthenticated: true,
     tokenExpirationTime: tokenExpMilliSec,
@@ -18,22 +32,22 @@ export const onSuccessLoginOrSignUp = (tokenExpMilliSec: number, issueDateInMill
   }
 });
 
-export const userLoggingInOrSigningUp = () => ({
-  type: SessionActionTypes.IS_LOGGING_IN_OR_SIGNING_UP,
+export const userLoggingInOrSigningUp = (): IUserLoggingInOrSigningUp => ({
+  type: SessionEnumTypes.IS_LOGGING_IN_OR_SIGNING_UP,
   payload: {
     isUserLoggingInOrSigningUp: true
   }
 });
 
-export const logoutSession = () => ({
-  type: SessionActionTypes.LOGOUT,
+export const logoutSession = (): ILogoutSession => ({
+  type: SessionEnumTypes.LOGOUT,
   payload: {
     ...sessionInitialState
   }
 });
 
-export const userLoginOrSignupFailed = (error: ILoginSignupFailed) => ({
-  type: SessionActionTypes.SIGNUP_LOGIN_FAILED,
+export const userLoginOrSignupFailed = (error: ILoginSignupFailed): IUserLoginOrSignupFailed => ({
+  type: SessionEnumTypes.SIGNUP_LOGIN_FAILED,
   payload: {
     isUserLoggingInOrSigningUp: false,
     hasErrorOnSigningUpOrLoggingIn: true,
@@ -41,17 +55,11 @@ export const userLoginOrSignupFailed = (error: ILoginSignupFailed) => ({
   }
 });
 
-/**
- * @description
- * All async/redux-thunk/side-effects should be under this comments
- *
- */
-
-export const logMeIn = (loginInfo: ILoginSignUpFormParams) => {
-  return async (dispatch: Function) => {
+export const logMeIn = (loginInfo: ILoginSignUpFormParams): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(userLoggingInOrSigningUp());
     try {
-      const response: ILoginSignupResponse = await loginAPI(loginInfo);
+      const response: ISessionAPIResponse = await loginAPI(loginInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
       autoLogoutAfterTokenExpire(dispatch, Number(response.meta.expToken));
     } catch (error) {
@@ -60,11 +68,11 @@ export const logMeIn = (loginInfo: ILoginSignUpFormParams) => {
   };
 };
 
-export const signMeUp = (signupInfo: ILoginSignUpFormParams) => {
-  return async (dispatch: Function) => {
+export const signMeUp = (signupInfo: ILoginSignUpFormParams): AppThunk => {
+  return async (dispatch: ThunkDispatch<RootState, {}, AnyAction>): Promise<void> => {
     dispatch(userLoggingInOrSigningUp());
     try {
-      const response: ILoginSignupResponse = await signUpAPI(signupInfo);
+      const response: ISessionAPIResponse = await signUpAPI(signupInfo);
       setUpSessionOnLoginAndSignup(response, dispatch);
       autoLogoutAfterTokenExpire(dispatch, Number(response.meta.expToken));
     } catch (error) {
