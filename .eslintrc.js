@@ -4,7 +4,13 @@ module.exports = {
     es6: true,
     jest: true
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -33,12 +39,19 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/prefer-stateless-function': 0,
-    'arrow-body-style': 0,
+    'react/self-closing-comp': 1,
+    'react/prop-types': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 1,
+    'react/destructuring-assignment': 0,
+    'react/jsx-fragments': 0,
+    'import/prefer-default-export': 0,
+    '@typescript-eslint/explicit-function-return-type': 1,
+    '@typescript-eslint/no-empty-interface': 0,
     'comma-dangle': 0,
-    'react-hooks/rules-of-hooks': '2',
-    'react-hooks/exhaustive-deps': '1'
-    // 'operator-linebreak': 1,
-    // 'no-use-before-define': 0
+    'arrow-body-style': 0,
+    'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }]
   },
   settings: {
     'import/resolver': {
