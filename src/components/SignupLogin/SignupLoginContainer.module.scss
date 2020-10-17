@@ -1,0 +1,23 @@
+@import '../../assets/media-queries.scss';
+
+.SignupLoginContainer {
+  font-size: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__SliderBtnContainer {
+    display: flex;
+    justify-content: center;
+
+    > button {
+      margin: 1em 0.1em;
+    }
+  }
+
+  @include md {
+    font-size: 25px;
+  }
+}
