@@ -5,11 +5,12 @@ module.exports = {
     jest: true
   },
   extends: [
-    'plugin:react/recommended',
     'airbnb',
+    'plugin:react/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended'
   ],
   globals: {
     Atomics: 'readonly',
@@ -49,6 +50,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     '@typescript-eslint/explicit-function-return-type': 1,
     '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/interface-name-prefix': [0, { prefixWithI: 'always', allowUnderscorePrefix: true }],
     'comma-dangle': 0,
     'arrow-body-style': 0,
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }]

@@ -4,10 +4,10 @@ import { getAGameGroupAPI } from 'api/gamegroups/gamegroups';
 import { connect } from 'react-redux';
 import { setIsFollower } from 'store/gameGroupItem/Actions';
 import { IGameGroup } from 'interfaces/gameGroup';
-import GameItem from './GameItem/GameItem';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from 'store/root/root_reducer';
+import GameItem from './GameItem/GameItem';
 
 interface RouteCustomParams {
   id: string;

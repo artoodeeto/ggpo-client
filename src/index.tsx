@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import axiosInterceptors from './lib/axios.interceptors';
-import { Provider } from 'react-redux';
 import { store, peristor } from './store/root/root_store';
-import { BrowserRouter } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
+
 axiosInterceptors();
 
 ReactDOM.render(

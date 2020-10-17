@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import GameGroupList from './GameGroupList/GameGroupList';
 import { AnyAction } from 'redux';
 import { RootState } from 'store/root/root_reducer';
 import { ThunkDispatch } from 'redux-thunk';
+import GameGroupList from './GameGroupList/GameGroupList';
 
 interface GameGroupContainerProps {}
 
