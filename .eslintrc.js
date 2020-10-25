@@ -62,5 +62,16 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
     }
-  }
+  },
+  overrides: [
+    {
+      files: ['./src/setupTests.ts', 'src/**/*.tsx'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          0,
+          { devDependencies: false, optionalDependencies: false, peerDependencies: false }
+        ]
+      }
+    }
+  ]
 };
