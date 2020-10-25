@@ -67,6 +67,8 @@
     "eslint-plugin-react-hooks": "0.0.0-7f28234f8",
     "husky": "4.2.1",
     "jest": "24.9.0",
+    "jest-environment-enzyme": "7.1.2",
+    "jest-enzyme": "7.1.2",
     "jest-extended": "0.11.5",
     "mockdate": "3.0.2",
     "prettier": "2.1.2",

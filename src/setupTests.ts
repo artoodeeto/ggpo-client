@@ -1,6 +1,13 @@
-import { configure } from 'enzyme';
+// import { configure } from 'enzyme';
+// import Adapter from 'enzyme-adapter-react-16';
+// configure({ adapter: new Adapter() });
+
+import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
+import 'jest-enzyme';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 require('jest-extended');
 
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
