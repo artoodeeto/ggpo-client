@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignupLoginContainer/> SignupLoginContainer container should match snapshots if user is logging in 1`] = `
+<Fragment>
+  <div
+    className="SignupLoginContainer"
+  >
+    <div
+      className="SignupLoginContainer__SliderBtnContainer"
+    >
+      <LoginSignupSliderButton
+        toShow={[Function]}
+      />
+    </div>
+    <div
+      className="SignupLoginContainer__Form_Container"
+    >
+      <Login
+        isLoggingInOrSigningUp={true}
+      />
+    </div>
+  </div>
+</Fragment>
+`;
+
+exports[`<SignupLoginContainer/> SignupLoginContainer container should match snapshots if user is signing up 1`] = `
+<Fragment>
+  <div
+    className="SignupLoginContainer"
+  >
+    <div
+      className="SignupLoginContainer__SliderBtnContainer"
+    >
+      <LoginSignupSliderButton
+        toShow={[Function]}
+      />
+    </div>
+    <div
+      className="SignupLoginContainer__Form_Container"
+    >
+      <Signup
+        isLoggingInOrSigningUp={false}
+      />
+    </div>
+  </div>
+</Fragment>
+`;

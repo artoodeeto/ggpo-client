@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginSignupSliderButton/> snapshot  1`] = `
+<Fragment>
+  <button
+    className="SliderBtn"
+    onClick={[Function]}
+    type="button"
+  >
+    Already a User?
+  </button>
+  <button
+    className="SliderBtn"
+    onClick={[Function]}
+    type="button"
+  >
+    New User
+  </button>
+</Fragment>
+`;

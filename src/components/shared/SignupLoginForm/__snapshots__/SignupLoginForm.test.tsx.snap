@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignupLoginForm/> snapshot User loging in snapshot 1`] = `
+<form
+  className="SignUpLoginForm"
+  onSubmit={[Function]}
+>
+  <input
+    id=""
+    name="email"
+    onChange={[Function]}
+    placeholder="email_address@gmail.com"
+    required={true}
+    type="text"
+    value=""
+  />
+  <input
+    id=""
+    name="password"
+    onChange={[Function]}
+    placeholder="password"
+    required={true}
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Login"
+  />
+</form>
+`;
+
+exports[`<SignupLoginForm/> snapshot User signing up snapshot 1`] = `
+<form
+  className="SignUpLoginForm"
+  onSubmit={[Function]}
+>
+  <input
+    id=""
+    name="email"
+    onChange={[Function]}
+    placeholder="email_address@gmail.com"
+    required={true}
+    type="text"
+    value=""
+  />
+  <input
+    id=""
+    name="username"
+    onChange={[Function]}
+    placeholder="user name"
+    required={true}
+    type="text"
+    value=""
+  />
+  <input
+    id=""
+    name="password"
+    onChange={[Function]}
+    placeholder="password"
+    required={true}
+    type="text"
+    value=""
+  />
+  <input
+    id=""
+    name="conf_password"
+    onChange={[Function]}
+    placeholder="confirm password"
+    required={true}
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Signup"
+  />
+</form>
+`;
