@@ -33,7 +33,7 @@ type SignupLoginFormProps = {
  * type
  * }]
  */
-const SignupLoginForm: FC<SignupLoginFormProps> = ({ toLoginOrSignup, onLogin, onSignup }) => {
+export const SignupLoginForm: FC<SignupLoginFormProps> = ({ toLoginOrSignup, onLogin, onSignup }) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

@@ -22,7 +22,7 @@ interface SignupLoginContainerState {
 
 // background here should show some video, maybe the TI championship games
 // TODO: sign up and login button should show loading GIF on the their buttons
-class SignupLoginContainer extends Component<SignupLoginContainerProps, SignupLoginContainerState> {
+export class SignupLoginContainer extends Component<SignupLoginContainerProps, SignupLoginContainerState> {
   constructor(props: SignupLoginContainerProps) {
     super(props);
     this.state = {
@@ -74,5 +74,4 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, AnyAction>) => {
   return {};
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(SignupLoginContainer);
