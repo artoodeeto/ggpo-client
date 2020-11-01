@@ -1,21 +1,25 @@
 import React, { FC } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { RouteConfigInterface } from './routes.config';
 import Private from 'components/Private/Private';
+import PublicLayout from 'components/Layout/PublicLayout/PublicLayout';
+import { RouteConfigInterface } from '../config/routes.config';
 
-type Props = {
+type MainRouteProps = {
   routeConf: RouteConfigInterface[];
 };
 
-const MainRoute: FC<Props> = (props) => {
-  const { routeConf } = props;
+const MainRoute: FC<MainRouteProps> = ({ routeConf }) => {
   return (
     <Switch>
-      {routeConf.map(({ path, component: C, exact, isPrivate, childRoutes }, i) => {
+      {routeConf.map(({ path, component: C, exact, isPrivate }, i) => {
         return isPrivate ? (
           <Private key={i} path={path} component={C} exact={exact} />
         ) : (
-          <Route key={i} path={path} render={() => <C />} exact={exact} />
+          <Route key={i} path={path} exact={exact}>
+            <PublicLayout>
+              <C />
+            </PublicLayout>
+          </Route>
         );
       })}
     </Switch>

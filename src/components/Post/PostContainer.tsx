@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IPost } from '../../../interfaces/post';
-import PostItem from './PostItem/PostItem';
 import { RootState } from 'store/root/root_reducer';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+import PostItem from './PostItem/PostItem';
+import { IPost } from '../../interfaces/post';
 
 interface PostContainerProps {
   posts: IPost[];

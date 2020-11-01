@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import PostForm from 'components/shared/PostForm/PostForm';
-import PostContainer from 'components/shared/Post/PostContainer';
+import PostContainer from 'components/Post/PostContainer';
 import { getUserPosts } from 'store/userProfilePost/Actions';
 import { userSelectorUserId } from 'store/user/Selectors';
 import { userProfileSelectorPosts } from 'store/userProfilePost/Selectors';
@@ -37,10 +37,12 @@ class ProfileContainer extends Component<ProfileContainerProps, ProfileContainer
   render() {
     return (
       <div>
-        <button onClick={() => this.logOutCurrentUser()}>Log out</button>
+        <button type="button" onClick={() => this.logOutCurrentUser()}>
+          Log out
+        </button>
         <h1>PROFILE</h1>
         <PostForm />
-        <PostContainer posts={this.props.posts} showOptionsBtn={true} />
+        <PostContainer posts={this.props.posts} showOptionsBtn />
       </div>
     );
   }

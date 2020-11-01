@@ -1,10 +1,10 @@
-import { PostFeedEnumTypes, IGetSomePostsFeed, IIsFetchingPosts, IIsFetchingPostsFailed } from './Types';
 import { getSomePostAPI } from 'api/posts/posts';
 import { IPost } from 'interfaces/post';
 import { AppThunk } from 'interfaces/thunkType';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from 'store/root/root_reducer';
+import { PostFeedEnumTypes, IGetSomePostsFeed, IIsFetchingPosts, IIsFetchingPostsFailed } from './Types';
 
 // ! QUERY SOME POSTS =================================
 

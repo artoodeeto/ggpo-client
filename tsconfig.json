@@ -17,5 +17,5 @@
     "baseUrl": "src",
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "node_modules/jest-extended/types/**/*d.ts"]
+  "include": ["src", "node_modules/jest-extended/types/**/*d.ts", "src/config/routes.config.ts"]
 }
