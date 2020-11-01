@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { RootState } from 'store/root/root_reducer';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+import PrivateLayout from 'components/Layout/PrivateLayout/PrivateLayout';
 
 const Private: FC<any> = (props: any): ReactElement => {
   const { isAuthenticated, component: Component, path } = props;
@@ -14,7 +15,9 @@ const Private: FC<any> = (props: any): ReactElement => {
       path={path}
       render={({ location }) => {
         return isAuthenticated ? (
-          <Component />
+          <PrivateLayout>
+            <Component />
+          </PrivateLayout>
         ) : (
           <Redirect
             to={{

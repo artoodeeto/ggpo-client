@@ -1,0 +1,1290 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LayoutContainer/> SignupLoginContainer snap shot user is on GameGroupContainer page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "PUSH",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "wwcq50",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          Object {
+            "hash": "",
+            "key": "qfyc2h",
+            "pathname": "/game_groups",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 1,
+        "length": 2,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "qfyc2h",
+          "pathname": "/game_groups",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LayoutContainer>
+      <div>
+        <Header>
+          <header>
+            <Switch />
+          </header>
+        </Header>
+        <Suspense
+          fallback={
+            <div>
+              create loading here
+            </div>
+          }
+        >
+          <MainRoute
+            routeConf={
+              Array [
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.memo),
+                    "WrappedComponent": [Function],
+                    "compare": null,
+                    "displayName": "Connect(SignupLoginContainer)",
+                    "type": [Function],
+                  },
+                  "exact": true,
+                  "isPrivate": false,
+                  "path": "/",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": [Function],
+                    "_status": 1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/feed",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Object {
+                      "$$typeof": Symbol(react.memo),
+                      "WrappedComponent": [Function],
+                      "compare": null,
+                      "displayName": "Connect(ProfileContainer)",
+                      "type": [Function],
+                    },
+                    "_status": 1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/profile",
+                },
+                Object {
+                  "childRoutes": Array [],
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  },
+                  "exact": true,
+                  "isPrivate": true,
+                  "path": "/game_groups",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/game_groups/:id",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": false,
+                  "path": "*",
+                },
+              ]
+            }
+          >
+            <Switch>
+              <Connect(Private)
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  }
+                }
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/game_groups",
+                    "url": "/game_groups",
+                  }
+                }
+                exact={true}
+                key="3"
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "qfyc2h",
+                    "pathname": "/game_groups",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/game_groups"
+              >
+                <Private
+                  component={
+                    Object {
+                      "$$typeof": Symbol(react.lazy),
+                      "_ctor": [Function],
+                      "_result": Promise {},
+                      "_status": 0,
+                    }
+                  }
+                  computedMatch={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/game_groups",
+                      "url": "/game_groups",
+                    }
+                  }
+                  exact={true}
+                  isAuthenticated={true}
+                  location={
+                    Object {
+                      "hash": "",
+                      "key": "qfyc2h",
+                      "pathname": "/game_groups",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  path="/game_groups"
+                >
+                  <Route
+                    path="/game_groups"
+                    render={[Function]}
+                  >
+                    <PrivateLayout>
+                      <section>
+                        <aside />
+                        <main />
+                        <aside />
+                      </section>
+                    </PrivateLayout>
+                  </Route>
+                </Private>
+              </Connect(Private)>
+            </Switch>
+          </MainRoute>
+          <div>
+            create loading here
+          </div>
+        </Suspense>
+        <section>
+          <footer>
+            test test
+          </footer>
+        </section>
+      </div>
+    </LayoutContainer>
+  </Router>
+</Provider>
+`;
+
+exports[`<LayoutContainer/> SignupLoginContainer snap shot user is on GameItemContainer page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "PUSH",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "r5z491",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          Object {
+            "hash": "",
+            "key": "c0kv58",
+            "pathname": "/game_groups/1",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 1,
+        "length": 2,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "c0kv58",
+          "pathname": "/game_groups/1",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LayoutContainer>
+      <div>
+        <Header>
+          <header>
+            <Switch />
+          </header>
+        </Header>
+        <Suspense
+          fallback={
+            <div>
+              create loading here
+            </div>
+          }
+        >
+          <MainRoute
+            routeConf={
+              Array [
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.memo),
+                    "WrappedComponent": [Function],
+                    "compare": null,
+                    "displayName": "Connect(SignupLoginContainer)",
+                    "type": [Function],
+                  },
+                  "exact": true,
+                  "isPrivate": false,
+                  "path": "/",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": [Function],
+                    "_status": 1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/feed",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Object {
+                      "$$typeof": Symbol(react.memo),
+                      "WrappedComponent": [Function],
+                      "compare": null,
+                      "displayName": "Connect(ProfileContainer)",
+                      "type": [Function],
+                    },
+                    "_status": 1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/profile",
+                },
+                Object {
+                  "childRoutes": Array [],
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Object {
+                      "$$typeof": Symbol(react.memo),
+                      "WrappedComponent": [Function],
+                      "compare": null,
+                      "displayName": "Connect(GameGroupContainer)",
+                      "type": [Function],
+                    },
+                    "_status": 1,
+                  },
+                  "exact": true,
+                  "isPrivate": true,
+                  "path": "/game_groups",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/game_groups/:id",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": false,
+                  "path": "*",
+                },
+              ]
+            }
+          >
+            <Switch>
+              <Connect(Private)
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  }
+                }
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {
+                      "id": "1",
+                    },
+                    "path": "/game_groups/:id",
+                    "url": "/game_groups/1",
+                  }
+                }
+                exact={false}
+                key="4"
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "c0kv58",
+                    "pathname": "/game_groups/1",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/game_groups/:id"
+              >
+                <Private
+                  component={
+                    Object {
+                      "$$typeof": Symbol(react.lazy),
+                      "_ctor": [Function],
+                      "_result": Promise {},
+                      "_status": 0,
+                    }
+                  }
+                  computedMatch={
+                    Object {
+                      "isExact": true,
+                      "params": Object {
+                        "id": "1",
+                      },
+                      "path": "/game_groups/:id",
+                      "url": "/game_groups/1",
+                    }
+                  }
+                  exact={false}
+                  isAuthenticated={true}
+                  location={
+                    Object {
+                      "hash": "",
+                      "key": "c0kv58",
+                      "pathname": "/game_groups/1",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  path="/game_groups/:id"
+                >
+                  <Route
+                    path="/game_groups/:id"
+                    render={[Function]}
+                  >
+                    <PrivateLayout>
+                      <section>
+                        <aside />
+                        <main />
+                        <aside />
+                      </section>
+                    </PrivateLayout>
+                  </Route>
+                </Private>
+              </Connect(Private)>
+            </Switch>
+          </MainRoute>
+          <div>
+            create loading here
+          </div>
+        </Suspense>
+        <section>
+          <footer>
+            test test
+          </footer>
+        </section>
+      </div>
+    </LayoutContainer>
+  </Router>
+</Provider>
+`;
+
+exports[`<LayoutContainer/> SignupLoginContainer snap shot user is on feed page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "PUSH",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "1cfdqs",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          Object {
+            "hash": "",
+            "key": "cmpzbj",
+            "pathname": "/feed",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 1,
+        "length": 2,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "cmpzbj",
+          "pathname": "/feed",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LayoutContainer>
+      <div>
+        <Header>
+          <header>
+            <Switch>
+              <Route
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/feed",
+                    "url": "/feed",
+                  }
+                }
+                exact={true}
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "cmpzbj",
+                    "pathname": "/feed",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/feed"
+              >
+                <HomeHeader>
+                  <nav>
+                    <ul>
+                      <li>
+                        THE FEEEEEEEEEEED
+                      </li>
+                    </ul>
+                  </nav>
+                </HomeHeader>
+              </Route>
+            </Switch>
+          </header>
+        </Header>
+        <Suspense
+          fallback={
+            <div>
+              create loading here
+            </div>
+          }
+        >
+          <MainRoute
+            routeConf={
+              Array [
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.memo),
+                    "WrappedComponent": [Function],
+                    "compare": null,
+                    "displayName": "Connect(SignupLoginContainer)",
+                    "type": [Function],
+                  },
+                  "exact": true,
+                  "isPrivate": false,
+                  "path": "/",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/feed",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/profile",
+                },
+                Object {
+                  "childRoutes": Array [],
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": true,
+                  "isPrivate": true,
+                  "path": "/game_groups",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/game_groups/:id",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": false,
+                  "path": "*",
+                },
+              ]
+            }
+          >
+            <Switch>
+              <Connect(Private)
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  }
+                }
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/feed",
+                    "url": "/feed",
+                  }
+                }
+                exact={false}
+                key="1"
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "cmpzbj",
+                    "pathname": "/feed",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/feed"
+              >
+                <Private
+                  component={
+                    Object {
+                      "$$typeof": Symbol(react.lazy),
+                      "_ctor": [Function],
+                      "_result": Promise {},
+                      "_status": 0,
+                    }
+                  }
+                  computedMatch={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/feed",
+                      "url": "/feed",
+                    }
+                  }
+                  exact={false}
+                  isAuthenticated={true}
+                  location={
+                    Object {
+                      "hash": "",
+                      "key": "cmpzbj",
+                      "pathname": "/feed",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  path="/feed"
+                >
+                  <Route
+                    path="/feed"
+                    render={[Function]}
+                  >
+                    <PrivateLayout>
+                      <section>
+                        <aside />
+                        <main />
+                        <aside />
+                      </section>
+                    </PrivateLayout>
+                  </Route>
+                </Private>
+              </Connect(Private)>
+            </Switch>
+          </MainRoute>
+          <div>
+            create loading here
+          </div>
+        </Suspense>
+        <section>
+          <footer>
+            test test
+          </footer>
+        </section>
+      </div>
+    </LayoutContainer>
+  </Router>
+</Provider>
+`;
+
+exports[`<LayoutContainer/> SignupLoginContainer snap shot user is on login or signup page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "PUSH",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "n63bbz",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          Object {
+            "hash": "",
+            "key": "e3xpyd",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 1,
+        "length": 2,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "e3xpyd",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LayoutContainer>
+      <div>
+        <Header>
+          <header>
+            <Switch>
+              <Route
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+                exact={true}
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "e3xpyd",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/"
+              >
+                <LoginSignUpHeader>
+                  <nav>
+                    <ul>
+                      <li>
+                        login/signup
+                      </li>
+                      <li>
+                        yow
+                      </li>
+                      <li>
+                        test
+                      </li>
+                    </ul>
+                  </nav>
+                </LoginSignUpHeader>
+              </Route>
+            </Switch>
+          </header>
+        </Header>
+        <Suspense
+          fallback={
+            <div>
+              create loading here
+            </div>
+          }
+        >
+          <MainRoute
+            routeConf={
+              Array [
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.memo),
+                    "WrappedComponent": [Function],
+                    "compare": null,
+                    "displayName": "Connect(SignupLoginContainer)",
+                    "type": [Function],
+                  },
+                  "exact": true,
+                  "isPrivate": false,
+                  "path": "/",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/feed",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/profile",
+                },
+                Object {
+                  "childRoutes": Array [],
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": true,
+                  "isPrivate": true,
+                  "path": "/game_groups",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/game_groups/:id",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": false,
+                  "path": "*",
+                },
+              ]
+            }
+          >
+            <Switch>
+              <Route
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+                exact={true}
+                key="0"
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "e3xpyd",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/"
+              >
+                <PublicLayout>
+                  <Connect(SignupLoginContainer)>
+                    <SignupLoginContainer
+                      hasErrors={false}
+                      isAuthenticated={false}
+                    >
+                      <div
+                        className="SignupLoginContainer"
+                      >
+                        <div
+                          className="SignupLoginContainer__SliderBtnContainer"
+                        >
+                          <LoginSignupSliderButton
+                            toShow={[Function]}
+                          >
+                            <button
+                              className="SliderBtn"
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              Already a User?
+                            </button>
+                            <button
+                              className="SliderBtn"
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              New User
+                            </button>
+                          </LoginSignupSliderButton>
+                        </div>
+                        <div
+                          className="SignupLoginContainer__Form_Container"
+                        >
+                          <Login
+                            isLoggingInOrSigningUp={true}
+                          >
+                            <Connect(SignupLoginForm)
+                              toLoginOrSignup={true}
+                            >
+                              <SignupLoginForm
+                                onLogin={[Function]}
+                                onSignup={[Function]}
+                                toLoginOrSignup={true}
+                              >
+                                <form
+                                  className="SignUpLoginForm"
+                                  onSubmit={[Function]}
+                                >
+                                  <input
+                                    id=""
+                                    name="email"
+                                    onChange={[Function]}
+                                    placeholder="email_address@gmail.com"
+                                    required={true}
+                                    type="text"
+                                    value=""
+                                  />
+                                  <input
+                                    id=""
+                                    name="password"
+                                    onChange={[Function]}
+                                    placeholder="password"
+                                    required={true}
+                                    type="text"
+                                    value=""
+                                  />
+                                  <input
+                                    type="submit"
+                                    value="Login"
+                                  />
+                                </form>
+                              </SignupLoginForm>
+                            </Connect(SignupLoginForm)>
+                          </Login>
+                        </div>
+                      </div>
+                    </SignupLoginContainer>
+                  </Connect(SignupLoginContainer)>
+                  ;
+                </PublicLayout>
+              </Route>
+            </Switch>
+          </MainRoute>
+        </Suspense>
+        <section>
+          <footer>
+            test test
+          </footer>
+        </section>
+      </div>
+    </LayoutContainer>
+  </Router>
+</Provider>
+`;
+
+exports[`<LayoutContainer/> SignupLoginContainer snap shot user is on profile page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "PUSH",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "s72f9s",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          Object {
+            "hash": "",
+            "key": "k4irh6",
+            "pathname": "/profile",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 1,
+        "length": 2,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "k4irh6",
+          "pathname": "/profile",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LayoutContainer>
+      <div>
+        <Header>
+          <header>
+            <Switch />
+          </header>
+        </Header>
+        <Suspense
+          fallback={
+            <div>
+              create loading here
+            </div>
+          }
+        >
+          <MainRoute
+            routeConf={
+              Array [
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.memo),
+                    "WrappedComponent": [Function],
+                    "compare": null,
+                    "displayName": "Connect(SignupLoginContainer)",
+                    "type": [Function],
+                  },
+                  "exact": true,
+                  "isPrivate": false,
+                  "path": "/",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": [Function],
+                    "_status": 1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/feed",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/profile",
+                },
+                Object {
+                  "childRoutes": Array [],
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": true,
+                  "isPrivate": true,
+                  "path": "/game_groups",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": true,
+                  "path": "/game_groups/:id",
+                },
+                Object {
+                  "component": Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": null,
+                    "_status": -1,
+                  },
+                  "exact": false,
+                  "isPrivate": false,
+                  "path": "*",
+                },
+              ]
+            }
+          >
+            <Switch>
+              <Connect(Private)
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Promise {},
+                    "_status": 0,
+                  }
+                }
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/profile",
+                    "url": "/profile",
+                  }
+                }
+                exact={false}
+                key="2"
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "k4irh6",
+                    "pathname": "/profile",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/profile"
+              >
+                <Private
+                  component={
+                    Object {
+                      "$$typeof": Symbol(react.lazy),
+                      "_ctor": [Function],
+                      "_result": Promise {},
+                      "_status": 0,
+                    }
+                  }
+                  computedMatch={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/profile",
+                      "url": "/profile",
+                    }
+                  }
+                  exact={false}
+                  isAuthenticated={true}
+                  location={
+                    Object {
+                      "hash": "",
+                      "key": "k4irh6",
+                      "pathname": "/profile",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  path="/profile"
+                >
+                  <Route
+                    path="/profile"
+                    render={[Function]}
+                  >
+                    <PrivateLayout>
+                      <section>
+                        <aside />
+                        <main />
+                        <aside />
+                      </section>
+                    </PrivateLayout>
+                  </Route>
+                </Private>
+              </Connect(Private)>
+            </Switch>
+          </MainRoute>
+          <div>
+            create loading here
+          </div>
+        </Suspense>
+        <section>
+          <footer>
+            test test
+          </footer>
+        </section>
+      </div>
+    </LayoutContainer>
+  </Router>
+</Provider>
+`;

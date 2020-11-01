@@ -63,6 +63,7 @@ const PostForm: FC<PostFormProps> = ({ post, toEdit, handleToEdit, onCreateNewPo
 
         <input type="submit" value={toEdit ? 'Update' : 'Post'} />
         <button
+          type="button"
           onClick={() => {
             if (handleToEdit) handleToEdit(false);
           }}

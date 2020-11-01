@@ -18,10 +18,10 @@ type PostItemProps = {
 // ! if we allow it then we have to query the owner of the post or include it in the API
 // ! and check if the current user owns the posts in feed
 export const PostItem: FC<PostItemProps> = ({ post, showOptionsBtn, deletePost }) => {
-  let [toEditValue, setToEdit] = useState(false);
+  const [toEditValue, setToEdit] = useState(false);
 
   const toDisplay = toEditValue ? (
-    <PostForm post={post} toEdit={true} handleToEdit={setToEdit} />
+    <PostForm post={post} toEdit handleToEdit={setToEdit} />
   ) : (
     <div className={PostItemStyle.box}>
       <h3>title: {post.title}</h3>
@@ -32,8 +32,16 @@ export const PostItem: FC<PostItemProps> = ({ post, showOptionsBtn, deletePost }
         <br />
         {post.user ? `email: ${post.user.email}` : ''}
       </p>
-      {showOptionsBtn ? <button onClick={() => deletePost(Number(post.id))}>Delete</button> : null}
-      {showOptionsBtn ? <button onClick={() => setToEdit(!toEditValue)}>Edit</button> : null}
+      {showOptionsBtn ? (
+        <button type="button" onClick={() => deletePost(Number(post.id))}>
+          Delete
+        </button>
+      ) : null}
+      {showOptionsBtn ? (
+        <button type="button" onClick={() => setToEdit(!toEditValue)}>
+          Edit
+        </button>
+      ) : null}
     </div>
   );
 

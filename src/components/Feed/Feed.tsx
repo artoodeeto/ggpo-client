@@ -1,7 +1,7 @@
 import React, { useEffect, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import PostContainer from 'components/shared/Post/PostContainer';
+import PostContainer from 'components/Post/PostContainer';
 import { IPost } from 'interfaces/post';
 import { querySomePost } from 'store/feedPost/Actions';
 import { posts } from 'store/feedPost/Selectors';

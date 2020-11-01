@@ -1,13 +1,11 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component, Fragment, Suspense } from 'react';
-import MainRoute from 'routes/main.router';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
-import routeConfig from 'routes/routes.config';
 import { AnyAction } from 'redux';
 import { RootState } from 'store/root/root_reducer';
 import { ThunkDispatch } from 'redux-thunk';
-import AppStyles from './App.module.scss';
+import { LayoutContainer } from 'components/Layout/LayoutContainer';
 
 interface AppProps {
   isAuth: boolean;
@@ -25,13 +23,7 @@ class App extends Component<AppProps, AppState> {
   }
 
   render() {
-    return (
-      <Fragment>
-        <Suspense fallback={<div>create loading here</div>}>
-          <MainRoute routeConf={routeConfig} />
-        </Suspense>
-      </Fragment>
-    );
+    return <LayoutContainer />;
   }
 }
 
