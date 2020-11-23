@@ -1,12 +1,12 @@
 import React, { FC, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import PostItemStyle from './PostItem.module.scss';
 import { deleteUserProfilePost } from 'store/userProfilePost/Actions';
 import PostForm from 'components/shared/PostForm/PostForm';
 import { RootState } from 'store/root/root_reducer';
 import { IPost } from 'interfaces/post';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+import PostItemStyle from './PostItem.module.scss';
 
 type PostItemProps = {
   post: IPost;
@@ -24,21 +24,19 @@ export const PostItem: FC<PostItemProps> = ({ post, showOptionsBtn, deletePost }
     <PostForm post={post} toEdit handleToEdit={setToEdit} />
   ) : (
     <div className={PostItemStyle.box}>
-      <h3>title: {post.title}</h3>
-      <p>
-        body: {post.body}
-        <br />
-        {post.user ? `by: ${post.user.username}` : ''}
-        <br />
-        {post.user ? `email: ${post.user.email}` : ''}
-      </p>
+      <h3 aria-roledescription="title">title: {post.title}</h3>
+      <section>
+        <p>body: {post.body}</p>
+        <span>{post.user ? `by: ${post.user.username}` : ''}</span>
+        {/* <span>{post.user ? `email: ${post.user.email}` : ''}</span> */}
+      </section>
       {showOptionsBtn ? (
-        <button type="button" onClick={() => deletePost(Number(post.id))}>
+        <button aria-roledescription="delete post button" type="button" onClick={() => deletePost(Number(post.id))}>
           Delete
         </button>
       ) : null}
       {showOptionsBtn ? (
-        <button type="button" onClick={() => setToEdit(!toEditValue)}>
+        <button aria-roledescription="edit post button" type="button" onClick={() => setToEdit(!toEditValue)}>
           Edit
         </button>
       ) : null}
