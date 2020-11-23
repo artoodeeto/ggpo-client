@@ -53,7 +53,8 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': [0, { prefixWithI: 'always', allowUnderscorePrefix: true }],
     'comma-dangle': 0,
     'arrow-body-style': 0,
-    'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }]
+    'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+    'jsx-a11y/aria-role': [2, { ignoreNonDOM: true }]
   },
   settings: {
     'import/resolver': {

@@ -17,7 +17,6 @@ class PostContainer extends Component<PostContainerProps, PostContainerState> {
   render() {
     return (
       <div>
-        <h1>The Posts</h1>
         {this.props.posts.map((post: IPost) => (
           <div key={post.id as number}>
             <PostItem post={post} showOptionsBtn={this.props.showOptionsBtn} />

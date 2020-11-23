@@ -1,6 +1,5 @@
 import React, { useEffect, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PostContainer from 'components/Post/PostContainer';
 import { IPost } from 'interfaces/post';
 import { querySomePost } from 'store/feedPost/Actions';
@@ -22,11 +21,6 @@ const Feed: FC<FeedProps> = () => {
   // TODO: load new posts when scrolling
   return (
     <div>
-      <Link to="/profile">Profile</Link>
-      <br />
-      <Link to="/game_groups">GG</Link>
-
-      <h1>I am FEED TEST!</h1>
       <PostContainer posts={postsFeed} showOptionsBtn={false} />
     </div>
   );
