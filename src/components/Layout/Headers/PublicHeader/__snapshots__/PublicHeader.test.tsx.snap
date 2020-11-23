@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PublicHeader/> SNAPSHOT container should match snapshots if user is not log in 1`] = `
+<nav
+  class="NavContainer"
+>
+  <h1>
+    GOOD GAME PEACE OUT!
+  </h1>
+</nav>
+`;

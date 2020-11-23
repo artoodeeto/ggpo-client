@@ -1,9 +1,15 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
+import PublicHeader from '../Headers/PublicHeader/PublicHeader';
 
 type PublicLayoutProps = {};
 
 const PublicLayout: FC<PublicLayoutProps> = ({ children }) => {
-  return <Fragment>{children};</Fragment>;
+  return (
+    <div>
+      <PublicHeader />
+      {children}
+    </div>
+  );
 };
 
 export default PublicLayout;

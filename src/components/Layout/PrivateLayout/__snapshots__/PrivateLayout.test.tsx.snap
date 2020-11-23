@@ -1,41 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PrivateLayout/> PrivateLayout snapshots user is on gamegroup page 1`] = `
-<section>
-  <aside />
-  <main>
-    <Connect(GameGroupContainer) />
-  </main>
-  <aside />
-</section>
+<div>
+  <PrivateHeader />
+  <section>
+    <aside />
+    <main>
+      <Connect(GameGroupContainer) />
+    </main>
+    <aside />
+  </section>
+</div>
 `;
 
 exports[`<PrivateLayout/> PrivateLayout snapshots user is on gamegroup page 2`] = `
-<section>
-  <aside />
-  <main>
-    <withRouter(Connect(GameItemContainer)) />
-  </main>
-  <aside />
-</section>
+<div>
+  <PrivateHeader />
+  <section>
+    <aside />
+    <main>
+      <withRouter(Connect(GameItemContainer)) />
+    </main>
+    <aside />
+  </section>
+</div>
 `;
 
 exports[`<PrivateLayout/> PrivateLayout snapshots user is on login or signup page 1`] = `
-<section>
-  <aside />
-  <main>
-    <Feed />
-  </main>
-  <aside />
-</section>
+<div>
+  <PrivateHeader />
+  <section>
+    <aside />
+    <main>
+      <Feed />
+    </main>
+    <aside />
+  </section>
+</div>
 `;
 
 exports[`<PrivateLayout/> PrivateLayout snapshots user is on profile page 1`] = `
-<section>
-  <aside />
-  <main>
-    <Connect(ProfileContainer) />
-  </main>
-  <aside />
-</section>
+<div>
+  <PrivateHeader />
+  <section>
+    <aside />
+    <main>
+      <Connect(ProfileContainer) />
+    </main>
+    <aside />
+  </section>
+</div>
 `;
