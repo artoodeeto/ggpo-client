@@ -1,0 +1,67 @@
+@import '../../../../assets/media-queries.scss';
+
+.PrivateHeaderNav {
+  background-color: #252334;
+  color: #ff7376;
+  font-size: 25px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0.5em 0;
+    align-items: center;
+
+    li {
+      a {
+        text-decoration: none;
+        &:visited {
+          color: #ff7376;
+        }
+        &.NavLink__active {
+          color: #ffe880;
+        }
+      }
+
+      button {
+        padding: 0px;
+        white-space: normal;
+        background: transparent;
+        border: none;
+        color: inherit;
+        font-size: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.MainNavContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  @include sm {
+    width: 200px;
+  }
+
+  @include md {
+    width: 350px;
+
+    li {
+      padding: 0px 20px;
+      margin: 0px 30px;
+    }
+  }
+
+  @include lg {
+    width: 550px;
+  }
+
+  @include xlg {
+    width: 600px;
+  }
+}
