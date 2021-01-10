@@ -1,8 +1,9 @@
-@import '../../../../assets/media-queries.scss';
+@import '../../../assets/media-queries.scss';
+@import '../../../assets/color-theme-dark.scss';
 
 .PrivateHeaderNav {
-  background-color: #252334;
-  color: #ff7376;
+  background-color: $scalp-black;
+  color: $tampon-red;
   font-size: 25px;
 
   ul {
@@ -16,10 +17,10 @@
       a {
         text-decoration: none;
         &:visited {
-          color: #ff7376;
+          color: $tampon-red;
         }
         &.NavLink__active {
-          color: #ffe880;
+          color: $yellow-teeth;
         }
       }
 

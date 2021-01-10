@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from 'store/root/root_reducer';
 import { AnyAction } from 'redux';
@@ -16,13 +16,13 @@ interface PostContainerState {}
 class PostContainer extends Component<PostContainerProps, PostContainerState> {
   render() {
     return (
-      <div>
+      <Fragment>
         {this.props.posts.map((post: IPost) => (
-          <div key={post.id as number}>
+          <Fragment key={post.id as number}>
             <PostItem post={post} showOptionsBtn={this.props.showOptionsBtn} />
-          </div>
+          </Fragment>
         ))}
-      </div>
+      </Fragment>
     );
   }
 }
