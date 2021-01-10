@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import PrivateHeader from '../Headers/PrivateHeader/PrivateHeader';
+import PrivateHeader from '../../Headers/PrivateHeader/PrivateHeader';
+import Style from './PrivateLayout.module.scss';
 
 type PrivateLayoutProps = {};
 /**
@@ -11,11 +12,9 @@ const PrivateLayout: FC<PrivateLayoutProps> = ({ children }) => {
   return (
     <div>
       <PrivateHeader />
-      <section>
-        <aside></aside>
-        <main>{children}</main>
-        <aside></aside>
-      </section>
+      <aside className={Style.LeftAside}></aside>
+      <main>{children}</main>
+      <aside className={Style.RightAside}></aside>
     </div>
   );
 };

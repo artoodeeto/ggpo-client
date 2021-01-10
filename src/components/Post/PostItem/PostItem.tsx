@@ -6,7 +6,8 @@ import { RootState } from 'store/root/root_reducer';
 import { IPost } from 'interfaces/post';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import PostItemStyle from './PostItem.module.scss';
+import { fullDateParser } from 'helper/dateParser';
+import Style from './PostItem.module.scss';
 
 type PostItemProps = {
   post: IPost;
@@ -23,23 +24,38 @@ export const PostItem: FC<PostItemProps> = ({ post, showOptionsBtn, deletePost }
   const toDisplay = toEditValue ? (
     <PostForm post={post} toEdit handleToEdit={setToEdit} />
   ) : (
-    <div className={PostItemStyle.box}>
-      <h3 aria-roledescription="title">title: {post.title}</h3>
-      <section>
-        <p>body: {post.body}</p>
-        <span>{post.user ? `by: ${post.user.username}` : ''}</span>
-        {/* <span>{post.user ? `email: ${post.user.email}` : ''}</span> */}
+    <div className={Style.PostItem}>
+      <section className={Style.PostItemFigContainer}>
+        <figure className={Style.FigContainer}>
+          <img
+            src="https://www.programmableweb.com/sites/default/files/styles/facebook_scale_width_200/public/Gravatar%20API_1.png?itok=ayIeuL1k"
+            alt="user avatar"
+          />
+          <figcaption className={Style.FigCaption}>
+            <span aria-label={`user ${post.user?.username}`}>{post?.user?.username}</span>
+            <span aria-label="data">{fullDateParser(post.createdAt)}</span>
+          </figcaption>
+        </figure>
       </section>
-      {showOptionsBtn ? (
-        <button aria-roledescription="delete post button" type="button" onClick={() => deletePost(Number(post.id))}>
-          Delete
-        </button>
-      ) : null}
-      {showOptionsBtn ? (
-        <button aria-roledescription="edit post button" type="button" onClick={() => setToEdit(!toEditValue)}>
-          Edit
-        </button>
-      ) : null}
+
+      <section className={Style.PostItemPostContainer}>
+        <h3 aria-roledescription="title">{post.title}</h3>
+        <p aria-roledescription="body">{post.body}</p>
+      </section>
+
+      <section>
+        {/* <span>{post.user ? `email: ${post.user.email}` : ''}</span> */}
+        {showOptionsBtn ? (
+          <button aria-roledescription="delete post button" type="button" onClick={() => deletePost(Number(post.id))}>
+            Delete
+          </button>
+        ) : null}
+        {showOptionsBtn ? (
+          <button aria-roledescription="edit post button" type="button" onClick={() => setToEdit(!toEditValue)}>
+            Edit
+          </button>
+        ) : null}
+      </section>
     </div>
   );
 

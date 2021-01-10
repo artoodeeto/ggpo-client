@@ -1,0 +1,21 @@
+@import '../../../assets/media-queries.scss';
+
+.LeftAside {
+  @include sm {
+    display: none;
+  }
+
+  @include md {
+    display: none;
+  }
+}
+
+.RightAside {
+  @include sm {
+    display: none;
+  }
+
+  @include md {
+    display: none;
+  }
+}

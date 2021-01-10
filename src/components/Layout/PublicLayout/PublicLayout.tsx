@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import PublicHeader from '../Headers/PublicHeader/PublicHeader';
+import PublicHeader from '../../Headers/PublicHeader/PublicHeader';
 
 type PublicLayoutProps = {};
 
