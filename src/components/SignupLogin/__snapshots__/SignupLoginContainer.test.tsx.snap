@@ -5,20 +5,15 @@ exports[`<SignupLoginContainer/> SignupLoginContainer container should match sna
   <div
     className="SignupLoginContainer"
   >
-    <div
-      className="SignupLoginContainer__SliderBtnContainer"
-    >
-      <LoginSignupSliderButton
-        toShow={[Function]}
-      />
-    </div>
-    <div
-      className="SignupLoginContainer__Form_Container"
-    >
-      <Login
-        isLoggingInOrSigningUp={true}
-      />
-    </div>
+    <Login
+      isLoggingInOrSigningUp={true}
+    />
+    <span>
+      or
+    </span>
+    <Signup
+      isLoggingInOrSigningUp={false}
+    />
   </div>
 </Fragment>
 `;
@@ -28,20 +23,15 @@ exports[`<SignupLoginContainer/> SignupLoginContainer container should match sna
   <div
     className="SignupLoginContainer"
   >
-    <div
-      className="SignupLoginContainer__SliderBtnContainer"
-    >
-      <LoginSignupSliderButton
-        toShow={[Function]}
-      />
-    </div>
-    <div
-      className="SignupLoginContainer__Form_Container"
-    >
-      <Signup
-        isLoggingInOrSigningUp={false}
-      />
-    </div>
+    <Login
+      isLoggingInOrSigningUp={true}
+    />
+    <span>
+      or
+    </span>
+    <Signup
+      isLoggingInOrSigningUp={false}
+    />
   </div>
 </Fragment>
 `;

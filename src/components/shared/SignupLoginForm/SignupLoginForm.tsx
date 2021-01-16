@@ -52,8 +52,8 @@ export const SignupLoginForm: FC<SignupLoginFormProps> = ({ toLoginOrSignup, onL
       <input
         onChange={(e) => setEmail(e.target.value)}
         value={email}
-        placeholder="email_address@gmail.com"
-        type="text"
+        placeholder="email"
+        type="email"
         name="email"
         id=""
         required
@@ -71,6 +71,7 @@ export const SignupLoginForm: FC<SignupLoginFormProps> = ({ toLoginOrSignup, onL
         />
       )}
 
+      {/* <div id="password-constraints">some password constraints</div> */}
       <input
         onChange={(e) => setPassword(e.target.value)}
         value={password}
@@ -79,6 +80,7 @@ export const SignupLoginForm: FC<SignupLoginFormProps> = ({ toLoginOrSignup, onL
         name="password"
         id=""
         required
+        aria-describedby="password-constraints"
       />
 
       {toLoginOrSignup ? null : (

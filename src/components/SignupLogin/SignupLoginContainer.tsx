@@ -23,16 +23,16 @@ interface SignupLoginContainerState {
 // background here should show some video, maybe the TI championship games
 // TODO: sign up and login button should show loading GIF on the their buttons
 export class SignupLoginContainer extends Component<SignupLoginContainerProps, SignupLoginContainerState> {
-  constructor(props: SignupLoginContainerProps) {
-    super(props);
-    this.state = {
-      toLoginOrSignup: true
-    };
-  }
+  // constructor(props: SignupLoginContainerProps) {
+  //   super(props);
+  //   this.state = {
+  //     toLoginOrSignup: true
+  //   };
+  // }
 
-  toLogInOrSignUp(toShow: boolean): void {
-    this.setState({ toLoginOrSignup: toShow });
-  }
+  // toLogInOrSignUp(toShow: boolean): void {
+  //   this.setState({ toLoginOrSignup: toShow });
+  // }
 
   render() {
     return (
@@ -47,16 +47,9 @@ export class SignupLoginContainer extends Component<SignupLoginContainerProps, S
           <Redirect to="/feed" />
         ) : (
           <div className={styles.SignupLoginContainer}>
-            <div className={styles.SignupLoginContainer__SliderBtnContainer}>
-              <LoginSignupSliderButton toShow={(val: boolean) => this.toLogInOrSignUp(val)} />
-            </div>
-            <div className={styles.SignupLoginContainer__Form_Container}>
-              {this.state.toLoginOrSignup ? (
-                <Login isLoggingInOrSigningUp={this.state.toLoginOrSignup} />
-              ) : (
-                <Signup isLoggingInOrSigningUp={this.state.toLoginOrSignup} />
-              )}
-            </div>
+            <Login isLoggingInOrSigningUp={true} />
+            <span>or</span>
+            <Signup isLoggingInOrSigningUp={false} />
           </div>
         )}
       </Fragment>
