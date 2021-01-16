@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component } from 'react';
+import React, { Component, JSXElementConstructor } from 'react';
 import { connect } from 'react-redux';
 import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
 import { AnyAction } from 'redux';
@@ -16,7 +16,7 @@ interface AppProps {
 interface AppState {}
 
 class App extends Component<AppProps, AppState> {
-  componentDidMount() {
+  componentDidMount(): void {
     if (this.props.isAuth) {
       this.props.toAutoLogout(Number(this.props.expectedTokenExp - Date.now()));
     }

@@ -1,3 +1,7 @@
 {
-  "css.customData": ["./.vscode/custom.css-data.json"]
+  "css.customData": ["./.vscode/custom.css-data.json"],
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // },
+  "eslint.options": { "configFile": ".eslintrc.js" }
 }

@@ -54,7 +54,9 @@ module.exports = {
     'comma-dangle': 0,
     'arrow-body-style': 0,
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
-    'jsx-a11y/aria-role': [2, { ignoreNonDOM: true }]
+    'jsx-a11y/aria-role': [2, { ignoreNonDOM: true }],
+    'react/jsx-boolean-value': 0,
+    'react/no-array-index-key': 1
   },
   settings: {
     'import/resolver': {

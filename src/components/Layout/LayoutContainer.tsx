@@ -13,9 +13,9 @@ export const LayoutContainer: FC<LayoutContainerProps> = () => {
         <MainRoute routeConf={routeConfig} />
       </Suspense>
 
-      <section>
+      {/* <section>
         <footer>I am the FOOTER</footer>
-      </section>
+      </section> */}
     </div>
   );
 };

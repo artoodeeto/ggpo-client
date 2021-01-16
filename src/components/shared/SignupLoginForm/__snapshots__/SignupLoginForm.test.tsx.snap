@@ -9,12 +9,13 @@ exports[`<SignupLoginForm/> snapshot User loging in snapshot 1`] = `
     id=""
     name="email"
     onChange={[Function]}
-    placeholder="email_address@gmail.com"
+    placeholder="email"
     required={true}
-    type="text"
+    type="email"
     value=""
   />
   <input
+    aria-describedby="password-constraints"
     id=""
     name="password"
     onChange={[Function]}
@@ -39,9 +40,9 @@ exports[`<SignupLoginForm/> snapshot User signing up snapshot 1`] = `
     id=""
     name="email"
     onChange={[Function]}
-    placeholder="email_address@gmail.com"
+    placeholder="email"
     required={true}
-    type="text"
+    type="email"
     value=""
   />
   <input
@@ -54,6 +55,7 @@ exports[`<SignupLoginForm/> snapshot User signing up snapshot 1`] = `
     value=""
   />
   <input
+    aria-describedby="password-constraints"
     id=""
     name="password"
     onChange={[Function]}

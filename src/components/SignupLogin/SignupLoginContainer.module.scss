@@ -3,21 +3,46 @@
 .SignupLoginContainer {
   font-size: 20px;
   box-sizing: border-box;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 15em;
+  margin: auto;
 
-  &__SliderBtnContainer {
-    display: flex;
-    justify-content: center;
+  // height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
 
-    > button {
-      margin: 1em 0.1em;
+  // &__SliderBtnContainer {
+  //   display: flex;
+  //   justify-content: center;
+
+  //   > button {
+  //     margin: 1em 0.1em;
+  //   }
+  // }
+
+  > span {
+    text-align: center;
+    display: block;
+    margin: 0.5em 0;
+    font-size: 16px;
+
+    &::before,
+    &::after {
+      display: inline-block;
+      content: '';
+      background: white;
+      height: 1px;
+      width: 44%;
+      margin: 0px 5px;
+      transform: translateY(-4px);
     }
   }
 
   @include md {
     font-size: 25px;
+  }
+
+  @include xlg {
+    margin-right: 5em;
   }
 }
