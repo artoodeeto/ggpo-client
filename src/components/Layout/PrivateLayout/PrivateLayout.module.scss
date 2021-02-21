@@ -1,21 +1,36 @@
 @import '../../../assets/media-queries.scss';
 
-.LeftAside {
-  @include sm {
-    display: none;
-  }
+$max-width-main-size: 50%;
+
+.Main {
+  margin: auto;
+  max-width: 100%;
 
   @include md {
+    max-width: $max-width-main-size;
+  }
+  @include lg {
+    max-width: $max-width-main-size;
+  }
+  @include xlg {
+    max-width: $max-width-main-size;
+  }
+}
+
+.LeftAside {
+  @include xsm {
+    display: none;
+  }
+  @include sm {
     display: none;
   }
 }
 
 .RightAside {
-  @include sm {
+  @include xsm {
     display: none;
   }
-
-  @include md {
+  @include sm {
     display: none;
   }
 }

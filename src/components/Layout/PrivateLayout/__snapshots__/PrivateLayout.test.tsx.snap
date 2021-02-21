@@ -6,7 +6,9 @@ exports[`<PrivateLayout/> PrivateLayout snapshots user is on gamegroup page 1`] 
   <aside
     className="LeftAside"
   />
-  <main>
+  <main
+    className="Main"
+  >
     <Connect(GameGroupContainer) />
   </main>
   <aside
@@ -21,7 +23,9 @@ exports[`<PrivateLayout/> PrivateLayout snapshots user is on gamegroup page 2`] 
   <aside
     className="LeftAside"
   />
-  <main>
+  <main
+    className="Main"
+  >
     <withRouter(Connect(GameItemContainer)) />
   </main>
   <aside
@@ -36,7 +40,9 @@ exports[`<PrivateLayout/> PrivateLayout snapshots user is on login or signup pag
   <aside
     className="LeftAside"
   />
-  <main>
+  <main
+    className="Main"
+  >
     <Feed />
   </main>
   <aside
@@ -51,7 +57,9 @@ exports[`<PrivateLayout/> PrivateLayout snapshots user is on profile page 1`] = 
   <aside
     className="LeftAside"
   />
-  <main>
+  <main
+    className="Main"
+  >
     <Connect(ProfileContainer) />
   </main>
   <aside

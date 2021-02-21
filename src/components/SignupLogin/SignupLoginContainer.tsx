@@ -9,7 +9,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Signup } from './Signup/Signup';
 import { Login } from './Login/Login';
 import styles from './SignupLoginContainer.module.scss';
-import { LoginSignupSliderButton } from './LoginSignupSliderButton/LoginSignupSliderButton';
+// import { LoginSignupSliderButton } from './LoginSignupSliderButton/LoginSignupSliderButton';
 
 interface SignupLoginContainerProps {
   hasErrors: boolean;

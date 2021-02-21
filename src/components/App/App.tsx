@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component, JSXElementConstructor } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { autoLogoutAfterTokenExpire } from 'helper/autoLogoutAfterTokenExp';
 import { AnyAction } from 'redux';

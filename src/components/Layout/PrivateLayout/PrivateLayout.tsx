@@ -12,9 +12,9 @@ const PrivateLayout: FC<PrivateLayoutProps> = ({ children }) => {
   return (
     <div>
       <PrivateHeader />
-      <aside className={Style.LeftAside}></aside>
-      <main>{children}</main>
-      <aside className={Style.RightAside}></aside>
+      <aside className={Style.LeftAside} />
+      <main className={Style.Main}>{children}</main>
+      <aside className={Style.RightAside} />
     </div>
   );
 };
