@@ -1,4 +1,4 @@
-import React, { useEffect, FC, Fragment } from 'react';
+import React, { useEffect, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PostContainer from 'components/Post/PostContainer';
 import { IPost } from 'interfaces/post';
@@ -20,9 +20,9 @@ const Feed: FC<FeedProps> = () => {
   }, [dispatch]);
   // TODO: load new posts when scrolling
   return (
-    <Fragment>
+    <>
       <PostContainer posts={postsFeed} showOptionsBtn={false} />
-    </Fragment>
+    </>
   );
 };
 

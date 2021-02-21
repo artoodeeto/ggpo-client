@@ -1,5 +1,11 @@
 // media aliases and breakpoints
-// Thanks to my dude https://github.com/Necromancerx/media-queries-scss-mixins/blob/master/media-queries.scss
+// https://github.com/Necromancerx/media-queries-scss-mixins/blob/master/media-queries.scss
+
+@mixin xsm {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
 
 @mixin sm {
   @media screen and (min-width: 360px) {
