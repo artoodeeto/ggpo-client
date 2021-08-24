@@ -5,15 +5,7 @@ exports[`<SignupLoginContainer/> SignupLoginContainer container should match sna
   <div
     className="SignupLoginContainer"
   >
-    <Login
-      isLoggingInOrSigningUp={true}
-    />
-    <span>
-      or
-    </span>
-    <Signup
-      isLoggingInOrSigningUp={false}
-    />
+    <FbBtn />
   </div>
 </Fragment>
 `;
@@ -23,15 +15,7 @@ exports[`<SignupLoginContainer/> SignupLoginContainer container should match sna
   <div
     className="SignupLoginContainer"
   >
-    <Login
-      isLoggingInOrSigningUp={true}
-    />
-    <span>
-      or
-    </span>
-    <Signup
-      isLoggingInOrSigningUp={false}
-    />
+    <FbBtn />
   </div>
 </Fragment>
 `;

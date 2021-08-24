@@ -11,7 +11,7 @@ type ErrorMsgProps = {
 };
 
 const ErrorMsg: FC<ErrorMsgProps> = ({ errorMsg }) => {
-  const errMsg = errorMsg.errorMessage;
+  const errMsg = errorMsg.error.errors[0];
   const errKeys = Object.keys(errMsg);
 
   return (

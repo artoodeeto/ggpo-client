@@ -3,5 +3,12 @@
   // "editor.codeActionsOnSave": {
   //   "source.fixAll.eslint": true
   // },
-  "eslint.options": { "configFile": ".eslintrc.js" }
+  "eslint.options": {
+    "configFile": ".eslintrc.js"
+  },
+  "[typescriptreact]": {
+    "editor.autoClosingBrackets": "languageDefined"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true
 }

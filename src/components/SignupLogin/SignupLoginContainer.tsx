@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import ErrorMsg from 'components/shared/ErrorMessage/ErrorMsg';
+// import ErrorMsg from 'components/shared/ErrorMessage/ErrorMsg';
 import { RootState } from 'store/root/root_reducer';
 import { hasErrorOnSignupOrLogin, isUserAuthorized } from 'store/session/Selectors';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { Signup } from './Signup/Signup';
-import { Login } from './Login/Login';
+// import { Signup } from './Signup/Signup';
+// import { Login } from './Login/Login';
 import styles from './SignupLoginContainer.module.scss';
+import { FbBtn } from '../Auth/Facebook/FB_btn';
 // import { LoginSignupSliderButton } from './LoginSignupSliderButton/LoginSignupSliderButton';
 
 interface SignupLoginContainerProps {
@@ -20,8 +21,6 @@ interface SignupLoginContainerState {
   toLoginOrSignup: boolean;
 }
 
-// background here should show some video, maybe the TI championship games
-// TODO: sign up and login button should show loading GIF on the their buttons
 export class SignupLoginContainer extends Component<SignupLoginContainerProps, SignupLoginContainerState> {
   // constructor(props: SignupLoginContainerProps) {
   //   super(props);
@@ -37,19 +36,16 @@ export class SignupLoginContainer extends Component<SignupLoginContainerProps, S
   render() {
     return (
       <Fragment>
-        {this.props.hasErrors ? (
-          <div>
-            <ErrorMsg />
-          </div>
-        ) : null}
+        {this.props.hasErrors ? <div>{/* <ErrorMsg /> */}</div> : null}
 
         {this.props.isAuthenticated ? (
           <Redirect to="/feed" />
         ) : (
           <div className={styles.SignupLoginContainer}>
-            <Login isLoggingInOrSigningUp={true} />
+            {/* <Login isLoggingInOrSigningUp={true} />
             <span>or</span>
-            <Signup isLoggingInOrSigningUp={false} />
+            <Signup isLoggingInOrSigningUp={false} /> */}
+            <FbBtn />
           </div>
         )}
       </Fragment>

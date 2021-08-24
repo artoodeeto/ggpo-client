@@ -10,7 +10,7 @@ export const sessionInitialState: ISession = {
   isAuthenticated: false,
   isUserLoggingInOrSigningUp: false,
   hasErrorOnSigningUpOrLoggingIn: false,
-  errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+  errorResponseOnSigupOrLogin: { errorType: '', error: { msg: '', errors: [] } },
   tokenExpirationTime: 0,
   dateTimeStartedLoginOrSignupInMillisec: 0,
   expectedTokenExpirationInMillisec: 0

@@ -1,9 +1,9 @@
-import { lazy, FC } from 'react';
+import { lazy, ComponentType } from 'react';
 import SignupLoginContainer from 'components/SignupLogin/SignupLoginContainer';
 
 export interface RouteConfigInterface {
   path: string;
-  component: FC<any>;
+  component: ComponentType;
   isPrivate: boolean;
   exact: boolean;
   childRoutes?: RouteConfigInterface[];
@@ -18,6 +18,12 @@ const routeConfig: RouteConfigInterface[] = [
   {
     path: '/',
     component: SignupLoginContainer,
+    isPrivate: false,
+    exact: true
+  },
+  {
+    path: '/intercept',
+    component: lazy(() => import('components/InterceptAuth/InterceptAuth')),
     isPrivate: false,
     exact: true
   },
