@@ -10,7 +10,10 @@ export interface ISession {
 
 export interface ILoginSignupFailed {
   errorType: string;
-  errorMessage: any;
+  error: {
+    msg: string;
+    errors: Array<any>;
+  };
 }
 
 export interface ILoginSignUpFormParams {

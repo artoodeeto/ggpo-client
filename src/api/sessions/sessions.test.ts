@@ -1,13 +1,23 @@
 import axiosInstance from 'lib/axios.instance';
-import { signUpAPI, loginAPI } from 'api/sessions/sessions';
+import axios from 'axios';
+import { signUpAPI, loginAPI, logoutAPI, oAuthUserData } from 'api/sessions/sessions';
 
 jest.mock('../../lib/axios.instance.ts');
+jest.mock('axios');
+const mockedAxe = axios as jest.Mocked<typeof axios>;
+
 const mockedAxios = axiosInstance as jest.Mocked<typeof axiosInstance>;
+
 describe('Session API Test', () => {
   beforeEach(() => {
-    mockedAxios.post.mockReset();
+    // mockedAxios.post.mockReset();
+    mockedAxe.get.mockReset();
   });
-  describe('On User Signup', () => {
+
+  /**
+   * @deprecated
+   */
+  describe.skip('On User Signup', () => {
     it('should success response on signup', async () => {
       const expectedResponse = {
         meta: {
@@ -46,7 +56,10 @@ describe('Session API Test', () => {
     });
   });
 
-  describe('On User Login', () => {
+  /**
+   * @deprecated
+   */
+  describe.skip('On User Login', () => {
     it('should success response on login', async () => {
       const expectedResponse = {
         meta: {
@@ -80,6 +93,38 @@ describe('Session API Test', () => {
         password: 'Password1!',
         email: 'yousir1@gmail.com'
       });
+    });
+  });
+
+  describe('On User Logout', () => {
+    it('should success response on logout', async () => {
+      mockedAxe.get.mockResolvedValue({});
+      await logoutAPI();
+      expect(mockedAxe.get).toHaveBeenCalledTimes(1);
+      expect(mockedAxe.get).toHaveBeenCalledWith('/logout');
+    });
+
+    it('should throw on logout', async () => {
+      mockedAxe.get.mockRejectedValue({});
+      await expect(logoutAPI()).toReject();
+      expect(mockedAxe.get).toHaveBeenCalledTimes(1);
+      expect(mockedAxe.get).toHaveBeenCalledWith('/logout');
+    });
+  });
+
+  describe('On User login OAuth', () => {
+    it('should success response on OAuth login', async () => {
+      mockedAxe.get.mockResolvedValue({});
+      await oAuthUserData();
+      expect(mockedAxe.get).toHaveBeenCalledTimes(1);
+      expect(mockedAxe.get).toHaveBeenCalledWith('/auth/user');
+    });
+
+    it('should throw on OAuth login', async () => {
+      mockedAxe.get.mockRejectedValue({});
+      await expect(oAuthUserData()).toReject();
+      expect(mockedAxe.get).toHaveBeenCalledTimes(1);
+      expect(mockedAxe.get).toHaveBeenCalledWith('/auth/user');
     });
   });
 });

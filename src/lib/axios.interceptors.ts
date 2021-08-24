@@ -1,11 +1,14 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
 export default function axiosInterceptors(): void {
   // Add a request interceptor
+
   axios.interceptors.request.use(
     (config) => {
       // Do something before request is sent
+      config.baseURL = process.env.REACT_APP_BASE_API_URL;
+      config.withCredentials = true;
+      // config.headers.access_control_allow_origin = '*';
       config.headers.authorization = `Bearer ${Cookies.get(process.env.REACT_APP_COOKIE_NAME as string)}`;
       return config;
     },

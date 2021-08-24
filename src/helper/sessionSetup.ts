@@ -18,6 +18,7 @@ export function setUpSessionOnLoginAndSignup(
   Cookies.set(process.env.REACT_APP_COOKIE_NAME as string, token, {
     expires: new Date(new Date().getTime() + Number(expToken)),
     secure: true,
+    path: '/',
     sameSite: 'None'
   });
 }

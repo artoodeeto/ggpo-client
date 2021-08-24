@@ -1,5 +1,3 @@
 import React from 'react';
 
-test('sample', () => {
-  expect(true).toBe(true);
-});
+test.todo('Post Item');

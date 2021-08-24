@@ -5,18 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from 'js-cookie';
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { logoutSession } from 'store/session/Actions';
-import { logoutUser } from 'store/user/Actions';
+import { logMeOut } from 'store/session/Actions';
 
 type DropDownNavListsProps = {};
 
 const DropDownNavLists: FC<DropDownNavListsProps> = () => {
   const dispatch = useDispatch();
-  const logOutCurrentUser = () => {
-    dispatch(logoutSession());
-    dispatch(logoutUser());
-    Cookies.remove(process.env.REACT_APP_COOKIE_NAME as string);
-  };
 
   return (
     <ul>
@@ -28,7 +22,7 @@ const DropDownNavLists: FC<DropDownNavListsProps> = () => {
         <FontAwesomeIcon icon={faSearch} />
         <span>Search</span>
       </li>
-      <li aria-roledescription="logout button" role="button" onClick={() => logOutCurrentUser()}>
+      <li aria-roledescription="logout button" role="button" onClick={() => dispatch(logMeOut())}>
         <FontAwesomeIcon icon={faSignOutAlt} />
         <span>Logout</span>
       </li>

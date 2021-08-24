@@ -26,7 +26,7 @@ describe('Session Action Test', () => {
           isAuthenticated: true,
           tokenExpirationTime: 111,
           isUserLoggingInOrSigningUp: false,
-          errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+          errorResponseOnSigupOrLogin: { errorType: '', error: { msg: '', errors: [] } },
           hasErrorOnSigningUpOrLoggingIn: false,
           dateTimeStartedLoginOrSignupInMillisec: 12,
           expectedTokenExpirationInMillisec: 111 + 12
@@ -59,12 +59,14 @@ describe('Session Action Test', () => {
 
   describe('userLoginOrSignupFailed ACTION', () => {
     it('should set state to failed properties on failed signup or login', () => {
-      expect(sessionActions.userLoginOrSignupFailed({ errorType: 'Query Failed', errorMessage: {} })).toEqual({
+      expect(
+        sessionActions.userLoginOrSignupFailed({ errorType: 'Query Failed', error: { msg: '', errors: [] } })
+      ).toEqual({
         type: SessionEnumTypes.SIGNUP_LOGIN_FAILED,
         payload: {
           isUserLoggingInOrSigningUp: false,
           hasErrorOnSigningUpOrLoggingIn: true,
-          errorResponseOnSigupOrLogin: { errorType: 'Query Failed', errorMessage: {} }
+          errorResponseOnSigupOrLogin: { errorType: 'Query Failed', error: { msg: '', errors: [] } }
         }
       });
     });
@@ -101,7 +103,7 @@ describe('Session Action Test', () => {
               { payload: { isUserLoggingInOrSigningUp: true }, type: 'IS_LOGGING_IN_OR_SIGNING_UP' },
               {
                 payload: {
-                  errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+                  errorResponseOnSigupOrLogin: { errorType: '', error: { msg: '', errors: [] } },
                   hasErrorOnSigningUpOrLoggingIn: false,
                   isAuthenticated: true,
                   isUserLoggingInOrSigningUp: false,
@@ -179,7 +181,7 @@ describe('Session Action Test', () => {
               { payload: { isUserLoggingInOrSigningUp: true }, type: 'IS_LOGGING_IN_OR_SIGNING_UP' },
               {
                 payload: {
-                  errorResponseOnSigupOrLogin: { errorType: '', errorMessage: {} },
+                  errorResponseOnSigupOrLogin: { errorType: '', error: { msg: '', errors: [] } },
                   hasErrorOnSigningUpOrLoggingIn: false,
                   isAuthenticated: true,
                   isUserLoggingInOrSigningUp: false,
